@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package type.pagination.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message PaginationToken {
+  google.protobuf.Timestamp last_timestamp = 1;
+  string last_id = 2;
+}
