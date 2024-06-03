@@ -35,7 +35,7 @@ message ListTestsResponse {
 
 message ExecuteTestRequest {
   string test_id = 1;
-  type.test.v1.Payload payload = 2;
+  optional type.test.v1.Payload payload = 2;
 }
 
 message ExecuteTestResponse {
@@ -139,21 +139,7 @@ message ListTestExecutionLogsResponse {
   repeated type.test.v1.ExecutionLog logs = 1;
 }
 
-message SendRunnerHeartbeatRequest {
-  string runner_id = 1;
-  repeated string test_ids = 2;
-}
-
-message SendRunnerHeartbeatResponse {}
-
 service TestService {
-  rpc RegisterTests(RegisterTestsRequest) returns (RegisterTestsResponse) {
-    option (google.api.http) = {
-      post: "/api/v1/tests"
-      body: "*"
-    };
-  }
-
   rpc GetTestDefaultPayload(GetTestDefaultPayloadRequest) returns (GetTestDefaultPayloadResponse) {
     option (google.api.http) = {get: "/api/v1/tests/{test_id}/default-payload"};
   }
@@ -191,6 +177,8 @@ service TestService {
   rpc ListTestExecutionLogs(ListTestExecutionLogsRequest) returns (ListTestExecutionLogsResponse) {
     option (google.api.http) = {get: "/api/v1/executions/{test_exec_id}/logs"};
   }
+
+  rpc RegisterTests(RegisterTestsRequest) returns (RegisterTestsResponse);
 
   rpc AckTestExecutionStarted(AckTestExecutionStartedRequest) returns (AckTestExecutionStartedResponse);
 

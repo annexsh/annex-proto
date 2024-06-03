@@ -95,8 +95,3 @@ message TestRunner {
   google.protobuf.Timestamp last_heartbeat = 2;
   bool is_active = 3;
 }
-
-enum TestSignal {
-  TEST_SIGNAL_UNSPECIFIED = 0;
-  TEST_SIGNAL_START_TEST = 1;
-}

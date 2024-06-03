@@ -21,52 +21,6 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-type TestSignal int32
-
-const (
-	TestSignal_TEST_SIGNAL_UNSPECIFIED TestSignal = 0
-	TestSignal_TEST_SIGNAL_START_TEST  TestSignal = 1
-)
-
-// Enum value maps for TestSignal.
-var (
-	TestSignal_name = map[int32]string{
-		0: "TEST_SIGNAL_UNSPECIFIED",
-		1: "TEST_SIGNAL_START_TEST",
-	}
-	TestSignal_value = map[string]int32{
-		"TEST_SIGNAL_UNSPECIFIED": 0,
-		"TEST_SIGNAL_START_TEST":  1,
-	}
-)
-
-func (x TestSignal) Enum() *TestSignal {
-	p := new(TestSignal)
-	*p = x
-	return p
-}
-
-func (x TestSignal) String() string {
-	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
-}
-
-func (TestSignal) Descriptor() protoreflect.EnumDescriptor {
-	return file_type_test_v1_message_proto_enumTypes[0].Descriptor()
-}
-
-func (TestSignal) Type() protoreflect.EnumType {
-	return &file_type_test_v1_message_proto_enumTypes[0]
-}
-
-func (x TestSignal) Number() protoreflect.EnumNumber {
-	return protoreflect.EnumNumber(x)
-}
-
-// Deprecated: Use TestSignal.Descriptor instead.
-func (TestSignal) EnumDescriptor() ([]byte, []int) {
-	return file_type_test_v1_message_proto_rawDescGZIP(), []int{0}
-}
-
 type ExecutionEvent_Type int32
 
 const (
@@ -115,11 +69,11 @@ func (x ExecutionEvent_Type) String() string {
 }
 
 func (ExecutionEvent_Type) Descriptor() protoreflect.EnumDescriptor {
-	return file_type_test_v1_message_proto_enumTypes[1].Descriptor()
+	return file_type_test_v1_message_proto_enumTypes[0].Descriptor()
 }
 
 func (ExecutionEvent_Type) Type() protoreflect.EnumType {
-	return &file_type_test_v1_message_proto_enumTypes[1]
+	return &file_type_test_v1_message_proto_enumTypes[0]
 }
 
 func (x ExecutionEvent_Type) Number() protoreflect.EnumNumber {
@@ -170,11 +124,11 @@ func (x ExecutionEvent_Data_Type) String() string {
 }
 
 func (ExecutionEvent_Data_Type) Descriptor() protoreflect.EnumDescriptor {
-	return file_type_test_v1_message_proto_enumTypes[2].Descriptor()
+	return file_type_test_v1_message_proto_enumTypes[1].Descriptor()
 }
 
 func (ExecutionEvent_Data_Type) Type() protoreflect.EnumType {
-	return &file_type_test_v1_message_proto_enumTypes[2]
+	return &file_type_test_v1_message_proto_enumTypes[1]
 }
 
 func (x ExecutionEvent_Data_Type) Number() protoreflect.EnumNumber {
@@ -1077,22 +1031,18 @@ var file_type_test_v1_message_proto_rawDesc = []byte{
 	0x73, 0x74, 0x61, 0x6d, 0x70, 0x52, 0x0d, 0x6c, 0x61, 0x73, 0x74, 0x48, 0x65, 0x61, 0x72, 0x74,
 	0x62, 0x65, 0x61, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x69, 0x73, 0x5f, 0x61, 0x63, 0x74, 0x69, 0x76,
 	0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x08, 0x52, 0x08, 0x69, 0x73, 0x41, 0x63, 0x74, 0x69, 0x76,
-	0x65, 0x2a, 0x45, 0x0a, 0x0a, 0x54, 0x65, 0x73, 0x74, 0x53, 0x69, 0x67, 0x6e, 0x61, 0x6c, 0x12,
-	0x1b, 0x0a, 0x17, 0x54, 0x45, 0x53, 0x54, 0x5f, 0x53, 0x49, 0x47, 0x4e, 0x41, 0x4c, 0x5f, 0x55,
-	0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x1a, 0x0a, 0x16,
-	0x54, 0x45, 0x53, 0x54, 0x5f, 0x53, 0x49, 0x47, 0x4e, 0x41, 0x4c, 0x5f, 0x53, 0x54, 0x41, 0x52,
-	0x54, 0x5f, 0x54, 0x45, 0x53, 0x54, 0x10, 0x01, 0x42, 0xad, 0x01, 0x0a, 0x10, 0x63, 0x6f, 0x6d,
-	0x2e, 0x74, 0x79, 0x70, 0x65, 0x2e, 0x74, 0x65, 0x73, 0x74, 0x2e, 0x76, 0x31, 0x42, 0x0c, 0x4d,
-	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x39, 0x67,
-	0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x6e, 0x6e, 0x65, 0x78, 0x68,
-	0x71, 0x2f, 0x61, 0x6e, 0x6e, 0x65, 0x78, 0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x65,
-	0x6e, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x79, 0x70, 0x65, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x76,
-	0x31, 0x3b, 0x74, 0x65, 0x73, 0x74, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x54, 0x54, 0x58, 0xaa, 0x02,
-	0x0c, 0x54, 0x79, 0x70, 0x65, 0x2e, 0x54, 0x65, 0x73, 0x74, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x0c,
-	0x54, 0x79, 0x70, 0x65, 0x5c, 0x54, 0x65, 0x73, 0x74, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x18, 0x54,
-	0x79, 0x70, 0x65, 0x5c, 0x54, 0x65, 0x73, 0x74, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d,
-	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x0e, 0x54, 0x79, 0x70, 0x65, 0x3a, 0x3a,
-	0x54, 0x65, 0x73, 0x74, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x42, 0xad, 0x01, 0x0a, 0x10, 0x63, 0x6f, 0x6d, 0x2e, 0x74, 0x79, 0x70, 0x65, 0x2e, 0x74,
+	0x65, 0x73, 0x74, 0x2e, 0x76, 0x31, 0x42, 0x0c, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x50,
+	0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x39, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
+	0x6f, 0x6d, 0x2f, 0x61, 0x6e, 0x6e, 0x65, 0x78, 0x68, 0x71, 0x2f, 0x61, 0x6e, 0x6e, 0x65, 0x78,
+	0x2d, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x67, 0x6f, 0x2f, 0x74, 0x79,
+	0x70, 0x65, 0x2f, 0x74, 0x65, 0x73, 0x74, 0x2f, 0x76, 0x31, 0x3b, 0x74, 0x65, 0x73, 0x74, 0x76,
+	0x31, 0xa2, 0x02, 0x03, 0x54, 0x54, 0x58, 0xaa, 0x02, 0x0c, 0x54, 0x79, 0x70, 0x65, 0x2e, 0x54,
+	0x65, 0x73, 0x74, 0x2e, 0x56, 0x31, 0xca, 0x02, 0x0c, 0x54, 0x79, 0x70, 0x65, 0x5c, 0x54, 0x65,
+	0x73, 0x74, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x18, 0x54, 0x79, 0x70, 0x65, 0x5c, 0x54, 0x65, 0x73,
+	0x74, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61,
+	0xea, 0x02, 0x0e, 0x54, 0x79, 0x70, 0x65, 0x3a, 0x3a, 0x54, 0x65, 0x73, 0x74, 0x3a, 0x3a, 0x56,
+	0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1107,44 +1057,43 @@ func file_type_test_v1_message_proto_rawDescGZIP() []byte {
 	return file_type_test_v1_message_proto_rawDescData
 }
 
-var file_type_test_v1_message_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
+var file_type_test_v1_message_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_type_test_v1_message_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_type_test_v1_message_proto_goTypes = []interface{}{
-	(TestSignal)(0),               // 0: type.test.v1.TestSignal
-	(ExecutionEvent_Type)(0),      // 1: type.test.v1.ExecutionEvent.Type
-	(ExecutionEvent_Data_Type)(0), // 2: type.test.v1.ExecutionEvent.Data.Type
-	(*TestDefinition)(nil),        // 3: type.test.v1.TestDefinition
-	(*Test)(nil),                  // 4: type.test.v1.Test
-	(*TestExecution)(nil),         // 5: type.test.v1.TestExecution
-	(*CaseExecution)(nil),         // 6: type.test.v1.CaseExecution
-	(*ExecutionLog)(nil),          // 7: type.test.v1.ExecutionLog
-	(*Payload)(nil),               // 8: type.test.v1.Payload
-	(*ExecutionEvent)(nil),        // 9: type.test.v1.ExecutionEvent
-	(*TestRunner)(nil),            // 10: type.test.v1.TestRunner
-	nil,                           // 11: type.test.v1.Payload.MetadataEntry
-	(*ExecutionEvent_Data)(nil),   // 12: type.test.v1.ExecutionEvent.Data
-	(*timestamppb.Timestamp)(nil), // 13: google.protobuf.Timestamp
+	(ExecutionEvent_Type)(0),      // 0: type.test.v1.ExecutionEvent.Type
+	(ExecutionEvent_Data_Type)(0), // 1: type.test.v1.ExecutionEvent.Data.Type
+	(*TestDefinition)(nil),        // 2: type.test.v1.TestDefinition
+	(*Test)(nil),                  // 3: type.test.v1.Test
+	(*TestExecution)(nil),         // 4: type.test.v1.TestExecution
+	(*CaseExecution)(nil),         // 5: type.test.v1.CaseExecution
+	(*ExecutionLog)(nil),          // 6: type.test.v1.ExecutionLog
+	(*Payload)(nil),               // 7: type.test.v1.Payload
+	(*ExecutionEvent)(nil),        // 8: type.test.v1.ExecutionEvent
+	(*TestRunner)(nil),            // 9: type.test.v1.TestRunner
+	nil,                           // 10: type.test.v1.Payload.MetadataEntry
+	(*ExecutionEvent_Data)(nil),   // 11: type.test.v1.ExecutionEvent.Data
+	(*timestamppb.Timestamp)(nil), // 12: google.protobuf.Timestamp
 }
 var file_type_test_v1_message_proto_depIdxs = []int32{
-	8,  // 0: type.test.v1.TestDefinition.default_payload:type_name -> type.test.v1.Payload
-	13, // 1: type.test.v1.Test.created_at:type_name -> google.protobuf.Timestamp
-	10, // 2: type.test.v1.Test.last_available:type_name -> type.test.v1.TestRunner
-	13, // 3: type.test.v1.TestExecution.scheduled_at:type_name -> google.protobuf.Timestamp
-	13, // 4: type.test.v1.TestExecution.started_at:type_name -> google.protobuf.Timestamp
-	13, // 5: type.test.v1.TestExecution.finished_at:type_name -> google.protobuf.Timestamp
-	13, // 6: type.test.v1.CaseExecution.scheduled_at:type_name -> google.protobuf.Timestamp
-	13, // 7: type.test.v1.CaseExecution.started_at:type_name -> google.protobuf.Timestamp
-	13, // 8: type.test.v1.CaseExecution.finished_at:type_name -> google.protobuf.Timestamp
-	13, // 9: type.test.v1.ExecutionLog.created_at:type_name -> google.protobuf.Timestamp
-	11, // 10: type.test.v1.Payload.metadata:type_name -> type.test.v1.Payload.MetadataEntry
-	1,  // 11: type.test.v1.ExecutionEvent.type:type_name -> type.test.v1.ExecutionEvent.Type
-	12, // 12: type.test.v1.ExecutionEvent.data:type_name -> type.test.v1.ExecutionEvent.Data
-	13, // 13: type.test.v1.ExecutionEvent.create_time:type_name -> google.protobuf.Timestamp
-	13, // 14: type.test.v1.TestRunner.last_heartbeat:type_name -> google.protobuf.Timestamp
-	2,  // 15: type.test.v1.ExecutionEvent.Data.type:type_name -> type.test.v1.ExecutionEvent.Data.Type
-	5,  // 16: type.test.v1.ExecutionEvent.Data.test_execution:type_name -> type.test.v1.TestExecution
-	6,  // 17: type.test.v1.ExecutionEvent.Data.case_execution:type_name -> type.test.v1.CaseExecution
-	7,  // 18: type.test.v1.ExecutionEvent.Data.execution_log:type_name -> type.test.v1.ExecutionLog
+	7,  // 0: type.test.v1.TestDefinition.default_payload:type_name -> type.test.v1.Payload
+	12, // 1: type.test.v1.Test.created_at:type_name -> google.protobuf.Timestamp
+	9,  // 2: type.test.v1.Test.last_available:type_name -> type.test.v1.TestRunner
+	12, // 3: type.test.v1.TestExecution.scheduled_at:type_name -> google.protobuf.Timestamp
+	12, // 4: type.test.v1.TestExecution.started_at:type_name -> google.protobuf.Timestamp
+	12, // 5: type.test.v1.TestExecution.finished_at:type_name -> google.protobuf.Timestamp
+	12, // 6: type.test.v1.CaseExecution.scheduled_at:type_name -> google.protobuf.Timestamp
+	12, // 7: type.test.v1.CaseExecution.started_at:type_name -> google.protobuf.Timestamp
+	12, // 8: type.test.v1.CaseExecution.finished_at:type_name -> google.protobuf.Timestamp
+	12, // 9: type.test.v1.ExecutionLog.created_at:type_name -> google.protobuf.Timestamp
+	10, // 10: type.test.v1.Payload.metadata:type_name -> type.test.v1.Payload.MetadataEntry
+	0,  // 11: type.test.v1.ExecutionEvent.type:type_name -> type.test.v1.ExecutionEvent.Type
+	11, // 12: type.test.v1.ExecutionEvent.data:type_name -> type.test.v1.ExecutionEvent.Data
+	12, // 13: type.test.v1.ExecutionEvent.create_time:type_name -> google.protobuf.Timestamp
+	12, // 14: type.test.v1.TestRunner.last_heartbeat:type_name -> google.protobuf.Timestamp
+	1,  // 15: type.test.v1.ExecutionEvent.Data.type:type_name -> type.test.v1.ExecutionEvent.Data.Type
+	4,  // 16: type.test.v1.ExecutionEvent.Data.test_execution:type_name -> type.test.v1.TestExecution
+	5,  // 17: type.test.v1.ExecutionEvent.Data.case_execution:type_name -> type.test.v1.CaseExecution
+	6,  // 18: type.test.v1.ExecutionEvent.Data.execution_log:type_name -> type.test.v1.ExecutionLog
 	19, // [19:19] is the sub-list for method output_type
 	19, // [19:19] is the sub-list for method input_type
 	19, // [19:19] is the sub-list for extension type_name
@@ -1281,7 +1230,7 @@ func file_type_test_v1_message_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_type_test_v1_message_proto_rawDesc,
-			NumEnums:      3,
+			NumEnums:      2,
 			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   0,
