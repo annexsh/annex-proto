@@ -19,7 +19,6 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	TestService_RegisterTests_FullMethodName             = "/rpc.testservice.v1.TestService/RegisterTests"
 	TestService_GetTestDefaultPayload_FullMethodName     = "/rpc.testservice.v1.TestService/GetTestDefaultPayload"
 	TestService_ListTests_FullMethodName                 = "/rpc.testservice.v1.TestService/ListTests"
 	TestService_ExecuteTest_FullMethodName               = "/rpc.testservice.v1.TestService/ExecuteTest"
@@ -28,6 +27,7 @@ const (
 	TestService_ListTestExecutions_FullMethodName        = "/rpc.testservice.v1.TestService/ListTestExecutions"
 	TestService_ListTestCaseExecutions_FullMethodName    = "/rpc.testservice.v1.TestService/ListTestCaseExecutions"
 	TestService_ListTestExecutionLogs_FullMethodName     = "/rpc.testservice.v1.TestService/ListTestExecutionLogs"
+	TestService_RegisterTests_FullMethodName             = "/rpc.testservice.v1.TestService/RegisterTests"
 	TestService_AckTestExecutionStarted_FullMethodName   = "/rpc.testservice.v1.TestService/AckTestExecutionStarted"
 	TestService_AckTestExecutionFinished_FullMethodName  = "/rpc.testservice.v1.TestService/AckTestExecutionFinished"
 	TestService_AckCaseExecutionScheduled_FullMethodName = "/rpc.testservice.v1.TestService/AckCaseExecutionScheduled"
@@ -40,7 +40,6 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TestServiceClient interface {
-	RegisterTests(ctx context.Context, in *RegisterTestsRequest, opts ...grpc.CallOption) (*RegisterTestsResponse, error)
 	GetTestDefaultPayload(ctx context.Context, in *GetTestDefaultPayloadRequest, opts ...grpc.CallOption) (*GetTestDefaultPayloadResponse, error)
 	ListTests(ctx context.Context, in *ListTestsRequest, opts ...grpc.CallOption) (*ListTestsResponse, error)
 	ExecuteTest(ctx context.Context, in *ExecuteTestRequest, opts ...grpc.CallOption) (*ExecuteTestResponse, error)
@@ -49,6 +48,7 @@ type TestServiceClient interface {
 	ListTestExecutions(ctx context.Context, in *ListTestExecutionsRequest, opts ...grpc.CallOption) (*ListTestExecutionsResponse, error)
 	ListTestCaseExecutions(ctx context.Context, in *ListTestCaseExecutionsRequest, opts ...grpc.CallOption) (*ListTestCaseExecutionsResponse, error)
 	ListTestExecutionLogs(ctx context.Context, in *ListTestExecutionLogsRequest, opts ...grpc.CallOption) (*ListTestExecutionLogsResponse, error)
+	RegisterTests(ctx context.Context, in *RegisterTestsRequest, opts ...grpc.CallOption) (*RegisterTestsResponse, error)
 	AckTestExecutionStarted(ctx context.Context, in *AckTestExecutionStartedRequest, opts ...grpc.CallOption) (*AckTestExecutionStartedResponse, error)
 	AckTestExecutionFinished(ctx context.Context, in *AckTestExecutionFinishedRequest, opts ...grpc.CallOption) (*AckTestExecutionFinishedResponse, error)
 	AckCaseExecutionScheduled(ctx context.Context, in *AckCaseExecutionScheduledRequest, opts ...grpc.CallOption) (*AckCaseExecutionScheduledResponse, error)
@@ -63,15 +63,6 @@ type testServiceClient struct {
 
 func NewTestServiceClient(cc grpc.ClientConnInterface) TestServiceClient {
 	return &testServiceClient{cc}
-}
-
-func (c *testServiceClient) RegisterTests(ctx context.Context, in *RegisterTestsRequest, opts ...grpc.CallOption) (*RegisterTestsResponse, error) {
-	out := new(RegisterTestsResponse)
-	err := c.cc.Invoke(ctx, TestService_RegisterTests_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *testServiceClient) GetTestDefaultPayload(ctx context.Context, in *GetTestDefaultPayloadRequest, opts ...grpc.CallOption) (*GetTestDefaultPayloadResponse, error) {
@@ -146,6 +137,15 @@ func (c *testServiceClient) ListTestExecutionLogs(ctx context.Context, in *ListT
 	return out, nil
 }
 
+func (c *testServiceClient) RegisterTests(ctx context.Context, in *RegisterTestsRequest, opts ...grpc.CallOption) (*RegisterTestsResponse, error) {
+	out := new(RegisterTestsResponse)
+	err := c.cc.Invoke(ctx, TestService_RegisterTests_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *testServiceClient) AckTestExecutionStarted(ctx context.Context, in *AckTestExecutionStartedRequest, opts ...grpc.CallOption) (*AckTestExecutionStartedResponse, error) {
 	out := new(AckTestExecutionStartedResponse)
 	err := c.cc.Invoke(ctx, TestService_AckTestExecutionStarted_FullMethodName, in, out, opts...)
@@ -204,7 +204,6 @@ func (c *testServiceClient) PublishTestExecutionLog(ctx context.Context, in *Pub
 // All implementations should embed UnimplementedTestServiceServer
 // for forward compatibility
 type TestServiceServer interface {
-	RegisterTests(context.Context, *RegisterTestsRequest) (*RegisterTestsResponse, error)
 	GetTestDefaultPayload(context.Context, *GetTestDefaultPayloadRequest) (*GetTestDefaultPayloadResponse, error)
 	ListTests(context.Context, *ListTestsRequest) (*ListTestsResponse, error)
 	ExecuteTest(context.Context, *ExecuteTestRequest) (*ExecuteTestResponse, error)
@@ -213,6 +212,7 @@ type TestServiceServer interface {
 	ListTestExecutions(context.Context, *ListTestExecutionsRequest) (*ListTestExecutionsResponse, error)
 	ListTestCaseExecutions(context.Context, *ListTestCaseExecutionsRequest) (*ListTestCaseExecutionsResponse, error)
 	ListTestExecutionLogs(context.Context, *ListTestExecutionLogsRequest) (*ListTestExecutionLogsResponse, error)
+	RegisterTests(context.Context, *RegisterTestsRequest) (*RegisterTestsResponse, error)
 	AckTestExecutionStarted(context.Context, *AckTestExecutionStartedRequest) (*AckTestExecutionStartedResponse, error)
 	AckTestExecutionFinished(context.Context, *AckTestExecutionFinishedRequest) (*AckTestExecutionFinishedResponse, error)
 	AckCaseExecutionScheduled(context.Context, *AckCaseExecutionScheduledRequest) (*AckCaseExecutionScheduledResponse, error)
@@ -225,9 +225,6 @@ type TestServiceServer interface {
 type UnimplementedTestServiceServer struct {
 }
 
-func (UnimplementedTestServiceServer) RegisterTests(context.Context, *RegisterTestsRequest) (*RegisterTestsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterTests not implemented")
-}
 func (UnimplementedTestServiceServer) GetTestDefaultPayload(context.Context, *GetTestDefaultPayloadRequest) (*GetTestDefaultPayloadResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTestDefaultPayload not implemented")
 }
@@ -251,6 +248,9 @@ func (UnimplementedTestServiceServer) ListTestCaseExecutions(context.Context, *L
 }
 func (UnimplementedTestServiceServer) ListTestExecutionLogs(context.Context, *ListTestExecutionLogsRequest) (*ListTestExecutionLogsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTestExecutionLogs not implemented")
+}
+func (UnimplementedTestServiceServer) RegisterTests(context.Context, *RegisterTestsRequest) (*RegisterTestsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterTests not implemented")
 }
 func (UnimplementedTestServiceServer) AckTestExecutionStarted(context.Context, *AckTestExecutionStartedRequest) (*AckTestExecutionStartedResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AckTestExecutionStarted not implemented")
@@ -280,24 +280,6 @@ type UnsafeTestServiceServer interface {
 
 func RegisterTestServiceServer(s grpc.ServiceRegistrar, srv TestServiceServer) {
 	s.RegisterService(&TestService_ServiceDesc, srv)
-}
-
-func _TestService_RegisterTests_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterTestsRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TestServiceServer).RegisterTests(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TestService_RegisterTests_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TestServiceServer).RegisterTests(ctx, req.(*RegisterTestsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _TestService_GetTestDefaultPayload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -444,6 +426,24 @@ func _TestService_ListTestExecutionLogs_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TestService_RegisterTests_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterTestsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TestServiceServer).RegisterTests(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TestService_RegisterTests_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TestServiceServer).RegisterTests(ctx, req.(*RegisterTestsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TestService_AckTestExecutionStarted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(AckTestExecutionStartedRequest)
 	if err := dec(in); err != nil {
@@ -560,10 +560,6 @@ var TestService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*TestServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "RegisterTests",
-			Handler:    _TestService_RegisterTests_Handler,
-		},
-		{
 			MethodName: "GetTestDefaultPayload",
 			Handler:    _TestService_GetTestDefaultPayload_Handler,
 		},
@@ -594,6 +590,10 @@ var TestService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListTestExecutionLogs",
 			Handler:    _TestService_ListTestExecutionLogs_Handler,
+		},
+		{
+			MethodName: "RegisterTests",
+			Handler:    _TestService_RegisterTests_Handler,
 		},
 		{
 			MethodName: "AckTestExecutionStarted",
