@@ -19,8 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion8
 
 const (
-	TestService_GetTestDefaultPayload_FullMethodName     = "/rpc.testservice.v1.TestService/GetTestDefaultPayload"
 	TestService_ListTests_FullMethodName                 = "/rpc.testservice.v1.TestService/ListTests"
+	TestService_ListTestRunners_FullMethodName           = "/rpc.testservice.v1.TestService/ListTestRunners"
+	TestService_GetTestDefaultPayload_FullMethodName     = "/rpc.testservice.v1.TestService/GetTestDefaultPayload"
 	TestService_ExecuteTest_FullMethodName               = "/rpc.testservice.v1.TestService/ExecuteTest"
 	TestService_RetryTestExecution_FullMethodName        = "/rpc.testservice.v1.TestService/RetryTestExecution"
 	TestService_GetTestExecution_FullMethodName          = "/rpc.testservice.v1.TestService/GetTestExecution"
@@ -40,8 +41,9 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TestServiceClient interface {
-	GetTestDefaultPayload(ctx context.Context, in *GetTestDefaultPayloadRequest, opts ...grpc.CallOption) (*GetTestDefaultPayloadResponse, error)
 	ListTests(ctx context.Context, in *ListTestsRequest, opts ...grpc.CallOption) (*ListTestsResponse, error)
+	ListTestRunners(ctx context.Context, in *ListTestRunnersRequest, opts ...grpc.CallOption) (*ListTestRunnersResponse, error)
+	GetTestDefaultPayload(ctx context.Context, in *GetTestDefaultPayloadRequest, opts ...grpc.CallOption) (*GetTestDefaultPayloadResponse, error)
 	ExecuteTest(ctx context.Context, in *ExecuteTestRequest, opts ...grpc.CallOption) (*ExecuteTestResponse, error)
 	RetryTestExecution(ctx context.Context, in *RetryTestExecutionRequest, opts ...grpc.CallOption) (*RetryTestExecutionResponse, error)
 	GetTestExecution(ctx context.Context, in *GetTestExecutionRequest, opts ...grpc.CallOption) (*GetTestExecutionResponse, error)
@@ -65,20 +67,30 @@ func NewTestServiceClient(cc grpc.ClientConnInterface) TestServiceClient {
 	return &testServiceClient{cc}
 }
 
-func (c *testServiceClient) GetTestDefaultPayload(ctx context.Context, in *GetTestDefaultPayloadRequest, opts ...grpc.CallOption) (*GetTestDefaultPayloadResponse, error) {
+func (c *testServiceClient) ListTests(ctx context.Context, in *ListTestsRequest, opts ...grpc.CallOption) (*ListTestsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetTestDefaultPayloadResponse)
-	err := c.cc.Invoke(ctx, TestService_GetTestDefaultPayload_FullMethodName, in, out, cOpts...)
+	out := new(ListTestsResponse)
+	err := c.cc.Invoke(ctx, TestService_ListTests_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *testServiceClient) ListTests(ctx context.Context, in *ListTestsRequest, opts ...grpc.CallOption) (*ListTestsResponse, error) {
+func (c *testServiceClient) ListTestRunners(ctx context.Context, in *ListTestRunnersRequest, opts ...grpc.CallOption) (*ListTestRunnersResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListTestsResponse)
-	err := c.cc.Invoke(ctx, TestService_ListTests_FullMethodName, in, out, cOpts...)
+	out := new(ListTestRunnersResponse)
+	err := c.cc.Invoke(ctx, TestService_ListTestRunners_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *testServiceClient) GetTestDefaultPayload(ctx context.Context, in *GetTestDefaultPayloadRequest, opts ...grpc.CallOption) (*GetTestDefaultPayloadResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetTestDefaultPayloadResponse)
+	err := c.cc.Invoke(ctx, TestService_GetTestDefaultPayload_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -219,8 +231,9 @@ func (c *testServiceClient) PublishTestExecutionLog(ctx context.Context, in *Pub
 // All implementations should embed UnimplementedTestServiceServer
 // for forward compatibility
 type TestServiceServer interface {
-	GetTestDefaultPayload(context.Context, *GetTestDefaultPayloadRequest) (*GetTestDefaultPayloadResponse, error)
 	ListTests(context.Context, *ListTestsRequest) (*ListTestsResponse, error)
+	ListTestRunners(context.Context, *ListTestRunnersRequest) (*ListTestRunnersResponse, error)
+	GetTestDefaultPayload(context.Context, *GetTestDefaultPayloadRequest) (*GetTestDefaultPayloadResponse, error)
 	ExecuteTest(context.Context, *ExecuteTestRequest) (*ExecuteTestResponse, error)
 	RetryTestExecution(context.Context, *RetryTestExecutionRequest) (*RetryTestExecutionResponse, error)
 	GetTestExecution(context.Context, *GetTestExecutionRequest) (*GetTestExecutionResponse, error)
@@ -240,11 +253,14 @@ type TestServiceServer interface {
 type UnimplementedTestServiceServer struct {
 }
 
-func (UnimplementedTestServiceServer) GetTestDefaultPayload(context.Context, *GetTestDefaultPayloadRequest) (*GetTestDefaultPayloadResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTestDefaultPayload not implemented")
-}
 func (UnimplementedTestServiceServer) ListTests(context.Context, *ListTestsRequest) (*ListTestsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTests not implemented")
+}
+func (UnimplementedTestServiceServer) ListTestRunners(context.Context, *ListTestRunnersRequest) (*ListTestRunnersResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListTestRunners not implemented")
+}
+func (UnimplementedTestServiceServer) GetTestDefaultPayload(context.Context, *GetTestDefaultPayloadRequest) (*GetTestDefaultPayloadResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTestDefaultPayload not implemented")
 }
 func (UnimplementedTestServiceServer) ExecuteTest(context.Context, *ExecuteTestRequest) (*ExecuteTestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteTest not implemented")
@@ -297,24 +313,6 @@ func RegisterTestServiceServer(s grpc.ServiceRegistrar, srv TestServiceServer) {
 	s.RegisterService(&TestService_ServiceDesc, srv)
 }
 
-func _TestService_GetTestDefaultPayload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTestDefaultPayloadRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TestServiceServer).GetTestDefaultPayload(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TestService_GetTestDefaultPayload_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TestServiceServer).GetTestDefaultPayload(ctx, req.(*GetTestDefaultPayloadRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _TestService_ListTests_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListTestsRequest)
 	if err := dec(in); err != nil {
@@ -329,6 +327,42 @@ func _TestService_ListTests_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TestServiceServer).ListTests(ctx, req.(*ListTestsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TestService_ListTestRunners_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListTestRunnersRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TestServiceServer).ListTestRunners(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TestService_ListTestRunners_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TestServiceServer).ListTestRunners(ctx, req.(*ListTestRunnersRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TestService_GetTestDefaultPayload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTestDefaultPayloadRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TestServiceServer).GetTestDefaultPayload(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TestService_GetTestDefaultPayload_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TestServiceServer).GetTestDefaultPayload(ctx, req.(*GetTestDefaultPayloadRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -575,12 +609,16 @@ var TestService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*TestServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetTestDefaultPayload",
-			Handler:    _TestService_GetTestDefaultPayload_Handler,
-		},
-		{
 			MethodName: "ListTests",
 			Handler:    _TestService_ListTests_Handler,
+		},
+		{
+			MethodName: "ListTestRunners",
+			Handler:    _TestService_ListTestRunners_Handler,
+		},
+		{
+			MethodName: "GetTestDefaultPayload",
+			Handler:    _TestService_GetTestDefaultPayload_Handler,
 		},
 		{
 			MethodName: "ExecuteTest",

@@ -31,6 +31,128 @@ var _ = runtime.String
 var _ = utilities.NewDoubleArray
 var _ = metadata.Join
 
+var (
+	filter_TestService_ListTests_0 = &utilities.DoubleArray{Encoding: map[string]int{"group": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
+)
+
+func request_TestService_ListTests_0(ctx context.Context, marshaler runtime.Marshaler, client TestServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ListTestsRequest
+	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["group"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
+	}
+
+	protoReq.Group, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_TestService_ListTests_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.ListTests(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func local_request_TestService_ListTests_0(ctx context.Context, marshaler runtime.Marshaler, server TestServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ListTestsRequest
+	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["group"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
+	}
+
+	protoReq.Group, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	if err := req.ParseForm(); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_TestService_ListTests_0); err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := server.ListTests(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
+func request_TestService_ListTestRunners_0(ctx context.Context, marshaler runtime.Marshaler, client TestServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ListTestRunnersRequest
+	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["group"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
+	}
+
+	protoReq.Group, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	msg, err := client.ListTestRunners(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func local_request_TestService_ListTestRunners_0(ctx context.Context, marshaler runtime.Marshaler, server TestServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq ListTestRunnersRequest
+	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["group"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
+	}
+
+	protoReq.Group, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	msg, err := server.ListTestRunners(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
 func request_TestService_GetTestDefaultPayload_0(ctx context.Context, marshaler runtime.Marshaler, client TestServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetTestDefaultPayloadRequest
 	var metadata runtime.ServerMetadata
@@ -41,6 +163,16 @@ func request_TestService_GetTestDefaultPayload_0(ctx context.Context, marshaler 
 		err error
 		_   = err
 	)
+
+	val, ok = pathParams["group"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
+	}
+
+	protoReq.Group, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
 
 	val, ok = pathParams["test_id"]
 	if !ok {
@@ -68,6 +200,16 @@ func local_request_TestService_GetTestDefaultPayload_0(ctx context.Context, mars
 		_   = err
 	)
 
+	val, ok = pathParams["group"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
+	}
+
+	protoReq.Group, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
 	val, ok = pathParams["test_id"]
 	if !ok {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_id")
@@ -83,48 +225,29 @@ func local_request_TestService_GetTestDefaultPayload_0(ctx context.Context, mars
 
 }
 
-var (
-	filter_TestService_ListTests_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
-)
-
-func request_TestService_ListTests_0(ctx context.Context, marshaler runtime.Marshaler, client TestServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ListTestsRequest
-	var metadata runtime.ServerMetadata
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_TestService_ListTests_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := client.ListTests(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-func local_request_TestService_ListTests_0(ctx context.Context, marshaler runtime.Marshaler, server TestServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq ListTestsRequest
-	var metadata runtime.ServerMetadata
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_TestService_ListTests_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := server.ListTests(ctx, &protoReq)
-	return msg, metadata, err
-
-}
-
 func request_TestService_ExecuteTest_0(ctx context.Context, marshaler runtime.Marshaler, client TestServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ExecuteTestRequest
 	var metadata runtime.ServerMetadata
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["group"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
+	}
+
+	protoReq.Group, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
 	}
 
 	msg, err := client.ExecuteTest(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -138,6 +261,23 @@ func local_request_TestService_ExecuteTest_0(ctx context.Context, marshaler runt
 
 	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["group"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
+	}
+
+	protoReq.Group, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
 	}
 
 	msg, err := server.ExecuteTest(ctx, &protoReq)
@@ -160,14 +300,24 @@ func request_TestService_RetryTestExecution_0(ctx context.Context, marshaler run
 		_   = err
 	)
 
-	val, ok = pathParams["test_exec_id"]
+	val, ok = pathParams["group"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_exec_id")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
 	}
 
-	protoReq.TestExecId, err = runtime.String(val)
+	protoReq.Group, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_exec_id", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	val, ok = pathParams["test_execution_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_execution_id")
+	}
+
+	protoReq.TestExecutionId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_execution_id", err)
 	}
 
 	msg, err := client.RetryTestExecution(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -190,14 +340,24 @@ func local_request_TestService_RetryTestExecution_0(ctx context.Context, marshal
 		_   = err
 	)
 
-	val, ok = pathParams["test_exec_id"]
+	val, ok = pathParams["group"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_exec_id")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
 	}
 
-	protoReq.TestExecId, err = runtime.String(val)
+	protoReq.Group, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_exec_id", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	val, ok = pathParams["test_execution_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_execution_id")
+	}
+
+	protoReq.TestExecutionId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_execution_id", err)
 	}
 
 	msg, err := server.RetryTestExecution(ctx, &protoReq)
@@ -216,14 +376,24 @@ func request_TestService_GetTestExecution_0(ctx context.Context, marshaler runti
 		_   = err
 	)
 
-	val, ok = pathParams["id"]
+	val, ok = pathParams["group"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "id")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
 	}
 
-	protoReq.Id, err = runtime.String(val)
+	protoReq.Group, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	val, ok = pathParams["test_execution_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_execution_id")
+	}
+
+	protoReq.TestExecutionId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_execution_id", err)
 	}
 
 	msg, err := client.GetTestExecution(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -242,14 +412,24 @@ func local_request_TestService_GetTestExecution_0(ctx context.Context, marshaler
 		_   = err
 	)
 
-	val, ok = pathParams["id"]
+	val, ok = pathParams["group"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "id")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
 	}
 
-	protoReq.Id, err = runtime.String(val)
+	protoReq.Group, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	val, ok = pathParams["test_execution_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_execution_id")
+	}
+
+	protoReq.TestExecutionId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_execution_id", err)
 	}
 
 	msg, err := server.GetTestExecution(ctx, &protoReq)
@@ -258,12 +438,29 @@ func local_request_TestService_GetTestExecution_0(ctx context.Context, marshaler
 }
 
 var (
-	filter_TestService_ListTestExecutions_0 = &utilities.DoubleArray{Encoding: map[string]int{}, Base: []int(nil), Check: []int(nil)}
+	filter_TestService_ListTestExecutions_0 = &utilities.DoubleArray{Encoding: map[string]int{"group": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
 )
 
 func request_TestService_ListTestExecutions_0(ctx context.Context, marshaler runtime.Marshaler, client TestServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListTestExecutionsRequest
 	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["group"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
+	}
+
+	protoReq.Group, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
@@ -280,6 +477,23 @@ func request_TestService_ListTestExecutions_0(ctx context.Context, marshaler run
 func local_request_TestService_ListTestExecutions_0(ctx context.Context, marshaler runtime.Marshaler, server TestServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq ListTestExecutionsRequest
 	var metadata runtime.ServerMetadata
+
+	var (
+		val string
+		ok  bool
+		err error
+		_   = err
+	)
+
+	val, ok = pathParams["group"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
+	}
+
+	protoReq.Group, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
 
 	if err := req.ParseForm(); err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
@@ -304,14 +518,24 @@ func request_TestService_ListTestCaseExecutions_0(ctx context.Context, marshaler
 		_   = err
 	)
 
-	val, ok = pathParams["test_exec_id"]
+	val, ok = pathParams["group"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_exec_id")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
 	}
 
-	protoReq.TestExecId, err = runtime.String(val)
+	protoReq.Group, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_exec_id", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	val, ok = pathParams["test_execution_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_execution_id")
+	}
+
+	protoReq.TestExecutionId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_execution_id", err)
 	}
 
 	msg, err := client.ListTestCaseExecutions(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -330,14 +554,24 @@ func local_request_TestService_ListTestCaseExecutions_0(ctx context.Context, mar
 		_   = err
 	)
 
-	val, ok = pathParams["test_exec_id"]
+	val, ok = pathParams["group"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_exec_id")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
 	}
 
-	protoReq.TestExecId, err = runtime.String(val)
+	protoReq.Group, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_exec_id", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	val, ok = pathParams["test_execution_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_execution_id")
+	}
+
+	protoReq.TestExecutionId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_execution_id", err)
 	}
 
 	msg, err := server.ListTestCaseExecutions(ctx, &protoReq)
@@ -356,14 +590,24 @@ func request_TestService_ListTestExecutionLogs_0(ctx context.Context, marshaler 
 		_   = err
 	)
 
-	val, ok = pathParams["test_exec_id"]
+	val, ok = pathParams["group"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_exec_id")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
 	}
 
-	protoReq.TestExecId, err = runtime.String(val)
+	protoReq.Group, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_exec_id", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	val, ok = pathParams["test_execution_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_execution_id")
+	}
+
+	protoReq.TestExecutionId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_execution_id", err)
 	}
 
 	msg, err := client.ListTestExecutionLogs(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -382,14 +626,24 @@ func local_request_TestService_ListTestExecutionLogs_0(ctx context.Context, mars
 		_   = err
 	)
 
-	val, ok = pathParams["test_exec_id"]
+	val, ok = pathParams["group"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_exec_id")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "group")
 	}
 
-	protoReq.TestExecId, err = runtime.String(val)
+	protoReq.Group, err = runtime.String(val)
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_exec_id", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "group", err)
+	}
+
+	val, ok = pathParams["test_execution_id"]
+	if !ok {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "test_execution_id")
+	}
+
+	protoReq.TestExecutionId, err = runtime.String(val)
+	if err != nil {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "test_execution_id", err)
 	}
 
 	msg, err := server.ListTestExecutionLogs(ctx, &protoReq)
@@ -403,31 +657,6 @@ func local_request_TestService_ListTestExecutionLogs_0(ctx context.Context, mars
 // Note that using this registration option will cause many gRPC library features to stop working. Consider using RegisterTestServiceHandlerFromEndpoint instead.
 func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server TestServiceServer) error {
 
-	mux.Handle("GET", pattern_TestService_GetTestDefaultPayload_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		var stream runtime.ServerTransportStream
-		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		var err error
-		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/GetTestDefaultPayload", runtime.WithHTTPPathPattern("/api/v1/tests/{test_id}/default-payload"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := local_request_TestService_GetTestDefaultPayload_0(annotatedContext, inboundMarshaler, server, req, pathParams)
-		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_TestService_GetTestDefaultPayload_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
 	mux.Handle("GET", pattern_TestService_ListTests_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -436,7 +665,7 @@ func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTests", runtime.WithHTTPPathPattern("/api/v1/tests"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTests", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/tests"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -453,6 +682,56 @@ func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 
 	})
 
+	mux.Handle("GET", pattern_TestService_ListTestRunners_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestRunners", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/tests/runners"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_TestService_ListTestRunners_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_TestService_ListTestRunners_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("GET", pattern_TestService_GetTestDefaultPayload_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/GetTestDefaultPayload", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/tests/{test_id}/default-payload"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_TestService_GetTestDefaultPayload_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_TestService_GetTestDefaultPayload_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	mux.Handle("POST", pattern_TestService_ExecuteTest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -461,7 +740,7 @@ func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ExecuteTest", runtime.WithHTTPPathPattern("/api/v1/executions"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ExecuteTest", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -486,7 +765,7 @@ func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/RetryTestExecution", runtime.WithHTTPPathPattern("/api/v1/executions/{test_exec_id}/retry"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/RetryTestExecution", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions/{test_execution_id}/retry"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -511,7 +790,7 @@ func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/GetTestExecution", runtime.WithHTTPPathPattern("/api/v1/executions/{id}"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/GetTestExecution", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions/{test_execution_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -536,7 +815,7 @@ func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestExecutions", runtime.WithHTTPPathPattern("/api/v1/executions"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestExecutions", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -561,7 +840,7 @@ func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestCaseExecutions", runtime.WithHTTPPathPattern("/api/v1/executions/{test_exec_id}/cases"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestCaseExecutions", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions/{test_execution_id}/cases"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -586,7 +865,7 @@ func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestExecutionLogs", runtime.WithHTTPPathPattern("/api/v1/executions/{test_exec_id}/logs"))
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestExecutionLogs", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions/{test_execution_id}/logs"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -644,35 +923,13 @@ func RegisterTestServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn
 // "TestServiceClient" to call the correct interceptors.
 func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client TestServiceClient) error {
 
-	mux.Handle("GET", pattern_TestService_GetTestDefaultPayload_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		var err error
-		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/GetTestDefaultPayload", runtime.WithHTTPPathPattern("/api/v1/tests/{test_id}/default-payload"))
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_TestService_GetTestDefaultPayload_0(annotatedContext, inboundMarshaler, client, req, pathParams)
-		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
-		if err != nil {
-			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_TestService_GetTestDefaultPayload_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
 	mux.Handle("GET", pattern_TestService_ListTests_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTests", runtime.WithHTTPPathPattern("/api/v1/tests"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTests", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/tests"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -688,13 +945,57 @@ func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 
 	})
 
+	mux.Handle("GET", pattern_TestService_ListTestRunners_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestRunners", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/tests/runners"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_TestService_ListTestRunners_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_TestService_ListTestRunners_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("GET", pattern_TestService_GetTestDefaultPayload_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/GetTestDefaultPayload", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/tests/{test_id}/default-payload"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_TestService_GetTestDefaultPayload_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_TestService_GetTestDefaultPayload_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	mux.Handle("POST", pattern_TestService_ExecuteTest_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ExecuteTest", runtime.WithHTTPPathPattern("/api/v1/executions"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ExecuteTest", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -716,7 +1017,7 @@ func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/RetryTestExecution", runtime.WithHTTPPathPattern("/api/v1/executions/{test_exec_id}/retry"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/RetryTestExecution", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions/{test_execution_id}/retry"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -738,7 +1039,7 @@ func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/GetTestExecution", runtime.WithHTTPPathPattern("/api/v1/executions/{id}"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/GetTestExecution", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions/{test_execution_id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -760,7 +1061,7 @@ func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestExecutions", runtime.WithHTTPPathPattern("/api/v1/executions"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestExecutions", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -782,7 +1083,7 @@ func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestCaseExecutions", runtime.WithHTTPPathPattern("/api/v1/executions/{test_exec_id}/cases"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestCaseExecutions", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions/{test_execution_id}/cases"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -804,7 +1105,7 @@ func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
 		var err error
 		var annotatedContext context.Context
-		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestExecutionLogs", runtime.WithHTTPPathPattern("/api/v1/executions/{test_exec_id}/logs"))
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/rpc.testservice.v1.TestService/ListTestExecutionLogs", runtime.WithHTTPPathPattern("/api/v1/groups/{group}/executions/{test_execution_id}/logs"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -824,27 +1125,31 @@ func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_TestService_GetTestDefaultPayload_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "tests", "test_id", "default-payload"}, ""))
+	pattern_TestService_ListTests_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "groups", "group", "tests"}, ""))
 
-	pattern_TestService_ListTests_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "v1", "tests"}, ""))
+	pattern_TestService_ListTestRunners_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 2, 5}, []string{"api", "v1", "groups", "group", "tests", "runners"}, ""))
 
-	pattern_TestService_ExecuteTest_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "v1", "executions"}, ""))
+	pattern_TestService_GetTestDefaultPayload_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "v1", "groups", "group", "tests", "test_id", "default-payload"}, ""))
 
-	pattern_TestService_RetryTestExecution_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "executions", "test_exec_id", "retry"}, ""))
+	pattern_TestService_ExecuteTest_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "groups", "group", "executions"}, ""))
 
-	pattern_TestService_GetTestExecution_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"api", "v1", "executions", "id"}, ""))
+	pattern_TestService_RetryTestExecution_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "v1", "groups", "group", "executions", "test_execution_id", "retry"}, ""))
 
-	pattern_TestService_ListTestExecutions_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"api", "v1", "executions"}, ""))
+	pattern_TestService_GetTestExecution_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5}, []string{"api", "v1", "groups", "group", "executions", "test_execution_id"}, ""))
 
-	pattern_TestService_ListTestCaseExecutions_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "executions", "test_exec_id", "cases"}, ""))
+	pattern_TestService_ListTestExecutions_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "groups", "group", "executions"}, ""))
 
-	pattern_TestService_ListTestExecutionLogs_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4}, []string{"api", "v1", "executions", "test_exec_id", "logs"}, ""))
+	pattern_TestService_ListTestCaseExecutions_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "v1", "groups", "group", "executions", "test_execution_id", "cases"}, ""))
+
+	pattern_TestService_ListTestExecutionLogs_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3, 2, 4, 1, 0, 4, 1, 5, 5, 2, 6}, []string{"api", "v1", "groups", "group", "executions", "test_execution_id", "logs"}, ""))
 )
 
 var (
-	forward_TestService_GetTestDefaultPayload_0 = runtime.ForwardResponseMessage
-
 	forward_TestService_ListTests_0 = runtime.ForwardResponseMessage
+
+	forward_TestService_ListTestRunners_0 = runtime.ForwardResponseMessage
+
+	forward_TestService_GetTestDefaultPayload_0 = runtime.ForwardResponseMessage
 
 	forward_TestService_ExecuteTest_0 = runtime.ForwardResponseMessage
 

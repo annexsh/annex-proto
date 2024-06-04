@@ -5,60 +5,82 @@ package type.test.v1;
 import "google/protobuf/timestamp.proto";
 
 message TestDefinition {
-  string project = 1;
-  string name = 2;
-  optional type.test.v1.Payload default_payload = 3;
+  string name = 1;
+  optional type.test.v1.Payload default_input = 2;
 }
 
 message Test {
   string id = 1;
-  string project = 2;
+  string group = 2;
   string name = 3;
-  bool has_payload = 4;
-  google.protobuf.Timestamp created_at = 5;
+  bool has_input = 4;
+  google.protobuf.Timestamp create_time = 5;
   repeated Runner runners = 6;
+}
+
+message Runner {
+  string id = 1;
+  google.protobuf.Timestamp last_access_time = 2;
+  bool active = 3;
 }
 
 message TestExecution {
   string id = 1;
   string test_id = 2;
   optional string error = 3;
-  google.protobuf.Timestamp scheduled_at = 4;
-  google.protobuf.Timestamp started_at = 5;
-  optional google.protobuf.Timestamp finished_at = 6;
+  google.protobuf.Timestamp schedule_time = 4;
+  google.protobuf.Timestamp start_time = 5;
+  optional google.protobuf.Timestamp finish_time = 6;
 }
 
 message CaseExecution {
   int32 id = 1;
   string case_name = 2;
-  string test_exec_id = 3;
+  string test_execution_id = 3;
   optional string error = 4;
-  google.protobuf.Timestamp scheduled_at = 5;
-  optional google.protobuf.Timestamp started_at = 6;
-  optional google.protobuf.Timestamp finished_at = 7;
+  google.protobuf.Timestamp schedule_time = 5;
+  optional google.protobuf.Timestamp start_time = 6;
+  optional google.protobuf.Timestamp finish_time = 7;
 }
 
-message ExecutionLog {
+message Log {
   string id = 1;
-  string test_exec_id = 2;
-  optional int32 case_exec_id = 3;
+  string test_execution_id = 2;
+  optional int32 case_execution_id = 3;
   string level = 4;
   string message = 5;
-  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Timestamp create_time = 6;
 }
 
 message Payload {
   map<string, bytes> metadata = 1;
   bytes data = 2;
-  bool is_zero = 3;
 }
 
-message ExecutionEvent {
+message Event {
   string event_id = 1;
-  string test_exec_id = 2;
+  string test_execution_id = 2;
   Type type = 3;
   Data data = 4;
   google.protobuf.Timestamp create_time = 5;
+
+  message Data {
+    Type type = 1;
+
+    oneof data {
+      TestExecution test_execution = 2;
+      CaseExecution case_execution = 3;
+      Log execution_log = 4;
+    }
+
+    enum Type {
+      TYPE_UNSPECIFIED = 0;
+      TYPE_NONE = 1;
+      TYPE_TEST_EXECUTION = 2;
+      TYPE_CASE_EXECUTION = 3;
+      TYPE_EXECUTION_LOG = 4;
+    }
+  }
 
   enum Type {
     TYPE_UNSPECIFIED = 0;
@@ -70,28 +92,4 @@ message ExecutionEvent {
     TYPE_CASE_EXECUTION_FINISHED = 6;
     TYPE_EXECUTION_LOG_PUBLISHED = 7;
   }
-
-  message Data {
-    Type type = 1;
-
-    oneof data {
-      TestExecution test_execution = 2;
-      CaseExecution case_execution = 3;
-      ExecutionLog execution_log = 4;
-    }
-
-    enum Type {
-      TYPE_UNSPECIFIED = 0;
-      TYPE_NONE = 1;
-      TYPE_TEST_EXECUTION = 2;
-      TYPE_CASE_EXECUTION = 3;
-      TYPE_EXECUTION_LOG = 4;
-    }
-  }
-}
-
-message Runner {
-  string id = 1;
-  google.protobuf.Timestamp last_access_time = 2;
-  bool active = 3;
 }
