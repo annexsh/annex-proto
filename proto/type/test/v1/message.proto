@@ -70,7 +70,7 @@ message Event {
     oneof data {
       TestExecution test_execution = 2;
       CaseExecution case_execution = 3;
-      Log execution_log = 4;
+      Log log = 4;
     }
 
     enum Type {
@@ -78,7 +78,7 @@ message Event {
       TYPE_NONE = 1;
       TYPE_TEST_EXECUTION = 2;
       TYPE_CASE_EXECUTION = 3;
-      TYPE_EXECUTION_LOG = 4;
+      TYPE_LOG = 4;
     }
   }
 
@@ -90,6 +90,6 @@ message Event {
     TYPE_CASE_EXECUTION_SCHEDULED = 4;
     TYPE_CASE_EXECUTION_STARTED = 5;
     TYPE_CASE_EXECUTION_FINISHED = 6;
-    TYPE_EXECUTION_LOG_PUBLISHED = 7;
+    TYPE_LOG_PUBLISHED = 7;
   }
 }
