@@ -1,4 +1,4 @@
-module github.com/annexhq/annex-proto
+module github.com/annexsh/annex-proto
 
 go 1.22.0
 
