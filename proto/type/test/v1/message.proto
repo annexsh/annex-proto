@@ -16,7 +16,7 @@ message Test {
   string name = 3;
   bool has_payload = 4;
   google.protobuf.Timestamp created_at = 5;
-  TestRunner last_available = 6;
+  repeated TestRunner runners = 6;
 }
 
 message TestExecution {
@@ -93,5 +93,5 @@ message ExecutionEvent {
 message TestRunner {
   string id = 1;
   google.protobuf.Timestamp last_heartbeat = 2;
-  bool is_active = 3;
+  bool active = 3;
 }
