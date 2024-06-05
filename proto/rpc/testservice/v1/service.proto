@@ -16,13 +16,13 @@ message RegisterTestsResponse {
   repeated type.test.v1.Test tests = 1;
 }
 
-message GetTestDefaultPayloadRequest {
+message GetTestDefaultInputRequest {
   string group = 1;
   string test_id = 2;
 }
 
-message GetTestDefaultPayloadResponse {
-  string default_payload = 1;
+message GetTestDefaultInputResponse {
+  string default_input = 1;
 }
 
 message ListTestsRequest {
@@ -171,8 +171,8 @@ service TestService {
     option (google.api.http) = {get: "/api/v1/groups/{group}/tests/runners"};
   }
 
-  rpc GetTestDefaultPayload(GetTestDefaultPayloadRequest) returns (GetTestDefaultPayloadResponse) {
-    option (google.api.http) = {get: "/api/v1/groups/{group}/tests/{test_id}/default-payload"};
+  rpc GetTestDefaultInput(GetTestDefaultInputRequest) returns (GetTestDefaultInputResponse) {
+    option (google.api.http) = {get: "/api/v1/groups/{group}/tests/{test_id}/default-input"};
   }
 
   rpc ExecuteTest(ExecuteTestRequest) returns (ExecuteTestResponse) {

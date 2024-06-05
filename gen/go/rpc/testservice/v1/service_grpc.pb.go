@@ -21,7 +21,7 @@ const _ = grpc.SupportPackageIsVersion8
 const (
 	TestService_ListTests_FullMethodName                 = "/rpc.testservice.v1.TestService/ListTests"
 	TestService_ListTestRunners_FullMethodName           = "/rpc.testservice.v1.TestService/ListTestRunners"
-	TestService_GetTestDefaultPayload_FullMethodName     = "/rpc.testservice.v1.TestService/GetTestDefaultPayload"
+	TestService_GetTestDefaultInput_FullMethodName       = "/rpc.testservice.v1.TestService/GetTestDefaultInput"
 	TestService_ExecuteTest_FullMethodName               = "/rpc.testservice.v1.TestService/ExecuteTest"
 	TestService_RetryTestExecution_FullMethodName        = "/rpc.testservice.v1.TestService/RetryTestExecution"
 	TestService_GetTestExecution_FullMethodName          = "/rpc.testservice.v1.TestService/GetTestExecution"
@@ -43,7 +43,7 @@ const (
 type TestServiceClient interface {
 	ListTests(ctx context.Context, in *ListTestsRequest, opts ...grpc.CallOption) (*ListTestsResponse, error)
 	ListTestRunners(ctx context.Context, in *ListTestRunnersRequest, opts ...grpc.CallOption) (*ListTestRunnersResponse, error)
-	GetTestDefaultPayload(ctx context.Context, in *GetTestDefaultPayloadRequest, opts ...grpc.CallOption) (*GetTestDefaultPayloadResponse, error)
+	GetTestDefaultInput(ctx context.Context, in *GetTestDefaultInputRequest, opts ...grpc.CallOption) (*GetTestDefaultInputResponse, error)
 	ExecuteTest(ctx context.Context, in *ExecuteTestRequest, opts ...grpc.CallOption) (*ExecuteTestResponse, error)
 	RetryTestExecution(ctx context.Context, in *RetryTestExecutionRequest, opts ...grpc.CallOption) (*RetryTestExecutionResponse, error)
 	GetTestExecution(ctx context.Context, in *GetTestExecutionRequest, opts ...grpc.CallOption) (*GetTestExecutionResponse, error)
@@ -87,10 +87,10 @@ func (c *testServiceClient) ListTestRunners(ctx context.Context, in *ListTestRun
 	return out, nil
 }
 
-func (c *testServiceClient) GetTestDefaultPayload(ctx context.Context, in *GetTestDefaultPayloadRequest, opts ...grpc.CallOption) (*GetTestDefaultPayloadResponse, error) {
+func (c *testServiceClient) GetTestDefaultInput(ctx context.Context, in *GetTestDefaultInputRequest, opts ...grpc.CallOption) (*GetTestDefaultInputResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetTestDefaultPayloadResponse)
-	err := c.cc.Invoke(ctx, TestService_GetTestDefaultPayload_FullMethodName, in, out, cOpts...)
+	out := new(GetTestDefaultInputResponse)
+	err := c.cc.Invoke(ctx, TestService_GetTestDefaultInput_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -233,7 +233,7 @@ func (c *testServiceClient) PublishTestExecutionLog(ctx context.Context, in *Pub
 type TestServiceServer interface {
 	ListTests(context.Context, *ListTestsRequest) (*ListTestsResponse, error)
 	ListTestRunners(context.Context, *ListTestRunnersRequest) (*ListTestRunnersResponse, error)
-	GetTestDefaultPayload(context.Context, *GetTestDefaultPayloadRequest) (*GetTestDefaultPayloadResponse, error)
+	GetTestDefaultInput(context.Context, *GetTestDefaultInputRequest) (*GetTestDefaultInputResponse, error)
 	ExecuteTest(context.Context, *ExecuteTestRequest) (*ExecuteTestResponse, error)
 	RetryTestExecution(context.Context, *RetryTestExecutionRequest) (*RetryTestExecutionResponse, error)
 	GetTestExecution(context.Context, *GetTestExecutionRequest) (*GetTestExecutionResponse, error)
@@ -259,8 +259,8 @@ func (UnimplementedTestServiceServer) ListTests(context.Context, *ListTestsReque
 func (UnimplementedTestServiceServer) ListTestRunners(context.Context, *ListTestRunnersRequest) (*ListTestRunnersResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTestRunners not implemented")
 }
-func (UnimplementedTestServiceServer) GetTestDefaultPayload(context.Context, *GetTestDefaultPayloadRequest) (*GetTestDefaultPayloadResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetTestDefaultPayload not implemented")
+func (UnimplementedTestServiceServer) GetTestDefaultInput(context.Context, *GetTestDefaultInputRequest) (*GetTestDefaultInputResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTestDefaultInput not implemented")
 }
 func (UnimplementedTestServiceServer) ExecuteTest(context.Context, *ExecuteTestRequest) (*ExecuteTestResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteTest not implemented")
@@ -349,20 +349,20 @@ func _TestService_ListTestRunners_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _TestService_GetTestDefaultPayload_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetTestDefaultPayloadRequest)
+func _TestService_GetTestDefaultInput_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTestDefaultInputRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(TestServiceServer).GetTestDefaultPayload(ctx, in)
+		return srv.(TestServiceServer).GetTestDefaultInput(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: TestService_GetTestDefaultPayload_FullMethodName,
+		FullMethod: TestService_GetTestDefaultInput_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TestServiceServer).GetTestDefaultPayload(ctx, req.(*GetTestDefaultPayloadRequest))
+		return srv.(TestServiceServer).GetTestDefaultInput(ctx, req.(*GetTestDefaultInputRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -617,8 +617,8 @@ var TestService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _TestService_ListTestRunners_Handler,
 		},
 		{
-			MethodName: "GetTestDefaultPayload",
-			Handler:    _TestService_GetTestDefaultPayload_Handler,
+			MethodName: "GetTestDefaultInput",
+			Handler:    _TestService_GetTestDefaultInput_Handler,
 		},
 		{
 			MethodName: "ExecuteTest",
