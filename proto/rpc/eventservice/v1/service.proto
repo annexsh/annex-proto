@@ -5,7 +5,8 @@ package rpc.eventservice.v1;
 import "type/test/v1/message.proto";
 
 message StreamTestExecutionEventsRequest {
-  string test_execution_id = 1;
+  string group = 1;
+  string test_execution_id = 2;
 }
 
 message StreamTestExecutionEventsResponse {
