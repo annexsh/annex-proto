@@ -6,26 +6,43 @@ import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "type/test/v1/message.proto";
 
+message RegisterContextRequest {
+  string context = 1;
+}
+
+message RegisterContextResponse {}
+
+message RegisterGroupRequest {
+  string context = 1;
+  string name = 2;
+}
+
+message RegisterGroupResponse {}
+
+message ListRunnersRequest {
+  string context = 1;
+  string group = 2;
+}
+
+message ListRunnersResponse {
+  repeated type.test.v1.Runner runners = 1;
+}
+
 message RegisterTestsRequest {
-  string runner_id = 1;
-  repeated type.test.v1.TestDefinition definitions = 2;
+  string context = 1;
+  string group = 2;
+  repeated type.test.v1.TestDefinition definitions = 4;
 }
 
 message RegisterTestsResponse {
-  repeated type.test.v1.Test registered = 1;
-}
-
-message GetTestDefaultPayloadRequest {
-  string test_id = 1;
-}
-
-message GetTestDefaultPayloadResponse {
-  string default_payload = 1;
+  repeated type.test.v1.Test tests = 1;
 }
 
 message ListTestsRequest {
-  int32 page_size = 1;
-  string next_page_token = 2;
+  string context = 1;
+  string group = 2;
+  int32 page_size = 3;
+  string next_page_token = 4;
 }
 
 message ListTestsResponse {
@@ -33,9 +50,19 @@ message ListTestsResponse {
   string next_page_token = 2;
 }
 
+message GetTestDefaultInputRequest {
+  string context = 1;
+  string test_id = 2;
+}
+
+message GetTestDefaultInputResponse {
+  string default_input = 1;
+}
+
 message ExecuteTestRequest {
-  string test_id = 1;
-  optional type.test.v1.Payload payload = 2;
+  string context = 1;
+  string test_id = 2;
+  optional type.test.v1.Payload input = 3;
 }
 
 message ExecuteTestResponse {
@@ -43,7 +70,8 @@ message ExecuteTestResponse {
 }
 
 message RetryTestExecutionRequest {
-  string test_exec_id = 1;
+  string context = 1;
+  string test_execution_id = 2;
 }
 
 message RetryTestExecutionResponse {
@@ -51,7 +79,8 @@ message RetryTestExecutionResponse {
 }
 
 message GetTestExecutionRequest {
-  string id = 1;
+  string context = 1;
+  string test_execution_id = 2;
 }
 
 message GetTestExecutionResponse {
@@ -60,9 +89,10 @@ message GetTestExecutionResponse {
 }
 
 message ListTestExecutionsRequest {
-  string test_id = 1;
-  int32 page_size = 2;
-  string next_page_token = 3;
+  string context = 1;
+  string test_id = 2;
+  int32 page_size = 3;
+  string next_page_token = 4;
 }
 
 message ListTestExecutionsResponse {
@@ -71,7 +101,8 @@ message ListTestExecutionsResponse {
 }
 
 message ListTestCaseExecutionsRequest {
-  string test_exec_id = 1;
+  string context = 1;
+  string test_execution_id = 2;
 }
 
 message ListTestCaseExecutionsResponse {
@@ -79,104 +110,119 @@ message ListTestCaseExecutionsResponse {
 }
 
 message AckTestExecutionStartedRequest {
-  string test_exec_id = 1;
-  google.protobuf.Timestamp started_at = 2;
+  string context = 1;
+  string test_execution_id = 2;
+  google.protobuf.Timestamp start_time = 3;
 }
 
 message AckTestExecutionStartedResponse {}
 
 message AckTestExecutionFinishedRequest {
-  string test_exec_id = 1;
-  google.protobuf.Timestamp finished_at = 2;
-  optional string error = 3;
+  string context = 1;
+  string test_execution_id = 2;
+  google.protobuf.Timestamp finish_time = 3;
+  optional string error = 4;
 }
 
 message AckTestExecutionFinishedResponse {}
 
 message AckCaseExecutionScheduledRequest {
-  int32 id = 1;
-  string test_exec_id = 2;
-  string case_name = 3;
-  google.protobuf.Timestamp scheduled_at = 4;
+  string context = 1;
+  string test_execution_id = 2;
+  int32 case_execution_id = 3;
+  string case_name = 4;
+  google.protobuf.Timestamp schedule_time = 5;
 }
 
 message AckCaseExecutionScheduledResponse {}
 
 message AckCaseExecutionStartedRequest {
-  int32 id = 1;
-  string test_exec_id = 2;
-  google.protobuf.Timestamp started_at = 4;
+  string context = 1;
+  string test_execution_id = 2;
+  int32 case_execution_id = 3;
+  google.protobuf.Timestamp start_time = 4;
 }
 
 message AckCaseExecutionStartedResponse {}
 
 message AckCaseExecutionFinishedRequest {
-  int32 id = 1;
-  string test_exec_id = 2;
-  google.protobuf.Timestamp finished_at = 3;
-  optional string error = 4;
+  string context = 1;
+  string test_execution_id = 2;
+  int32 case_execution_id = 3;
+  google.protobuf.Timestamp finish_time = 4;
+  optional string error = 5;
 }
 
 message AckCaseExecutionFinishedResponse {}
 
 message PublishTestExecutionLogRequest {
-  string test_exec_id = 1;
-  optional int32 case_exec_id = 2;
-  string level = 3;
-  string message = 4;
-  google.protobuf.Timestamp created_at = 5;
+  string context = 1;
+  string test_execution_id = 2;
+  optional int32 case_execution_id = 3;
+  string level = 4;
+  string message = 5;
+  google.protobuf.Timestamp create_time = 6;
 }
 
 message PublishTestExecutionLogResponse {
-  string id = 1;
+  string log_id = 1;
 }
 
 message ListTestExecutionLogsRequest {
-  string test_exec_id = 1;
+  string context = 1;
+  string test_execution_id = 2;
 }
 
 message ListTestExecutionLogsResponse {
-  repeated type.test.v1.ExecutionLog logs = 1;
+  repeated type.test.v1.Log logs = 1;
 }
 
 service TestService {
-  rpc GetTestDefaultPayload(GetTestDefaultPayloadRequest) returns (GetTestDefaultPayloadResponse) {
-    option (google.api.http) = {get: "/api/v1/tests/{test_id}/default-payload"};
+  rpc ListRunners(ListRunnersRequest) returns (ListRunnersResponse) {
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/groups/{group}/runners"};
   }
 
   rpc ListTests(ListTestsRequest) returns (ListTestsResponse) {
-    option (google.api.http) = {get: "/api/v1/tests"};
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/tests"};
+  }
+
+  rpc GetTestDefaultInput(GetTestDefaultInputRequest) returns (GetTestDefaultInputResponse) {
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/tests/{test_id}/default-input"};
   }
 
   rpc ExecuteTest(ExecuteTestRequest) returns (ExecuteTestResponse) {
     option (google.api.http) = {
-      post: "/api/v1/executions"
+      post: "/api/v1/contexts/{context}/executions"
       body: "*"
     };
   }
 
   rpc RetryTestExecution(RetryTestExecutionRequest) returns (RetryTestExecutionResponse) {
     option (google.api.http) = {
-      post: "/api/v1/executions/{test_exec_id}/retry"
+      post: "/api/v1/contexts/{context}/executions/{test_execution_id}/retry"
       body: "*"
     };
   }
 
   rpc GetTestExecution(GetTestExecutionRequest) returns (GetTestExecutionResponse) {
-    option (google.api.http) = {get: "/api/v1/executions/{id}"};
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/executions/{test_execution_id}"};
   }
 
   rpc ListTestExecutions(ListTestExecutionsRequest) returns (ListTestExecutionsResponse) {
-    option (google.api.http) = {get: "/api/v1/executions"};
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/executions"};
   }
 
   rpc ListTestCaseExecutions(ListTestCaseExecutionsRequest) returns (ListTestCaseExecutionsResponse) {
-    option (google.api.http) = {get: "/api/v1/executions/{test_exec_id}/cases"};
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/executions/{test_execution_id}/cases"};
   }
 
   rpc ListTestExecutionLogs(ListTestExecutionLogsRequest) returns (ListTestExecutionLogsResponse) {
-    option (google.api.http) = {get: "/api/v1/executions/{test_exec_id}/logs"};
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/executions/{test_execution_id}/logs"};
   }
+
+  rpc RegisterContext(RegisterContextRequest) returns (RegisterContextResponse);
+
+  rpc RegisterGroup(RegisterGroupRequest) returns (RegisterGroupResponse);
 
   rpc RegisterTests(RegisterTestsRequest) returns (RegisterTestsResponse);
 
