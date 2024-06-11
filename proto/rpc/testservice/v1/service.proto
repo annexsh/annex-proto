@@ -6,29 +6,43 @@ import "google/api/annotations.proto";
 import "google/protobuf/timestamp.proto";
 import "type/test/v1/message.proto";
 
+message RegisterContextRequest {
+  string context = 1;
+}
+
+message RegisterContextResponse {}
+
+message RegisterGroupRequest {
+  string context = 1;
+  string name = 2;
+}
+
+message RegisterGroupResponse {}
+
+message ListRunnersRequest {
+  string context = 1;
+  string group = 2;
+}
+
+message ListRunnersResponse {
+  repeated type.test.v1.Runner runners = 1;
+}
+
 message RegisterTestsRequest {
-  string group = 1;
-  string runner_id = 2;
-  repeated type.test.v1.TestDefinition definitions = 3;
+  string context = 1;
+  string group = 2;
+  repeated type.test.v1.TestDefinition definitions = 4;
 }
 
 message RegisterTestsResponse {
   repeated type.test.v1.Test tests = 1;
 }
 
-message GetTestDefaultInputRequest {
-  string group = 1;
-  string test_id = 2;
-}
-
-message GetTestDefaultInputResponse {
-  string default_input = 1;
-}
-
 message ListTestsRequest {
-  string group = 1;
-  int32 page_size = 2;
-  string next_page_token = 3;
+  string context = 1;
+  string group = 2;
+  int32 page_size = 3;
+  string next_page_token = 4;
 }
 
 message ListTestsResponse {
@@ -36,16 +50,17 @@ message ListTestsResponse {
   string next_page_token = 2;
 }
 
-message ListTestRunnersRequest {
-  string group = 1;
+message GetTestDefaultInputRequest {
+  string context = 1;
+  string test_id = 2;
 }
 
-message ListTestRunnersResponse {
-  map<string, type.test.v1.Runner> runners = 1;
+message GetTestDefaultInputResponse {
+  string default_input = 1;
 }
 
 message ExecuteTestRequest {
-  string group = 1;
+  string context = 1;
   string test_id = 2;
   optional type.test.v1.Payload input = 3;
 }
@@ -55,7 +70,7 @@ message ExecuteTestResponse {
 }
 
 message RetryTestExecutionRequest {
-  string group = 1;
+  string context = 1;
   string test_execution_id = 2;
 }
 
@@ -64,7 +79,7 @@ message RetryTestExecutionResponse {
 }
 
 message GetTestExecutionRequest {
-  string group = 1;
+  string context = 1;
   string test_execution_id = 2;
 }
 
@@ -74,7 +89,7 @@ message GetTestExecutionResponse {
 }
 
 message ListTestExecutionsRequest {
-  string group = 1;
+  string context = 1;
   string test_id = 2;
   int32 page_size = 3;
   string next_page_token = 4;
@@ -86,7 +101,7 @@ message ListTestExecutionsResponse {
 }
 
 message ListTestCaseExecutionsRequest {
-  string group = 1;
+  string context = 1;
   string test_execution_id = 2;
 }
 
@@ -95,7 +110,7 @@ message ListTestCaseExecutionsResponse {
 }
 
 message AckTestExecutionStartedRequest {
-  string group = 1;
+  string context = 1;
   string test_execution_id = 2;
   google.protobuf.Timestamp start_time = 3;
 }
@@ -103,7 +118,7 @@ message AckTestExecutionStartedRequest {
 message AckTestExecutionStartedResponse {}
 
 message AckTestExecutionFinishedRequest {
-  string group = 1;
+  string context = 1;
   string test_execution_id = 2;
   google.protobuf.Timestamp finish_time = 3;
   optional string error = 4;
@@ -112,7 +127,7 @@ message AckTestExecutionFinishedRequest {
 message AckTestExecutionFinishedResponse {}
 
 message AckCaseExecutionScheduledRequest {
-  string group = 1;
+  string context = 1;
   string test_execution_id = 2;
   int32 case_execution_id = 3;
   string case_name = 4;
@@ -122,7 +137,7 @@ message AckCaseExecutionScheduledRequest {
 message AckCaseExecutionScheduledResponse {}
 
 message AckCaseExecutionStartedRequest {
-  string group = 1;
+  string context = 1;
   string test_execution_id = 2;
   int32 case_execution_id = 3;
   google.protobuf.Timestamp start_time = 4;
@@ -131,7 +146,7 @@ message AckCaseExecutionStartedRequest {
 message AckCaseExecutionStartedResponse {}
 
 message AckCaseExecutionFinishedRequest {
-  string group = 1;
+  string context = 1;
   string test_execution_id = 2;
   int32 case_execution_id = 3;
   google.protobuf.Timestamp finish_time = 4;
@@ -141,7 +156,7 @@ message AckCaseExecutionFinishedRequest {
 message AckCaseExecutionFinishedResponse {}
 
 message PublishTestExecutionLogRequest {
-  string group = 1;
+  string context = 1;
   string test_execution_id = 2;
   optional int32 case_execution_id = 3;
   string level = 4;
@@ -154,7 +169,7 @@ message PublishTestExecutionLogResponse {
 }
 
 message ListTestExecutionLogsRequest {
-  string group = 1;
+  string context = 1;
   string test_execution_id = 2;
 }
 
@@ -163,47 +178,51 @@ message ListTestExecutionLogsResponse {
 }
 
 service TestService {
-  rpc ListTests(ListTestsRequest) returns (ListTestsResponse) {
-    option (google.api.http) = {get: "/api/v1/groups/{group}/tests"};
+  rpc ListRunners(ListRunnersRequest) returns (ListRunnersResponse) {
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/groups/{group}/runners"};
   }
 
-  rpc ListTestRunners(ListTestRunnersRequest) returns (ListTestRunnersResponse) {
-    option (google.api.http) = {get: "/api/v1/groups/{group}/tests/runners"};
+  rpc ListTests(ListTestsRequest) returns (ListTestsResponse) {
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/tests"};
   }
 
   rpc GetTestDefaultInput(GetTestDefaultInputRequest) returns (GetTestDefaultInputResponse) {
-    option (google.api.http) = {get: "/api/v1/groups/{group}/tests/{test_id}/default-input"};
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/tests/{test_id}/default-input"};
   }
 
   rpc ExecuteTest(ExecuteTestRequest) returns (ExecuteTestResponse) {
     option (google.api.http) = {
-      post: "/api/v1/groups/{group}/executions"
+      post: "/api/v1/contexts/{context}/executions"
       body: "*"
     };
   }
 
   rpc RetryTestExecution(RetryTestExecutionRequest) returns (RetryTestExecutionResponse) {
     option (google.api.http) = {
-      post: "/api/v1/groups/{group}/executions/{test_execution_id}/retry"
+      post: "/api/v1/contexts/{context}/executions/{test_execution_id}/retry"
       body: "*"
     };
   }
 
   rpc GetTestExecution(GetTestExecutionRequest) returns (GetTestExecutionResponse) {
-    option (google.api.http) = {get: "/api/v1/groups/{group}/executions/{test_execution_id}"};
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/executions/{test_execution_id}"};
   }
 
   rpc ListTestExecutions(ListTestExecutionsRequest) returns (ListTestExecutionsResponse) {
-    option (google.api.http) = {get: "/api/v1/groups/{group}/executions"};
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/executions"};
   }
 
   rpc ListTestCaseExecutions(ListTestCaseExecutionsRequest) returns (ListTestCaseExecutionsResponse) {
-    option (google.api.http) = {get: "/api/v1/groups/{group}/executions/{test_execution_id}/cases"};
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/executions/{test_execution_id}/cases"};
   }
 
   rpc ListTestExecutionLogs(ListTestExecutionLogsRequest) returns (ListTestExecutionLogsResponse) {
-    option (google.api.http) = {get: "/api/v1/groups/{group}/executions/{test_execution_id}/logs"};
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/executions/{test_execution_id}/logs"};
   }
+
+  rpc RegisterContext(RegisterContextRequest) returns (RegisterContextResponse);
+
+  rpc RegisterGroup(RegisterGroupRequest) returns (RegisterGroupResponse);
 
   rpc RegisterTests(RegisterTestsRequest) returns (RegisterTestsResponse);
 

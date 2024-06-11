@@ -28,6 +28,8 @@ const (
 	TestService_ListTestExecutions_FullMethodName        = "/rpc.testservice.v1.TestService/ListTestExecutions"
 	TestService_ListTestCaseExecutions_FullMethodName    = "/rpc.testservice.v1.TestService/ListTestCaseExecutions"
 	TestService_ListTestExecutionLogs_FullMethodName     = "/rpc.testservice.v1.TestService/ListTestExecutionLogs"
+	TestService_RegisterContext_FullMethodName           = "/rpc.testservice.v1.TestService/RegisterContext"
+	TestService_RegisterGroup_FullMethodName             = "/rpc.testservice.v1.TestService/RegisterGroup"
 	TestService_RegisterTests_FullMethodName             = "/rpc.testservice.v1.TestService/RegisterTests"
 	TestService_AckTestExecutionStarted_FullMethodName   = "/rpc.testservice.v1.TestService/AckTestExecutionStarted"
 	TestService_AckTestExecutionFinished_FullMethodName  = "/rpc.testservice.v1.TestService/AckTestExecutionFinished"
@@ -50,6 +52,8 @@ type TestServiceClient interface {
 	ListTestExecutions(ctx context.Context, in *ListTestExecutionsRequest, opts ...grpc.CallOption) (*ListTestExecutionsResponse, error)
 	ListTestCaseExecutions(ctx context.Context, in *ListTestCaseExecutionsRequest, opts ...grpc.CallOption) (*ListTestCaseExecutionsResponse, error)
 	ListTestExecutionLogs(ctx context.Context, in *ListTestExecutionLogsRequest, opts ...grpc.CallOption) (*ListTestExecutionLogsResponse, error)
+	RegisterContext(ctx context.Context, in *RegisterContextRequest, opts ...grpc.CallOption) (*RegisterContextResponse, error)
+	RegisterGroup(ctx context.Context, in *RegisterGroupRequest, opts ...grpc.CallOption) (*RegisterGroupResponse, error)
 	RegisterTests(ctx context.Context, in *RegisterTestsRequest, opts ...grpc.CallOption) (*RegisterTestsResponse, error)
 	AckTestExecutionStarted(ctx context.Context, in *AckTestExecutionStartedRequest, opts ...grpc.CallOption) (*AckTestExecutionStartedResponse, error)
 	AckTestExecutionFinished(ctx context.Context, in *AckTestExecutionFinishedRequest, opts ...grpc.CallOption) (*AckTestExecutionFinishedResponse, error)
@@ -157,6 +161,26 @@ func (c *testServiceClient) ListTestExecutionLogs(ctx context.Context, in *ListT
 	return out, nil
 }
 
+func (c *testServiceClient) RegisterContext(ctx context.Context, in *RegisterContextRequest, opts ...grpc.CallOption) (*RegisterContextResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterContextResponse)
+	err := c.cc.Invoke(ctx, TestService_RegisterContext_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *testServiceClient) RegisterGroup(ctx context.Context, in *RegisterGroupRequest, opts ...grpc.CallOption) (*RegisterGroupResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterGroupResponse)
+	err := c.cc.Invoke(ctx, TestService_RegisterGroup_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *testServiceClient) RegisterTests(ctx context.Context, in *RegisterTestsRequest, opts ...grpc.CallOption) (*RegisterTestsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(RegisterTestsResponse)
@@ -240,6 +264,8 @@ type TestServiceServer interface {
 	ListTestExecutions(context.Context, *ListTestExecutionsRequest) (*ListTestExecutionsResponse, error)
 	ListTestCaseExecutions(context.Context, *ListTestCaseExecutionsRequest) (*ListTestCaseExecutionsResponse, error)
 	ListTestExecutionLogs(context.Context, *ListTestExecutionLogsRequest) (*ListTestExecutionLogsResponse, error)
+	RegisterContext(context.Context, *RegisterContextRequest) (*RegisterContextResponse, error)
+	RegisterGroup(context.Context, *RegisterGroupRequest) (*RegisterGroupResponse, error)
 	RegisterTests(context.Context, *RegisterTestsRequest) (*RegisterTestsResponse, error)
 	AckTestExecutionStarted(context.Context, *AckTestExecutionStartedRequest) (*AckTestExecutionStartedResponse, error)
 	AckTestExecutionFinished(context.Context, *AckTestExecutionFinishedRequest) (*AckTestExecutionFinishedResponse, error)
@@ -279,6 +305,12 @@ func (UnimplementedTestServiceServer) ListTestCaseExecutions(context.Context, *L
 }
 func (UnimplementedTestServiceServer) ListTestExecutionLogs(context.Context, *ListTestExecutionLogsRequest) (*ListTestExecutionLogsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTestExecutionLogs not implemented")
+}
+func (UnimplementedTestServiceServer) RegisterContext(context.Context, *RegisterContextRequest) (*RegisterContextResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterContext not implemented")
+}
+func (UnimplementedTestServiceServer) RegisterGroup(context.Context, *RegisterGroupRequest) (*RegisterGroupResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterGroup not implemented")
 }
 func (UnimplementedTestServiceServer) RegisterTests(context.Context, *RegisterTestsRequest) (*RegisterTestsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterTests not implemented")
@@ -475,6 +507,42 @@ func _TestService_ListTestExecutionLogs_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _TestService_RegisterContext_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterContextRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TestServiceServer).RegisterContext(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TestService_RegisterContext_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TestServiceServer).RegisterContext(ctx, req.(*RegisterContextRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TestService_RegisterGroup_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterGroupRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TestServiceServer).RegisterGroup(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TestService_RegisterGroup_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TestServiceServer).RegisterGroup(ctx, req.(*RegisterGroupRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TestService_RegisterTests_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RegisterTestsRequest)
 	if err := dec(in); err != nil {
@@ -643,6 +711,14 @@ var TestService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListTestExecutionLogs",
 			Handler:    _TestService_ListTestExecutionLogs_Handler,
+		},
+		{
+			MethodName: "RegisterContext",
+			Handler:    _TestService_RegisterContext_Handler,
+		},
+		{
+			MethodName: "RegisterGroup",
+			Handler:    _TestService_RegisterGroup_Handler,
 		},
 		{
 			MethodName: "RegisterTests",
