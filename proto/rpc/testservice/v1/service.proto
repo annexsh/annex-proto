@@ -12,6 +12,12 @@ message RegisterContextRequest {
 
 message RegisterContextResponse {}
 
+message ListContextsRequest {}
+
+message ListContextsResponse {
+  repeated string contexts = 1;
+}
+
 message RegisterGroupRequest {
   string context = 1;
   string name = 2;
@@ -19,13 +25,12 @@ message RegisterGroupRequest {
 
 message RegisterGroupResponse {}
 
-message ListRunnersRequest {
+message ListGroupsRequest {
   string context = 1;
-  string group = 2;
 }
 
-message ListRunnersResponse {
-  repeated type.test.v1.Runner runners = 1;
+message ListGroupsResponse {
+  repeated type.test.v1.Group groups = 1;
 }
 
 message RegisterTestsRequest {
@@ -178,8 +183,12 @@ message ListTestExecutionLogsResponse {
 }
 
 service TestService {
-  rpc ListRunners(ListRunnersRequest) returns (ListRunnersResponse) {
-    option (google.api.http) = {get: "/api/v1/contexts/{context}/groups/{group}/runners"};
+  rpc ListContexts(ListContextsRequest) returns (ListContextsResponse) {
+    option (google.api.http) = {get: "/api/v1/contexts"};
+  }
+
+  rpc ListGroups(ListGroupsRequest) returns (ListGroupsResponse) {
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/groups"};
   }
 
   rpc ListTests(ListTestsRequest) returns (ListTestsResponse) {

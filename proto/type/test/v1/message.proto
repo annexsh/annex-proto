@@ -4,6 +4,18 @@ package type.test.v1;
 
 import "google/protobuf/timestamp.proto";
 
+message Group {
+  string context = 1;
+  string name = 2;
+  repeated Runner runners = 3;
+  bool available = 4;
+
+  message Runner {
+    string id = 1;
+    google.protobuf.Timestamp last_access_time = 2;
+  }
+}
+
 message TestDefinition {
   string name = 1;
   optional type.test.v1.Payload default_input = 2;
@@ -16,14 +28,6 @@ message Test {
   string name = 4;
   bool has_input = 5;
   google.protobuf.Timestamp create_time = 6;
-}
-
-message Runner {
-  string context = 1;
-  string group = 2;
-  string id = 3;
-  google.protobuf.Timestamp last_access_time = 4;
-  bool active = 5;
 }
 
 message TestExecution {
