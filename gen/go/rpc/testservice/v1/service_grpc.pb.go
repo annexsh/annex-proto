@@ -19,8 +19,9 @@ import (
 const _ = grpc.SupportPackageIsVersion8
 
 const (
+	TestService_ListContexts_FullMethodName              = "/rpc.testservice.v1.TestService/ListContexts"
+	TestService_ListGroups_FullMethodName                = "/rpc.testservice.v1.TestService/ListGroups"
 	TestService_ListTests_FullMethodName                 = "/rpc.testservice.v1.TestService/ListTests"
-	TestService_ListTestRunners_FullMethodName           = "/rpc.testservice.v1.TestService/ListTestRunners"
 	TestService_GetTestDefaultInput_FullMethodName       = "/rpc.testservice.v1.TestService/GetTestDefaultInput"
 	TestService_ExecuteTest_FullMethodName               = "/rpc.testservice.v1.TestService/ExecuteTest"
 	TestService_RetryTestExecution_FullMethodName        = "/rpc.testservice.v1.TestService/RetryTestExecution"
@@ -43,8 +44,9 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TestServiceClient interface {
+	ListContexts(ctx context.Context, in *ListContextsRequest, opts ...grpc.CallOption) (*ListContextsResponse, error)
+	ListGroups(ctx context.Context, in *ListGroupsRequest, opts ...grpc.CallOption) (*ListGroupsResponse, error)
 	ListTests(ctx context.Context, in *ListTestsRequest, opts ...grpc.CallOption) (*ListTestsResponse, error)
-	ListTestRunners(ctx context.Context, in *ListTestRunnersRequest, opts ...grpc.CallOption) (*ListTestRunnersResponse, error)
 	GetTestDefaultInput(ctx context.Context, in *GetTestDefaultInputRequest, opts ...grpc.CallOption) (*GetTestDefaultInputResponse, error)
 	ExecuteTest(ctx context.Context, in *ExecuteTestRequest, opts ...grpc.CallOption) (*ExecuteTestResponse, error)
 	RetryTestExecution(ctx context.Context, in *RetryTestExecutionRequest, opts ...grpc.CallOption) (*RetryTestExecutionResponse, error)
@@ -71,20 +73,30 @@ func NewTestServiceClient(cc grpc.ClientConnInterface) TestServiceClient {
 	return &testServiceClient{cc}
 }
 
-func (c *testServiceClient) ListTests(ctx context.Context, in *ListTestsRequest, opts ...grpc.CallOption) (*ListTestsResponse, error) {
+func (c *testServiceClient) ListContexts(ctx context.Context, in *ListContextsRequest, opts ...grpc.CallOption) (*ListContextsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListTestsResponse)
-	err := c.cc.Invoke(ctx, TestService_ListTests_FullMethodName, in, out, cOpts...)
+	out := new(ListContextsResponse)
+	err := c.cc.Invoke(ctx, TestService_ListContexts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *testServiceClient) ListTestRunners(ctx context.Context, in *ListTestRunnersRequest, opts ...grpc.CallOption) (*ListTestRunnersResponse, error) {
+func (c *testServiceClient) ListGroups(ctx context.Context, in *ListGroupsRequest, opts ...grpc.CallOption) (*ListGroupsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListTestRunnersResponse)
-	err := c.cc.Invoke(ctx, TestService_ListTestRunners_FullMethodName, in, out, cOpts...)
+	out := new(ListGroupsResponse)
+	err := c.cc.Invoke(ctx, TestService_ListGroups_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *testServiceClient) ListTests(ctx context.Context, in *ListTestsRequest, opts ...grpc.CallOption) (*ListTestsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListTestsResponse)
+	err := c.cc.Invoke(ctx, TestService_ListTests_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -255,8 +267,9 @@ func (c *testServiceClient) PublishTestExecutionLog(ctx context.Context, in *Pub
 // All implementations should embed UnimplementedTestServiceServer
 // for forward compatibility
 type TestServiceServer interface {
+	ListContexts(context.Context, *ListContextsRequest) (*ListContextsResponse, error)
+	ListGroups(context.Context, *ListGroupsRequest) (*ListGroupsResponse, error)
 	ListTests(context.Context, *ListTestsRequest) (*ListTestsResponse, error)
-	ListTestRunners(context.Context, *ListTestRunnersRequest) (*ListTestRunnersResponse, error)
 	GetTestDefaultInput(context.Context, *GetTestDefaultInputRequest) (*GetTestDefaultInputResponse, error)
 	ExecuteTest(context.Context, *ExecuteTestRequest) (*ExecuteTestResponse, error)
 	RetryTestExecution(context.Context, *RetryTestExecutionRequest) (*RetryTestExecutionResponse, error)
@@ -279,11 +292,14 @@ type TestServiceServer interface {
 type UnimplementedTestServiceServer struct {
 }
 
+func (UnimplementedTestServiceServer) ListContexts(context.Context, *ListContextsRequest) (*ListContextsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListContexts not implemented")
+}
+func (UnimplementedTestServiceServer) ListGroups(context.Context, *ListGroupsRequest) (*ListGroupsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListGroups not implemented")
+}
 func (UnimplementedTestServiceServer) ListTests(context.Context, *ListTestsRequest) (*ListTestsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListTests not implemented")
-}
-func (UnimplementedTestServiceServer) ListTestRunners(context.Context, *ListTestRunnersRequest) (*ListTestRunnersResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListTestRunners not implemented")
 }
 func (UnimplementedTestServiceServer) GetTestDefaultInput(context.Context, *GetTestDefaultInputRequest) (*GetTestDefaultInputResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetTestDefaultInput not implemented")
@@ -345,6 +361,42 @@ func RegisterTestServiceServer(s grpc.ServiceRegistrar, srv TestServiceServer) {
 	s.RegisterService(&TestService_ServiceDesc, srv)
 }
 
+func _TestService_ListContexts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListContextsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TestServiceServer).ListContexts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TestService_ListContexts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TestServiceServer).ListContexts(ctx, req.(*ListContextsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _TestService_ListGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListGroupsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TestServiceServer).ListGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: TestService_ListGroups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TestServiceServer).ListGroups(ctx, req.(*ListGroupsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _TestService_ListTests_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListTestsRequest)
 	if err := dec(in); err != nil {
@@ -359,24 +411,6 @@ func _TestService_ListTests_Handler(srv interface{}, ctx context.Context, dec fu
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TestServiceServer).ListTests(ctx, req.(*ListTestsRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _TestService_ListTestRunners_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListTestRunnersRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(TestServiceServer).ListTestRunners(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: TestService_ListTestRunners_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(TestServiceServer).ListTestRunners(ctx, req.(*ListTestRunnersRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -677,12 +711,16 @@ var TestService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*TestServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "ListTests",
-			Handler:    _TestService_ListTests_Handler,
+			MethodName: "ListContexts",
+			Handler:    _TestService_ListContexts_Handler,
 		},
 		{
-			MethodName: "ListTestRunners",
-			Handler:    _TestService_ListTestRunners_Handler,
+			MethodName: "ListGroups",
+			Handler:    _TestService_ListGroups_Handler,
+		},
+		{
+			MethodName: "ListTests",
+			Handler:    _TestService_ListTests_Handler,
 		},
 		{
 			MethodName: "GetTestDefaultInput",
