@@ -1,5 +1,7 @@
 # Annex Protocol Buffers
 
+Annex uses [Connect](https://connectrpc.com/) to build gRPC APIs that are browser friendly.
+
 ## Generating
 
 Simply run `make gen` to generate code for the protobuf schemas in `proto/`.
