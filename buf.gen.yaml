@@ -5,19 +5,20 @@ managed:
     default: github.com/annexsh/annex-proto/gen/go
     except:
       - buf.build/googleapis/googleapis
-      - buf.build/grpc-ecosystem/grpc-gateway
 
 plugins:
-  - plugin: buf.build/grpc-ecosystem/gateway:v2.19.0
-    out: gen/go
-    opt:
-      - paths=source_relative
+  # Go
   - plugin: buf.build/protocolbuffers/go
     out: gen/go
     opt:
       - paths=source_relative
-  - plugin: buf.build/grpc/go
+  - plugin: buf.build/connectrpc/go
     out: gen/go
-    opt:
-      - paths=source_relative
-      - require_unimplemented_servers=false
+    opt: paths=source_relative
+  # TypeScript
+  - plugin: buf.build/connectrpc/es
+    out: gen/ts
+    opt: target=ts
+  - plugin: buf.build/bufbuild/es
+    out: gen/ts
+    opt: target=ts

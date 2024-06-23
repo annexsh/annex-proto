@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package annex.tests.v1;
+
+import "google/protobuf/timestamp.proto";
+
+message Group {
+  string context = 1;
+  string name = 2;
+  repeated Runner runners = 3;
+  bool available = 4;
+
+  message Runner {
+    string id = 1;
+    google.protobuf.Timestamp last_access_time = 2;
+  }
+}
+
+message TestDefinition {
+  string name = 1;
+  optional Payload default_input = 2;
+}
+
+message Test {
+  string context = 1;
+  string group = 2;
+  string id = 3;
+  string name = 4;
+  bool has_input = 5;
+  google.protobuf.Timestamp create_time = 6;
+}
+
+message TestExecution {
+  string id = 1;
+  string test_id = 2;
+  optional string error = 3;
+  google.protobuf.Timestamp schedule_time = 4;
+  google.protobuf.Timestamp start_time = 5;
+  optional google.protobuf.Timestamp finish_time = 6;
+}
+
+message CaseExecution {
+  int32 id = 1;
+  string case_name = 2;
+  string test_execution_id = 3;
+  optional string error = 4;
+  google.protobuf.Timestamp schedule_time = 5;
+  optional google.protobuf.Timestamp start_time = 6;
+  optional google.protobuf.Timestamp finish_time = 7;
+}
+
+message Log {
+  string id = 1;
+  string test_execution_id = 2;
+  optional int32 case_execution_id = 3;
+  string level = 4;
+  string message = 5;
+  google.protobuf.Timestamp create_time = 6;
+}
+
+message Payload {
+  map<string, bytes> metadata = 1;
+  bytes data = 2;
+}

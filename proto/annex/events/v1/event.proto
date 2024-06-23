@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package annex.events.v1;
+
+import "annex/tests/v1/test.proto";
+import "google/protobuf/timestamp.proto";
+
+message Event {
+  string event_id = 1;
+  string test_execution_id = 2;
+  Type type = 3;
+  Data data = 4;
+  google.protobuf.Timestamp create_time = 5;
+
+  message Data {
+    Type type = 1;
+
+    oneof data {
+      annex.tests.v1.TestExecution test_execution = 2;
+      annex.tests.v1.CaseExecution case_execution = 3;
+      annex.tests.v1.Log log = 4;
+    }
+
+    enum Type {
+      TYPE_UNSPECIFIED = 0;
+      TYPE_NONE = 1;
+      TYPE_TEST_EXECUTION = 2;
+      TYPE_CASE_EXECUTION = 3;
+      TYPE_LOG = 4;
+    }
+  }
+
+  enum Type {
+    TYPE_UNSPECIFIED = 0;
+    TYPE_TEST_EXECUTION_SCHEDULED = 1;
+    TYPE_TEST_EXECUTION_STARTED = 2;
+    TYPE_TEST_EXECUTION_FINISHED = 3;
+    TYPE_CASE_EXECUTION_SCHEDULED = 4;
+    TYPE_CASE_EXECUTION_STARTED = 5;
+    TYPE_CASE_EXECUTION_FINISHED = 6;
+    TYPE_LOG_PUBLISHED = 7;
+  }
+}
