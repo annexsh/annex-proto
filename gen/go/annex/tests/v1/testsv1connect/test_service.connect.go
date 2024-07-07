@@ -54,9 +54,9 @@ const (
 	// TestServiceListTestExecutionsProcedure is the fully-qualified name of the TestService's
 	// ListTestExecutions RPC.
 	TestServiceListTestExecutionsProcedure = "/annex.tests.v1.TestService/ListTestExecutions"
-	// TestServiceListTestCaseExecutionsProcedure is the fully-qualified name of the TestService's
-	// ListTestCaseExecutions RPC.
-	TestServiceListTestCaseExecutionsProcedure = "/annex.tests.v1.TestService/ListTestCaseExecutions"
+	// TestServiceListCaseExecutionsProcedure is the fully-qualified name of the TestService's
+	// ListCaseExecutions RPC.
+	TestServiceListCaseExecutionsProcedure = "/annex.tests.v1.TestService/ListCaseExecutions"
 	// TestServiceListTestExecutionLogsProcedure is the fully-qualified name of the TestService's
 	// ListTestExecutionLogs RPC.
 	TestServiceListTestExecutionLogsProcedure = "/annex.tests.v1.TestService/ListTestExecutionLogs"
@@ -84,9 +84,8 @@ const (
 	// TestServiceAckCaseExecutionFinishedProcedure is the fully-qualified name of the TestService's
 	// AckCaseExecutionFinished RPC.
 	TestServiceAckCaseExecutionFinishedProcedure = "/annex.tests.v1.TestService/AckCaseExecutionFinished"
-	// TestServicePublishTestExecutionLogProcedure is the fully-qualified name of the TestService's
-	// PublishTestExecutionLog RPC.
-	TestServicePublishTestExecutionLogProcedure = "/annex.tests.v1.TestService/PublishTestExecutionLog"
+	// TestServicePublishLogProcedure is the fully-qualified name of the TestService's PublishLog RPC.
+	TestServicePublishLogProcedure = "/annex.tests.v1.TestService/PublishLog"
 )
 
 // These variables are the protoreflect.Descriptor objects for the RPCs defined in this package.
@@ -100,7 +99,7 @@ var (
 	testServiceRetryTestExecutionMethodDescriptor        = testServiceServiceDescriptor.Methods().ByName("RetryTestExecution")
 	testServiceGetTestExecutionMethodDescriptor          = testServiceServiceDescriptor.Methods().ByName("GetTestExecution")
 	testServiceListTestExecutionsMethodDescriptor        = testServiceServiceDescriptor.Methods().ByName("ListTestExecutions")
-	testServiceListTestCaseExecutionsMethodDescriptor    = testServiceServiceDescriptor.Methods().ByName("ListTestCaseExecutions")
+	testServiceListCaseExecutionsMethodDescriptor        = testServiceServiceDescriptor.Methods().ByName("ListCaseExecutions")
 	testServiceListTestExecutionLogsMethodDescriptor     = testServiceServiceDescriptor.Methods().ByName("ListTestExecutionLogs")
 	testServiceRegisterContextMethodDescriptor           = testServiceServiceDescriptor.Methods().ByName("RegisterContext")
 	testServiceRegisterGroupMethodDescriptor             = testServiceServiceDescriptor.Methods().ByName("RegisterGroup")
@@ -110,7 +109,7 @@ var (
 	testServiceAckCaseExecutionScheduledMethodDescriptor = testServiceServiceDescriptor.Methods().ByName("AckCaseExecutionScheduled")
 	testServiceAckCaseExecutionStartedMethodDescriptor   = testServiceServiceDescriptor.Methods().ByName("AckCaseExecutionStarted")
 	testServiceAckCaseExecutionFinishedMethodDescriptor  = testServiceServiceDescriptor.Methods().ByName("AckCaseExecutionFinished")
-	testServicePublishTestExecutionLogMethodDescriptor   = testServiceServiceDescriptor.Methods().ByName("PublishTestExecutionLog")
+	testServicePublishLogMethodDescriptor                = testServiceServiceDescriptor.Methods().ByName("PublishLog")
 )
 
 // TestServiceClient is a client for the annex.tests.v1.TestService service.
@@ -123,7 +122,7 @@ type TestServiceClient interface {
 	RetryTestExecution(context.Context, *connect.Request[v1.RetryTestExecutionRequest]) (*connect.Response[v1.RetryTestExecutionResponse], error)
 	GetTestExecution(context.Context, *connect.Request[v1.GetTestExecutionRequest]) (*connect.Response[v1.GetTestExecutionResponse], error)
 	ListTestExecutions(context.Context, *connect.Request[v1.ListTestExecutionsRequest]) (*connect.Response[v1.ListTestExecutionsResponse], error)
-	ListTestCaseExecutions(context.Context, *connect.Request[v1.ListTestCaseExecutionsRequest]) (*connect.Response[v1.ListTestCaseExecutionsResponse], error)
+	ListCaseExecutions(context.Context, *connect.Request[v1.ListCaseExecutionsRequest]) (*connect.Response[v1.ListCaseExecutionsResponse], error)
 	ListTestExecutionLogs(context.Context, *connect.Request[v1.ListTestExecutionLogsRequest]) (*connect.Response[v1.ListTestExecutionLogsResponse], error)
 	RegisterContext(context.Context, *connect.Request[v1.RegisterContextRequest]) (*connect.Response[v1.RegisterContextResponse], error)
 	RegisterGroup(context.Context, *connect.Request[v1.RegisterGroupRequest]) (*connect.Response[v1.RegisterGroupResponse], error)
@@ -133,7 +132,7 @@ type TestServiceClient interface {
 	AckCaseExecutionScheduled(context.Context, *connect.Request[v1.AckCaseExecutionScheduledRequest]) (*connect.Response[v1.AckCaseExecutionScheduledResponse], error)
 	AckCaseExecutionStarted(context.Context, *connect.Request[v1.AckCaseExecutionStartedRequest]) (*connect.Response[v1.AckCaseExecutionStartedResponse], error)
 	AckCaseExecutionFinished(context.Context, *connect.Request[v1.AckCaseExecutionFinishedRequest]) (*connect.Response[v1.AckCaseExecutionFinishedResponse], error)
-	PublishTestExecutionLog(context.Context, *connect.Request[v1.PublishTestExecutionLogRequest]) (*connect.Response[v1.PublishTestExecutionLogResponse], error)
+	PublishLog(context.Context, *connect.Request[v1.PublishLogRequest]) (*connect.Response[v1.PublishLogResponse], error)
 }
 
 // NewTestServiceClient constructs a client for the annex.tests.v1.TestService service. By default,
@@ -194,10 +193,10 @@ func NewTestServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(testServiceListTestExecutionsMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		listTestCaseExecutions: connect.NewClient[v1.ListTestCaseExecutionsRequest, v1.ListTestCaseExecutionsResponse](
+		listCaseExecutions: connect.NewClient[v1.ListCaseExecutionsRequest, v1.ListCaseExecutionsResponse](
 			httpClient,
-			baseURL+TestServiceListTestCaseExecutionsProcedure,
-			connect.WithSchema(testServiceListTestCaseExecutionsMethodDescriptor),
+			baseURL+TestServiceListCaseExecutionsProcedure,
+			connect.WithSchema(testServiceListCaseExecutionsMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		listTestExecutionLogs: connect.NewClient[v1.ListTestExecutionLogsRequest, v1.ListTestExecutionLogsResponse](
@@ -254,10 +253,10 @@ func NewTestServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(testServiceAckCaseExecutionFinishedMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		publishTestExecutionLog: connect.NewClient[v1.PublishTestExecutionLogRequest, v1.PublishTestExecutionLogResponse](
+		publishLog: connect.NewClient[v1.PublishLogRequest, v1.PublishLogResponse](
 			httpClient,
-			baseURL+TestServicePublishTestExecutionLogProcedure,
-			connect.WithSchema(testServicePublishTestExecutionLogMethodDescriptor),
+			baseURL+TestServicePublishLogProcedure,
+			connect.WithSchema(testServicePublishLogMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 	}
@@ -273,7 +272,7 @@ type testServiceClient struct {
 	retryTestExecution        *connect.Client[v1.RetryTestExecutionRequest, v1.RetryTestExecutionResponse]
 	getTestExecution          *connect.Client[v1.GetTestExecutionRequest, v1.GetTestExecutionResponse]
 	listTestExecutions        *connect.Client[v1.ListTestExecutionsRequest, v1.ListTestExecutionsResponse]
-	listTestCaseExecutions    *connect.Client[v1.ListTestCaseExecutionsRequest, v1.ListTestCaseExecutionsResponse]
+	listCaseExecutions        *connect.Client[v1.ListCaseExecutionsRequest, v1.ListCaseExecutionsResponse]
 	listTestExecutionLogs     *connect.Client[v1.ListTestExecutionLogsRequest, v1.ListTestExecutionLogsResponse]
 	registerContext           *connect.Client[v1.RegisterContextRequest, v1.RegisterContextResponse]
 	registerGroup             *connect.Client[v1.RegisterGroupRequest, v1.RegisterGroupResponse]
@@ -283,7 +282,7 @@ type testServiceClient struct {
 	ackCaseExecutionScheduled *connect.Client[v1.AckCaseExecutionScheduledRequest, v1.AckCaseExecutionScheduledResponse]
 	ackCaseExecutionStarted   *connect.Client[v1.AckCaseExecutionStartedRequest, v1.AckCaseExecutionStartedResponse]
 	ackCaseExecutionFinished  *connect.Client[v1.AckCaseExecutionFinishedRequest, v1.AckCaseExecutionFinishedResponse]
-	publishTestExecutionLog   *connect.Client[v1.PublishTestExecutionLogRequest, v1.PublishTestExecutionLogResponse]
+	publishLog                *connect.Client[v1.PublishLogRequest, v1.PublishLogResponse]
 }
 
 // ListContexts calls annex.tests.v1.TestService.ListContexts.
@@ -326,9 +325,9 @@ func (c *testServiceClient) ListTestExecutions(ctx context.Context, req *connect
 	return c.listTestExecutions.CallUnary(ctx, req)
 }
 
-// ListTestCaseExecutions calls annex.tests.v1.TestService.ListTestCaseExecutions.
-func (c *testServiceClient) ListTestCaseExecutions(ctx context.Context, req *connect.Request[v1.ListTestCaseExecutionsRequest]) (*connect.Response[v1.ListTestCaseExecutionsResponse], error) {
-	return c.listTestCaseExecutions.CallUnary(ctx, req)
+// ListCaseExecutions calls annex.tests.v1.TestService.ListCaseExecutions.
+func (c *testServiceClient) ListCaseExecutions(ctx context.Context, req *connect.Request[v1.ListCaseExecutionsRequest]) (*connect.Response[v1.ListCaseExecutionsResponse], error) {
+	return c.listCaseExecutions.CallUnary(ctx, req)
 }
 
 // ListTestExecutionLogs calls annex.tests.v1.TestService.ListTestExecutionLogs.
@@ -376,9 +375,9 @@ func (c *testServiceClient) AckCaseExecutionFinished(ctx context.Context, req *c
 	return c.ackCaseExecutionFinished.CallUnary(ctx, req)
 }
 
-// PublishTestExecutionLog calls annex.tests.v1.TestService.PublishTestExecutionLog.
-func (c *testServiceClient) PublishTestExecutionLog(ctx context.Context, req *connect.Request[v1.PublishTestExecutionLogRequest]) (*connect.Response[v1.PublishTestExecutionLogResponse], error) {
-	return c.publishTestExecutionLog.CallUnary(ctx, req)
+// PublishLog calls annex.tests.v1.TestService.PublishLog.
+func (c *testServiceClient) PublishLog(ctx context.Context, req *connect.Request[v1.PublishLogRequest]) (*connect.Response[v1.PublishLogResponse], error) {
+	return c.publishLog.CallUnary(ctx, req)
 }
 
 // TestServiceHandler is an implementation of the annex.tests.v1.TestService service.
@@ -391,7 +390,7 @@ type TestServiceHandler interface {
 	RetryTestExecution(context.Context, *connect.Request[v1.RetryTestExecutionRequest]) (*connect.Response[v1.RetryTestExecutionResponse], error)
 	GetTestExecution(context.Context, *connect.Request[v1.GetTestExecutionRequest]) (*connect.Response[v1.GetTestExecutionResponse], error)
 	ListTestExecutions(context.Context, *connect.Request[v1.ListTestExecutionsRequest]) (*connect.Response[v1.ListTestExecutionsResponse], error)
-	ListTestCaseExecutions(context.Context, *connect.Request[v1.ListTestCaseExecutionsRequest]) (*connect.Response[v1.ListTestCaseExecutionsResponse], error)
+	ListCaseExecutions(context.Context, *connect.Request[v1.ListCaseExecutionsRequest]) (*connect.Response[v1.ListCaseExecutionsResponse], error)
 	ListTestExecutionLogs(context.Context, *connect.Request[v1.ListTestExecutionLogsRequest]) (*connect.Response[v1.ListTestExecutionLogsResponse], error)
 	RegisterContext(context.Context, *connect.Request[v1.RegisterContextRequest]) (*connect.Response[v1.RegisterContextResponse], error)
 	RegisterGroup(context.Context, *connect.Request[v1.RegisterGroupRequest]) (*connect.Response[v1.RegisterGroupResponse], error)
@@ -401,7 +400,7 @@ type TestServiceHandler interface {
 	AckCaseExecutionScheduled(context.Context, *connect.Request[v1.AckCaseExecutionScheduledRequest]) (*connect.Response[v1.AckCaseExecutionScheduledResponse], error)
 	AckCaseExecutionStarted(context.Context, *connect.Request[v1.AckCaseExecutionStartedRequest]) (*connect.Response[v1.AckCaseExecutionStartedResponse], error)
 	AckCaseExecutionFinished(context.Context, *connect.Request[v1.AckCaseExecutionFinishedRequest]) (*connect.Response[v1.AckCaseExecutionFinishedResponse], error)
-	PublishTestExecutionLog(context.Context, *connect.Request[v1.PublishTestExecutionLogRequest]) (*connect.Response[v1.PublishTestExecutionLogResponse], error)
+	PublishLog(context.Context, *connect.Request[v1.PublishLogRequest]) (*connect.Response[v1.PublishLogResponse], error)
 }
 
 // NewTestServiceHandler builds an HTTP handler from the service implementation. It returns the path
@@ -458,10 +457,10 @@ func NewTestServiceHandler(svc TestServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(testServiceListTestExecutionsMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	testServiceListTestCaseExecutionsHandler := connect.NewUnaryHandler(
-		TestServiceListTestCaseExecutionsProcedure,
-		svc.ListTestCaseExecutions,
-		connect.WithSchema(testServiceListTestCaseExecutionsMethodDescriptor),
+	testServiceListCaseExecutionsHandler := connect.NewUnaryHandler(
+		TestServiceListCaseExecutionsProcedure,
+		svc.ListCaseExecutions,
+		connect.WithSchema(testServiceListCaseExecutionsMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	testServiceListTestExecutionLogsHandler := connect.NewUnaryHandler(
@@ -518,10 +517,10 @@ func NewTestServiceHandler(svc TestServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(testServiceAckCaseExecutionFinishedMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	testServicePublishTestExecutionLogHandler := connect.NewUnaryHandler(
-		TestServicePublishTestExecutionLogProcedure,
-		svc.PublishTestExecutionLog,
-		connect.WithSchema(testServicePublishTestExecutionLogMethodDescriptor),
+	testServicePublishLogHandler := connect.NewUnaryHandler(
+		TestServicePublishLogProcedure,
+		svc.PublishLog,
+		connect.WithSchema(testServicePublishLogMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	return "/annex.tests.v1.TestService/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -542,8 +541,8 @@ func NewTestServiceHandler(svc TestServiceHandler, opts ...connect.HandlerOption
 			testServiceGetTestExecutionHandler.ServeHTTP(w, r)
 		case TestServiceListTestExecutionsProcedure:
 			testServiceListTestExecutionsHandler.ServeHTTP(w, r)
-		case TestServiceListTestCaseExecutionsProcedure:
-			testServiceListTestCaseExecutionsHandler.ServeHTTP(w, r)
+		case TestServiceListCaseExecutionsProcedure:
+			testServiceListCaseExecutionsHandler.ServeHTTP(w, r)
 		case TestServiceListTestExecutionLogsProcedure:
 			testServiceListTestExecutionLogsHandler.ServeHTTP(w, r)
 		case TestServiceRegisterContextProcedure:
@@ -562,8 +561,8 @@ func NewTestServiceHandler(svc TestServiceHandler, opts ...connect.HandlerOption
 			testServiceAckCaseExecutionStartedHandler.ServeHTTP(w, r)
 		case TestServiceAckCaseExecutionFinishedProcedure:
 			testServiceAckCaseExecutionFinishedHandler.ServeHTTP(w, r)
-		case TestServicePublishTestExecutionLogProcedure:
-			testServicePublishTestExecutionLogHandler.ServeHTTP(w, r)
+		case TestServicePublishLogProcedure:
+			testServicePublishLogHandler.ServeHTTP(w, r)
 		default:
 			http.NotFound(w, r)
 		}
@@ -605,8 +604,8 @@ func (UnimplementedTestServiceHandler) ListTestExecutions(context.Context, *conn
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.ListTestExecutions is not implemented"))
 }
 
-func (UnimplementedTestServiceHandler) ListTestCaseExecutions(context.Context, *connect.Request[v1.ListTestCaseExecutionsRequest]) (*connect.Response[v1.ListTestCaseExecutionsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.ListTestCaseExecutions is not implemented"))
+func (UnimplementedTestServiceHandler) ListCaseExecutions(context.Context, *connect.Request[v1.ListCaseExecutionsRequest]) (*connect.Response[v1.ListCaseExecutionsResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.ListCaseExecutions is not implemented"))
 }
 
 func (UnimplementedTestServiceHandler) ListTestExecutionLogs(context.Context, *connect.Request[v1.ListTestExecutionLogsRequest]) (*connect.Response[v1.ListTestExecutionLogsResponse], error) {
@@ -645,6 +644,6 @@ func (UnimplementedTestServiceHandler) AckCaseExecutionFinished(context.Context,
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.AckCaseExecutionFinished is not implemented"))
 }
 
-func (UnimplementedTestServiceHandler) PublishTestExecutionLog(context.Context, *connect.Request[v1.PublishTestExecutionLogRequest]) (*connect.Response[v1.PublishTestExecutionLogResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.PublishTestExecutionLog is not implemented"))
+func (UnimplementedTestServiceHandler) PublishLog(context.Context, *connect.Request[v1.PublishLogRequest]) (*connect.Response[v1.PublishLogResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.PublishLog is not implemented"))
 }

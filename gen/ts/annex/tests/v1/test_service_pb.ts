@@ -906,9 +906,9 @@ export class ListTestExecutionsResponse extends Message<ListTestExecutionsRespon
 }
 
 /**
- * @generated from message annex.tests.v1.ListTestCaseExecutionsRequest
+ * @generated from message annex.tests.v1.ListCaseExecutionsRequest
  */
-export class ListTestCaseExecutionsRequest extends Message<ListTestCaseExecutionsRequest> {
+export class ListCaseExecutionsRequest extends Message<ListCaseExecutionsRequest> {
   /**
    * @generated from field: string context = 1;
    */
@@ -919,69 +919,69 @@ export class ListTestCaseExecutionsRequest extends Message<ListTestCaseExecution
    */
   testExecutionId = "";
 
-  constructor(data?: PartialMessage<ListTestCaseExecutionsRequest>) {
+  constructor(data?: PartialMessage<ListCaseExecutionsRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "annex.tests.v1.ListTestCaseExecutionsRequest";
+  static readonly typeName = "annex.tests.v1.ListCaseExecutionsRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "test_execution_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListTestCaseExecutionsRequest {
-    return new ListTestCaseExecutionsRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListCaseExecutionsRequest {
+    return new ListCaseExecutionsRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListTestCaseExecutionsRequest {
-    return new ListTestCaseExecutionsRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListCaseExecutionsRequest {
+    return new ListCaseExecutionsRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListTestCaseExecutionsRequest {
-    return new ListTestCaseExecutionsRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListCaseExecutionsRequest {
+    return new ListCaseExecutionsRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: ListTestCaseExecutionsRequest | PlainMessage<ListTestCaseExecutionsRequest> | undefined, b: ListTestCaseExecutionsRequest | PlainMessage<ListTestCaseExecutionsRequest> | undefined): boolean {
-    return proto3.util.equals(ListTestCaseExecutionsRequest, a, b);
+  static equals(a: ListCaseExecutionsRequest | PlainMessage<ListCaseExecutionsRequest> | undefined, b: ListCaseExecutionsRequest | PlainMessage<ListCaseExecutionsRequest> | undefined): boolean {
+    return proto3.util.equals(ListCaseExecutionsRequest, a, b);
   }
 }
 
 /**
- * @generated from message annex.tests.v1.ListTestCaseExecutionsResponse
+ * @generated from message annex.tests.v1.ListCaseExecutionsResponse
  */
-export class ListTestCaseExecutionsResponse extends Message<ListTestCaseExecutionsResponse> {
+export class ListCaseExecutionsResponse extends Message<ListCaseExecutionsResponse> {
   /**
    * @generated from field: repeated annex.tests.v1.CaseExecution case_executions = 1;
    */
   caseExecutions: CaseExecution[] = [];
 
-  constructor(data?: PartialMessage<ListTestCaseExecutionsResponse>) {
+  constructor(data?: PartialMessage<ListCaseExecutionsResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "annex.tests.v1.ListTestCaseExecutionsResponse";
+  static readonly typeName = "annex.tests.v1.ListCaseExecutionsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "case_executions", kind: "message", T: CaseExecution, repeated: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListTestCaseExecutionsResponse {
-    return new ListTestCaseExecutionsResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListCaseExecutionsResponse {
+    return new ListCaseExecutionsResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListTestCaseExecutionsResponse {
-    return new ListTestCaseExecutionsResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListCaseExecutionsResponse {
+    return new ListCaseExecutionsResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListTestCaseExecutionsResponse {
-    return new ListTestCaseExecutionsResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListCaseExecutionsResponse {
+    return new ListCaseExecutionsResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: ListTestCaseExecutionsResponse | PlainMessage<ListTestCaseExecutionsResponse> | undefined, b: ListTestCaseExecutionsResponse | PlainMessage<ListTestCaseExecutionsResponse> | undefined): boolean {
-    return proto3.util.equals(ListTestCaseExecutionsResponse, a, b);
+  static equals(a: ListCaseExecutionsResponse | PlainMessage<ListCaseExecutionsResponse> | undefined, b: ListCaseExecutionsResponse | PlainMessage<ListCaseExecutionsResponse> | undefined): boolean {
+    return proto3.util.equals(ListCaseExecutionsResponse, a, b);
   }
 }
 
@@ -1422,9 +1422,9 @@ export class AckCaseExecutionFinishedResponse extends Message<AckCaseExecutionFi
 }
 
 /**
- * @generated from message annex.tests.v1.PublishTestExecutionLogRequest
+ * @generated from message annex.tests.v1.PublishLogRequest
  */
-export class PublishTestExecutionLogRequest extends Message<PublishTestExecutionLogRequest> {
+export class PublishLogRequest extends Message<PublishLogRequest> {
   /**
    * @generated from field: string context = 1;
    */
@@ -1455,13 +1455,13 @@ export class PublishTestExecutionLogRequest extends Message<PublishTestExecution
    */
   createTime?: Timestamp;
 
-  constructor(data?: PartialMessage<PublishTestExecutionLogRequest>) {
+  constructor(data?: PartialMessage<PublishLogRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "annex.tests.v1.PublishTestExecutionLogRequest";
+  static readonly typeName = "annex.tests.v1.PublishLogRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "test_execution_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
@@ -1471,57 +1471,57 @@ export class PublishTestExecutionLogRequest extends Message<PublishTestExecution
     { no: 6, name: "create_time", kind: "message", T: Timestamp },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PublishTestExecutionLogRequest {
-    return new PublishTestExecutionLogRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PublishLogRequest {
+    return new PublishLogRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PublishTestExecutionLogRequest {
-    return new PublishTestExecutionLogRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PublishLogRequest {
+    return new PublishLogRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PublishTestExecutionLogRequest {
-    return new PublishTestExecutionLogRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PublishLogRequest {
+    return new PublishLogRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: PublishTestExecutionLogRequest | PlainMessage<PublishTestExecutionLogRequest> | undefined, b: PublishTestExecutionLogRequest | PlainMessage<PublishTestExecutionLogRequest> | undefined): boolean {
-    return proto3.util.equals(PublishTestExecutionLogRequest, a, b);
+  static equals(a: PublishLogRequest | PlainMessage<PublishLogRequest> | undefined, b: PublishLogRequest | PlainMessage<PublishLogRequest> | undefined): boolean {
+    return proto3.util.equals(PublishLogRequest, a, b);
   }
 }
 
 /**
- * @generated from message annex.tests.v1.PublishTestExecutionLogResponse
+ * @generated from message annex.tests.v1.PublishLogResponse
  */
-export class PublishTestExecutionLogResponse extends Message<PublishTestExecutionLogResponse> {
+export class PublishLogResponse extends Message<PublishLogResponse> {
   /**
    * @generated from field: string log_id = 1;
    */
   logId = "";
 
-  constructor(data?: PartialMessage<PublishTestExecutionLogResponse>) {
+  constructor(data?: PartialMessage<PublishLogResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "annex.tests.v1.PublishTestExecutionLogResponse";
+  static readonly typeName = "annex.tests.v1.PublishLogResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "log_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PublishTestExecutionLogResponse {
-    return new PublishTestExecutionLogResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PublishLogResponse {
+    return new PublishLogResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PublishTestExecutionLogResponse {
-    return new PublishTestExecutionLogResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): PublishLogResponse {
+    return new PublishLogResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PublishTestExecutionLogResponse {
-    return new PublishTestExecutionLogResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): PublishLogResponse {
+    return new PublishLogResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: PublishTestExecutionLogResponse | PlainMessage<PublishTestExecutionLogResponse> | undefined, b: PublishTestExecutionLogResponse | PlainMessage<PublishTestExecutionLogResponse> | undefined): boolean {
-    return proto3.util.equals(PublishTestExecutionLogResponse, a, b);
+  static equals(a: PublishLogResponse | PlainMessage<PublishLogResponse> | undefined, b: PublishLogResponse | PlainMessage<PublishLogResponse> | undefined): boolean {
+    return proto3.util.equals(PublishLogResponse, a, b);
   }
 }
 
