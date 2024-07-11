@@ -14,5 +14,5 @@ buf-lint: $(PROTO_FILES)
 
 .PHONY: proto-gen
 proto-gen: $(PROTO_FILES)
-	rm -rf gen/
+	rm -rf **/gen/
 	docker run -v $$(pwd):/srv -w /srv bufbuild/buf:$(BUF_VERSION) generate

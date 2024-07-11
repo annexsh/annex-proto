@@ -1,0 +1,20 @@
+{
+  "name": "@annexsh/annex-proto",
+  "version": "0.1.1",
+  "description": "Annex Protocol Buffers",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/annexsh/annex-proto"
+  },
+  "author": "Annex",
+  "license": "FSL-1.1-Apache-2.0",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}
