@@ -105,12 +105,12 @@ message ListTestExecutionsResponse {
   string next_page_token = 2;
 }
 
-message ListTestCaseExecutionsRequest {
+message ListCaseExecutionsRequest {
   string context = 1;
   string test_execution_id = 2;
 }
 
-message ListTestCaseExecutionsResponse {
+message ListCaseExecutionsResponse {
   repeated CaseExecution case_executions = 1;
 }
 
@@ -160,7 +160,7 @@ message AckCaseExecutionFinishedRequest {
 
 message AckCaseExecutionFinishedResponse {}
 
-message PublishTestExecutionLogRequest {
+message PublishLogRequest {
   string context = 1;
   string test_execution_id = 2;
   optional int32 case_execution_id = 3;
@@ -169,7 +169,7 @@ message PublishTestExecutionLogRequest {
   google.protobuf.Timestamp create_time = 6;
 }
 
-message PublishTestExecutionLogResponse {
+message PublishLogResponse {
   string log_id = 1;
 }
 
@@ -221,7 +221,7 @@ service TestService {
     option (google.api.http) = {get: "/api/v1/contexts/{context}/executions"};
   }
 
-  rpc ListTestCaseExecutions(ListTestCaseExecutionsRequest) returns (ListTestCaseExecutionsResponse) {
+  rpc ListCaseExecutions(ListCaseExecutionsRequest) returns (ListCaseExecutionsResponse) {
     option (google.api.http) = {get: "/api/v1/contexts/{context}/executions/{test_execution_id}/cases"};
   }
 
@@ -245,5 +245,5 @@ service TestService {
 
   rpc AckCaseExecutionFinished(AckCaseExecutionFinishedRequest) returns (AckCaseExecutionFinishedResponse);
 
-  rpc PublishTestExecutionLog(PublishTestExecutionLogRequest) returns (PublishTestExecutionLogResponse);
+  rpc PublishLog(PublishLogRequest) returns (PublishLogResponse);
 }
