@@ -31,4 +31,4 @@ build/
 packages
 .pubspec.lock
 .pub/
-/node_modules
+node_modules/
