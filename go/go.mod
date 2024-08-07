@@ -1,14 +1,14 @@
-module github.com/annexsh/annex-proto
+module github.com/annexsh/annex-proto/go
 
 go 1.22.0
 
 require (
 	connectrpc.com/connect v1.16.2
-	google.golang.org/genproto/googleapis/api v0.0.0-20240528184218-531527333157
-	google.golang.org/protobuf v1.34.1
+	google.golang.org/genproto/googleapis/api v0.0.0-20240805194559-2c9e96a0b5d4
+	google.golang.org/protobuf v1.34.2
 )
 
 require (
 	github.com/google/go-cmp v0.6.0 // indirect
-	golang.org/x/net v0.25.0 // indirect
+	golang.org/x/net v0.28.0 // indirect
 )
