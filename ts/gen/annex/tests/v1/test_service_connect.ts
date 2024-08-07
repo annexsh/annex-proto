@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { AckCaseExecutionFinishedRequest, AckCaseExecutionFinishedResponse, AckCaseExecutionScheduledRequest, AckCaseExecutionScheduledResponse, AckCaseExecutionStartedRequest, AckCaseExecutionStartedResponse, AckTestExecutionFinishedRequest, AckTestExecutionFinishedResponse, AckTestExecutionStartedRequest, AckTestExecutionStartedResponse, ExecuteTestRequest, ExecuteTestResponse, GetTestDefaultInputRequest, GetTestDefaultInputResponse, GetTestExecutionRequest, GetTestExecutionResponse, ListCaseExecutionsRequest, ListCaseExecutionsResponse, ListContextsRequest, ListContextsResponse, ListGroupsRequest, ListGroupsResponse, ListTestExecutionLogsRequest, ListTestExecutionLogsResponse, ListTestExecutionsRequest, ListTestExecutionsResponse, ListTestsRequest, ListTestsResponse, PublishLogRequest, PublishLogResponse, RegisterContextRequest, RegisterContextResponse, RegisterGroupRequest, RegisterGroupResponse, RegisterTestsRequest, RegisterTestsResponse, RetryTestExecutionRequest, RetryTestExecutionResponse } from "./test_service_pb.js";
+import { AckCaseExecutionFinishedRequest, AckCaseExecutionFinishedResponse, AckCaseExecutionScheduledRequest, AckCaseExecutionScheduledResponse, AckCaseExecutionStartedRequest, AckCaseExecutionStartedResponse, AckTestExecutionFinishedRequest, AckTestExecutionFinishedResponse, AckTestExecutionStartedRequest, AckTestExecutionStartedResponse, ExecuteTestRequest, ExecuteTestResponse, GetTestDefaultInputRequest, GetTestDefaultInputResponse, GetTestExecutionRequest, GetTestExecutionResponse, GetTestRequest, GetTestResponse, ListCaseExecutionsRequest, ListCaseExecutionsResponse, ListContextsRequest, ListContextsResponse, ListGroupsRequest, ListGroupsResponse, ListTestExecutionLogsRequest, ListTestExecutionLogsResponse, ListTestExecutionsRequest, ListTestExecutionsResponse, ListTestsRequest, ListTestsResponse, PublishLogRequest, PublishLogResponse, RegisterContextRequest, RegisterContextResponse, RegisterGroupRequest, RegisterGroupResponse, RegisterTestsRequest, RegisterTestsResponse, RetryTestExecutionRequest, RetryTestExecutionResponse } from "./test_service_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -37,6 +37,15 @@ export const TestService = {
       name: "ListTests",
       I: ListTestsRequest,
       O: ListTestsResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * @generated from rpc annex.tests.v1.TestService.GetTest
+     */
+    getTest: {
+      name: "GetTest",
+      I: GetTestRequest,
+      O: GetTestResponse,
       kind: MethodKind.Unary,
     },
     /**

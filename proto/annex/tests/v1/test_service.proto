@@ -55,6 +55,15 @@ message ListTestsResponse {
   string next_page_token = 2;
 }
 
+message GetTestRequest {
+  string context = 1;
+  string test_id = 2;
+}
+
+message GetTestResponse {
+  Test test = 1;
+}
+
 message GetTestDefaultInputRequest {
   string context = 1;
   string test_id = 2;
@@ -193,6 +202,10 @@ service TestService {
 
   rpc ListTests(ListTestsRequest) returns (ListTestsResponse) {
     option (google.api.http) = {get: "/api/v1/contexts/{context}/tests"};
+  }
+
+  rpc GetTest(GetTestRequest) returns (GetTestResponse) {
+    option (google.api.http) = {get: "/api/v1/contexts/{context}/tests/{test_id}"};
   }
 
   rpc GetTestDefaultInput(GetTestDefaultInputRequest) returns (GetTestDefaultInputResponse) {
