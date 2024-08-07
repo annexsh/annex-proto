@@ -8,7 +8,7 @@ import (
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	v1 "github.com/annexsh/annex-proto/gen/go/annex/events/v1"
+	v1 "github.com/annexsh/annex-proto/go/gen/annex/events/v1"
 	http "net/http"
 	strings "strings"
 )

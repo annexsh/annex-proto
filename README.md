@@ -6,6 +6,10 @@ Annex uses [Connect](https://connectrpc.com/) to build gRPC APIs that are browse
 
 Simply run `make gen` to generate code for the protobuf schemas in `proto/`.
 
+## Publishing
+
+TypeScript package are published via `pnpm publish`.
+
 ## Disclaimer
 
 Annex is currently considered as a proof of concept and is not intended for serious use at this stage. Corners have

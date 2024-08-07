@@ -8,7 +8,7 @@ import (
 	connect "connectrpc.com/connect"
 	context "context"
 	errors "errors"
-	v1 "github.com/annexsh/annex-proto/gen/go/annex/tests/v1"
+	v1 "github.com/annexsh/annex-proto/go/gen/annex/tests/v1"
 	http "net/http"
 	strings "strings"
 )
@@ -40,6 +40,8 @@ const (
 	TestServiceListGroupsProcedure = "/annex.tests.v1.TestService/ListGroups"
 	// TestServiceListTestsProcedure is the fully-qualified name of the TestService's ListTests RPC.
 	TestServiceListTestsProcedure = "/annex.tests.v1.TestService/ListTests"
+	// TestServiceGetTestProcedure is the fully-qualified name of the TestService's GetTest RPC.
+	TestServiceGetTestProcedure = "/annex.tests.v1.TestService/GetTest"
 	// TestServiceGetTestDefaultInputProcedure is the fully-qualified name of the TestService's
 	// GetTestDefaultInput RPC.
 	TestServiceGetTestDefaultInputProcedure = "/annex.tests.v1.TestService/GetTestDefaultInput"
@@ -94,6 +96,7 @@ var (
 	testServiceListContextsMethodDescriptor              = testServiceServiceDescriptor.Methods().ByName("ListContexts")
 	testServiceListGroupsMethodDescriptor                = testServiceServiceDescriptor.Methods().ByName("ListGroups")
 	testServiceListTestsMethodDescriptor                 = testServiceServiceDescriptor.Methods().ByName("ListTests")
+	testServiceGetTestMethodDescriptor                   = testServiceServiceDescriptor.Methods().ByName("GetTest")
 	testServiceGetTestDefaultInputMethodDescriptor       = testServiceServiceDescriptor.Methods().ByName("GetTestDefaultInput")
 	testServiceExecuteTestMethodDescriptor               = testServiceServiceDescriptor.Methods().ByName("ExecuteTest")
 	testServiceRetryTestExecutionMethodDescriptor        = testServiceServiceDescriptor.Methods().ByName("RetryTestExecution")
@@ -117,6 +120,7 @@ type TestServiceClient interface {
 	ListContexts(context.Context, *connect.Request[v1.ListContextsRequest]) (*connect.Response[v1.ListContextsResponse], error)
 	ListGroups(context.Context, *connect.Request[v1.ListGroupsRequest]) (*connect.Response[v1.ListGroupsResponse], error)
 	ListTests(context.Context, *connect.Request[v1.ListTestsRequest]) (*connect.Response[v1.ListTestsResponse], error)
+	GetTest(context.Context, *connect.Request[v1.GetTestRequest]) (*connect.Response[v1.GetTestResponse], error)
 	GetTestDefaultInput(context.Context, *connect.Request[v1.GetTestDefaultInputRequest]) (*connect.Response[v1.GetTestDefaultInputResponse], error)
 	ExecuteTest(context.Context, *connect.Request[v1.ExecuteTestRequest]) (*connect.Response[v1.ExecuteTestResponse], error)
 	RetryTestExecution(context.Context, *connect.Request[v1.RetryTestExecutionRequest]) (*connect.Response[v1.RetryTestExecutionResponse], error)
@@ -161,6 +165,12 @@ func NewTestServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			httpClient,
 			baseURL+TestServiceListTestsProcedure,
 			connect.WithSchema(testServiceListTestsMethodDescriptor),
+			connect.WithClientOptions(opts...),
+		),
+		getTest: connect.NewClient[v1.GetTestRequest, v1.GetTestResponse](
+			httpClient,
+			baseURL+TestServiceGetTestProcedure,
+			connect.WithSchema(testServiceGetTestMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		getTestDefaultInput: connect.NewClient[v1.GetTestDefaultInputRequest, v1.GetTestDefaultInputResponse](
@@ -267,6 +277,7 @@ type testServiceClient struct {
 	listContexts              *connect.Client[v1.ListContextsRequest, v1.ListContextsResponse]
 	listGroups                *connect.Client[v1.ListGroupsRequest, v1.ListGroupsResponse]
 	listTests                 *connect.Client[v1.ListTestsRequest, v1.ListTestsResponse]
+	getTest                   *connect.Client[v1.GetTestRequest, v1.GetTestResponse]
 	getTestDefaultInput       *connect.Client[v1.GetTestDefaultInputRequest, v1.GetTestDefaultInputResponse]
 	executeTest               *connect.Client[v1.ExecuteTestRequest, v1.ExecuteTestResponse]
 	retryTestExecution        *connect.Client[v1.RetryTestExecutionRequest, v1.RetryTestExecutionResponse]
@@ -298,6 +309,11 @@ func (c *testServiceClient) ListGroups(ctx context.Context, req *connect.Request
 // ListTests calls annex.tests.v1.TestService.ListTests.
 func (c *testServiceClient) ListTests(ctx context.Context, req *connect.Request[v1.ListTestsRequest]) (*connect.Response[v1.ListTestsResponse], error) {
 	return c.listTests.CallUnary(ctx, req)
+}
+
+// GetTest calls annex.tests.v1.TestService.GetTest.
+func (c *testServiceClient) GetTest(ctx context.Context, req *connect.Request[v1.GetTestRequest]) (*connect.Response[v1.GetTestResponse], error) {
+	return c.getTest.CallUnary(ctx, req)
 }
 
 // GetTestDefaultInput calls annex.tests.v1.TestService.GetTestDefaultInput.
@@ -385,6 +401,7 @@ type TestServiceHandler interface {
 	ListContexts(context.Context, *connect.Request[v1.ListContextsRequest]) (*connect.Response[v1.ListContextsResponse], error)
 	ListGroups(context.Context, *connect.Request[v1.ListGroupsRequest]) (*connect.Response[v1.ListGroupsResponse], error)
 	ListTests(context.Context, *connect.Request[v1.ListTestsRequest]) (*connect.Response[v1.ListTestsResponse], error)
+	GetTest(context.Context, *connect.Request[v1.GetTestRequest]) (*connect.Response[v1.GetTestResponse], error)
 	GetTestDefaultInput(context.Context, *connect.Request[v1.GetTestDefaultInputRequest]) (*connect.Response[v1.GetTestDefaultInputResponse], error)
 	ExecuteTest(context.Context, *connect.Request[v1.ExecuteTestRequest]) (*connect.Response[v1.ExecuteTestResponse], error)
 	RetryTestExecution(context.Context, *connect.Request[v1.RetryTestExecutionRequest]) (*connect.Response[v1.RetryTestExecutionResponse], error)
@@ -425,6 +442,12 @@ func NewTestServiceHandler(svc TestServiceHandler, opts ...connect.HandlerOption
 		TestServiceListTestsProcedure,
 		svc.ListTests,
 		connect.WithSchema(testServiceListTestsMethodDescriptor),
+		connect.WithHandlerOptions(opts...),
+	)
+	testServiceGetTestHandler := connect.NewUnaryHandler(
+		TestServiceGetTestProcedure,
+		svc.GetTest,
+		connect.WithSchema(testServiceGetTestMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	testServiceGetTestDefaultInputHandler := connect.NewUnaryHandler(
@@ -531,6 +554,8 @@ func NewTestServiceHandler(svc TestServiceHandler, opts ...connect.HandlerOption
 			testServiceListGroupsHandler.ServeHTTP(w, r)
 		case TestServiceListTestsProcedure:
 			testServiceListTestsHandler.ServeHTTP(w, r)
+		case TestServiceGetTestProcedure:
+			testServiceGetTestHandler.ServeHTTP(w, r)
 		case TestServiceGetTestDefaultInputProcedure:
 			testServiceGetTestDefaultInputHandler.ServeHTTP(w, r)
 		case TestServiceExecuteTestProcedure:
@@ -582,6 +607,10 @@ func (UnimplementedTestServiceHandler) ListGroups(context.Context, *connect.Requ
 
 func (UnimplementedTestServiceHandler) ListTests(context.Context, *connect.Request[v1.ListTestsRequest]) (*connect.Response[v1.ListTestsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.ListTests is not implemented"))
+}
+
+func (UnimplementedTestServiceHandler) GetTest(context.Context, *connect.Request[v1.GetTestRequest]) (*connect.Response[v1.GetTestResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.GetTest is not implemented"))
 }
 
 func (UnimplementedTestServiceHandler) GetTestDefaultInput(context.Context, *connect.Request[v1.GetTestDefaultInputRequest]) (*connect.Response[v1.GetTestDefaultInputResponse], error) {

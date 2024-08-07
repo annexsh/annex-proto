@@ -15,7 +15,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file annex/tests/v1/test_service.proto.
  */
 export const file_annex_tests_v1_test_service: GenFile = /*@__PURE__*/
-  fileDesc("CiFhbm5leC90ZXN0cy92MS90ZXN0X3NlcnZpY2UucHJvdG8SDmFubmV4LnRlc3RzLnYxIikKFlJlZ2lzdGVyQ29udGV4dFJlcXVlc3QSDwoHY29udGV4dBgBIAEoCSIZChdSZWdpc3RlckNvbnRleHRSZXNwb25zZSIVChNMaXN0Q29udGV4dHNSZXF1ZXN0IigKFExpc3RDb250ZXh0c1Jlc3BvbnNlEhAKCGNvbnRleHRzGAEgAygJIjUKFFJlZ2lzdGVyR3JvdXBSZXF1ZXN0Eg8KB2NvbnRleHQYASABKAkSDAoEbmFtZRgCIAEoCSIXChVSZWdpc3Rlckdyb3VwUmVzcG9uc2UiJAoRTGlzdEdyb3Vwc1JlcXVlc3QSDwoHY29udGV4dBgBIAEoCSI7ChJMaXN0R3JvdXBzUmVzcG9uc2USJQoGZ3JvdXBzGAEgAygLMhUuYW5uZXgudGVzdHMudjEuR3JvdXAiawoUUmVnaXN0ZXJUZXN0c1JlcXVlc3QSDwoHY29udGV4dBgBIAEoCRINCgVncm91cBgCIAEoCRIzCgtkZWZpbml0aW9ucxgEIAMoCzIeLmFubmV4LnRlc3RzLnYxLlRlc3REZWZpbml0aW9uIjwKFVJlZ2lzdGVyVGVzdHNSZXNwb25zZRIjCgV0ZXN0cxgBIAMoCzIULmFubmV4LnRlc3RzLnYxLlRlc3QiXgoQTGlzdFRlc3RzUmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEg0KBWdyb3VwGAIgASgJEhEKCXBhZ2Vfc2l6ZRgDIAEoBRIXCg9uZXh0X3BhZ2VfdG9rZW4YBCABKAkiUQoRTGlzdFRlc3RzUmVzcG9uc2USIwoFdGVzdHMYASADKAsyFC5hbm5leC50ZXN0cy52MS5UZXN0EhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSI+ChpHZXRUZXN0RGVmYXVsdElucHV0UmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEg8KB3Rlc3RfaWQYAiABKAkiNAobR2V0VGVzdERlZmF1bHRJbnB1dFJlc3BvbnNlEhUKDWRlZmF1bHRfaW5wdXQYASABKAkibQoSRXhlY3V0ZVRlc3RSZXF1ZXN0Eg8KB2NvbnRleHQYASABKAkSDwoHdGVzdF9pZBgCIAEoCRIrCgVpbnB1dBgDIAEoCzIXLmFubmV4LnRlc3RzLnYxLlBheWxvYWRIAIgBAUIICgZfaW5wdXQiTAoTRXhlY3V0ZVRlc3RSZXNwb25zZRI1Cg50ZXN0X2V4ZWN1dGlvbhgBIAEoCzIdLmFubmV4LnRlc3RzLnYxLlRlc3RFeGVjdXRpb24iRwoZUmV0cnlUZXN0RXhlY3V0aW9uUmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEhkKEXRlc3RfZXhlY3V0aW9uX2lkGAIgASgJIlMKGlJldHJ5VGVzdEV4ZWN1dGlvblJlc3BvbnNlEjUKDnRlc3RfZXhlY3V0aW9uGAEgASgLMh0uYW5uZXgudGVzdHMudjEuVGVzdEV4ZWN1dGlvbiJFChdHZXRUZXN0RXhlY3V0aW9uUmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEhkKEXRlc3RfZXhlY3V0aW9uX2lkGAIgASgJIogBChhHZXRUZXN0RXhlY3V0aW9uUmVzcG9uc2USNQoOdGVzdF9leGVjdXRpb24YASABKAsyHS5hbm5leC50ZXN0cy52MS5UZXN0RXhlY3V0aW9uEisKBWlucHV0GAIgASgLMhcuYW5uZXgudGVzdHMudjEuUGF5bG9hZEgAiAEBQggKBl9pbnB1dCJpChlMaXN0VGVzdEV4ZWN1dGlvbnNSZXF1ZXN0Eg8KB2NvbnRleHQYASABKAkSDwoHdGVzdF9pZBgCIAEoCRIRCglwYWdlX3NpemUYAyABKAUSFwoPbmV4dF9wYWdlX3Rva2VuGAQgASgJIm0KGkxpc3RUZXN0RXhlY3V0aW9uc1Jlc3BvbnNlEjYKD3Rlc3RfZXhlY3V0aW9ucxgBIAMoCzIdLmFubmV4LnRlc3RzLnYxLlRlc3RFeGVjdXRpb24SFwoPbmV4dF9wYWdlX3Rva2VuGAIgASgJIkcKGUxpc3RDYXNlRXhlY3V0aW9uc1JlcXVlc3QSDwoHY29udGV4dBgBIAEoCRIZChF0ZXN0X2V4ZWN1dGlvbl9pZBgCIAEoCSJUChpMaXN0Q2FzZUV4ZWN1dGlvbnNSZXNwb25zZRI2Cg9jYXNlX2V4ZWN1dGlvbnMYASADKAsyHS5hbm5leC50ZXN0cy52MS5DYXNlRXhlY3V0aW9uInwKHkFja1Rlc3RFeGVjdXRpb25TdGFydGVkUmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEhkKEXRlc3RfZXhlY3V0aW9uX2lkGAIgASgJEi4KCnN0YXJ0X3RpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIiEKH0Fja1Rlc3RFeGVjdXRpb25TdGFydGVkUmVzcG9uc2UinAEKH0Fja1Rlc3RFeGVjdXRpb25GaW5pc2hlZFJlcXVlc3QSDwoHY29udGV4dBgBIAEoCRIZChF0ZXN0X2V4ZWN1dGlvbl9pZBgCIAEoCRIvCgtmaW5pc2hfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXASEgoFZXJyb3IYBCABKAlIAIgBAUIICgZfZXJyb3IiIgogQWNrVGVzdEV4ZWN1dGlvbkZpbmlzaGVkUmVzcG9uc2UirwEKIEFja0Nhc2VFeGVjdXRpb25TY2hlZHVsZWRSZXF1ZXN0Eg8KB2NvbnRleHQYASABKAkSGQoRdGVzdF9leGVjdXRpb25faWQYAiABKAkSGQoRY2FzZV9leGVjdXRpb25faWQYAyABKAUSEQoJY2FzZV9uYW1lGAQgASgJEjEKDXNjaGVkdWxlX3RpbWUYBSABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wIiMKIUFja0Nhc2VFeGVjdXRpb25TY2hlZHVsZWRSZXNwb25zZSKXAQoeQWNrQ2FzZUV4ZWN1dGlvblN0YXJ0ZWRSZXF1ZXN0Eg8KB2NvbnRleHQYASABKAkSGQoRdGVzdF9leGVjdXRpb25faWQYAiABKAkSGQoRY2FzZV9leGVjdXRpb25faWQYAyABKAUSLgoKc3RhcnRfdGltZRgEIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiIQofQWNrQ2FzZUV4ZWN1dGlvblN0YXJ0ZWRSZXNwb25zZSK3AQofQWNrQ2FzZUV4ZWN1dGlvbkZpbmlzaGVkUmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEhkKEXRlc3RfZXhlY3V0aW9uX2lkGAIgASgJEhkKEWNhc2VfZXhlY3V0aW9uX2lkGAMgASgFEi8KC2ZpbmlzaF90aW1lGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBISCgVlcnJvchgFIAEoCUgAiAEBQggKBl9lcnJvciIiCiBBY2tDYXNlRXhlY3V0aW9uRmluaXNoZWRSZXNwb25zZSLGAQoRUHVibGlzaExvZ1JlcXVlc3QSDwoHY29udGV4dBgBIAEoCRIZChF0ZXN0X2V4ZWN1dGlvbl9pZBgCIAEoCRIeChFjYXNlX2V4ZWN1dGlvbl9pZBgDIAEoBUgAiAEBEg0KBWxldmVsGAQgASgJEg8KB21lc3NhZ2UYBSABKAkSLwoLY3JlYXRlX3RpbWUYBiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQhQKEl9jYXNlX2V4ZWN1dGlvbl9pZCIkChJQdWJsaXNoTG9nUmVzcG9uc2USDgoGbG9nX2lkGAEgASgJIkoKHExpc3RUZXN0RXhlY3V0aW9uTG9nc1JlcXVlc3QSDwoHY29udGV4dBgBIAEoCRIZChF0ZXN0X2V4ZWN1dGlvbl9pZBgCIAEoCSJCCh1MaXN0VGVzdEV4ZWN1dGlvbkxvZ3NSZXNwb25zZRIhCgRsb2dzGAEgAygLMhMuYW5uZXgudGVzdHMudjEuTG9nMqIUCgtUZXN0U2VydmljZRJzCgxMaXN0Q29udGV4dHMSIy5hbm5leC50ZXN0cy52MS5MaXN0Q29udGV4dHNSZXF1ZXN0GiQuYW5uZXgudGVzdHMudjEuTGlzdENvbnRleHRzUmVzcG9uc2UiGILT5JMCEhIQL2FwaS92MS9jb250ZXh0cxJ+CgpMaXN0R3JvdXBzEiEuYW5uZXgudGVzdHMudjEuTGlzdEdyb3Vwc1JlcXVlc3QaIi5hbm5leC50ZXN0cy52MS5MaXN0R3JvdXBzUmVzcG9uc2UiKYLT5JMCIxIhL2FwaS92MS9jb250ZXh0cy97Y29udGV4dH0vZ3JvdXBzEnoKCUxpc3RUZXN0cxIgLmFubmV4LnRlc3RzLnYxLkxpc3RUZXN0c1JlcXVlc3QaIS5hbm5leC50ZXN0cy52MS5MaXN0VGVzdHNSZXNwb25zZSIogtPkkwIiEiAvYXBpL3YxL2NvbnRleHRzL3tjb250ZXh0fS90ZXN0cxKwAQoTR2V0VGVzdERlZmF1bHRJbnB1dBIqLmFubmV4LnRlc3RzLnYxLkdldFRlc3REZWZhdWx0SW5wdXRSZXF1ZXN0GisuYW5uZXgudGVzdHMudjEuR2V0VGVzdERlZmF1bHRJbnB1dFJlc3BvbnNlIkCC0+STAjoSOC9hcGkvdjEvY29udGV4dHMve2NvbnRleHR9L3Rlc3RzL3t0ZXN0X2lkfS9kZWZhdWx0LWlucHV0EogBCgtFeGVjdXRlVGVzdBIiLmFubmV4LnRlc3RzLnYxLkV4ZWN1dGVUZXN0UmVxdWVzdBojLmFubmV4LnRlc3RzLnYxLkV4ZWN1dGVUZXN0UmVzcG9uc2UiMILT5JMCKjoBKiIlL2FwaS92MS9jb250ZXh0cy97Y29udGV4dH0vZXhlY3V0aW9ucxK3AQoSUmV0cnlUZXN0RXhlY3V0aW9uEikuYW5uZXgudGVzdHMudjEuUmV0cnlUZXN0RXhlY3V0aW9uUmVxdWVzdBoqLmFubmV4LnRlc3RzLnYxLlJldHJ5VGVzdEV4ZWN1dGlvblJlc3BvbnNlIkqC0+STAkQ6ASoiPy9hcGkvdjEvY29udGV4dHMve2NvbnRleHR9L2V4ZWN1dGlvbnMve3Rlc3RfZXhlY3V0aW9uX2lkfS9yZXRyeRKoAQoQR2V0VGVzdEV4ZWN1dGlvbhInLmFubmV4LnRlc3RzLnYxLkdldFRlc3RFeGVjdXRpb25SZXF1ZXN0GiguYW5uZXgudGVzdHMudjEuR2V0VGVzdEV4ZWN1dGlvblJlc3BvbnNlIkGC0+STAjsSOS9hcGkvdjEvY29udGV4dHMve2NvbnRleHR9L2V4ZWN1dGlvbnMve3Rlc3RfZXhlY3V0aW9uX2lkfRKaAQoSTGlzdFRlc3RFeGVjdXRpb25zEikuYW5uZXgudGVzdHMudjEuTGlzdFRlc3RFeGVjdXRpb25zUmVxdWVzdBoqLmFubmV4LnRlc3RzLnYxLkxpc3RUZXN0RXhlY3V0aW9uc1Jlc3BvbnNlIi2C0+STAicSJS9hcGkvdjEvY29udGV4dHMve2NvbnRleHR9L2V4ZWN1dGlvbnMStAEKEkxpc3RDYXNlRXhlY3V0aW9ucxIpLmFubmV4LnRlc3RzLnYxLkxpc3RDYXNlRXhlY3V0aW9uc1JlcXVlc3QaKi5hbm5leC50ZXN0cy52MS5MaXN0Q2FzZUV4ZWN1dGlvbnNSZXNwb25zZSJHgtPkkwJBEj8vYXBpL3YxL2NvbnRleHRzL3tjb250ZXh0fS9leGVjdXRpb25zL3t0ZXN0X2V4ZWN1dGlvbl9pZH0vY2FzZXMSvAEKFUxpc3RUZXN0RXhlY3V0aW9uTG9ncxIsLmFubmV4LnRlc3RzLnYxLkxpc3RUZXN0RXhlY3V0aW9uTG9nc1JlcXVlc3QaLS5hbm5leC50ZXN0cy52MS5MaXN0VGVzdEV4ZWN1dGlvbkxvZ3NSZXNwb25zZSJGgtPkkwJAEj4vYXBpL3YxL2NvbnRleHRzL3tjb250ZXh0fS9leGVjdXRpb25zL3t0ZXN0X2V4ZWN1dGlvbl9pZH0vbG9ncxJiCg9SZWdpc3RlckNvbnRleHQSJi5hbm5leC50ZXN0cy52MS5SZWdpc3RlckNvbnRleHRSZXF1ZXN0GicuYW5uZXgudGVzdHMudjEuUmVnaXN0ZXJDb250ZXh0UmVzcG9uc2USXAoNUmVnaXN0ZXJHcm91cBIkLmFubmV4LnRlc3RzLnYxLlJlZ2lzdGVyR3JvdXBSZXF1ZXN0GiUuYW5uZXgudGVzdHMudjEuUmVnaXN0ZXJHcm91cFJlc3BvbnNlElwKDVJlZ2lzdGVyVGVzdHMSJC5hbm5leC50ZXN0cy52MS5SZWdpc3RlclRlc3RzUmVxdWVzdBolLmFubmV4LnRlc3RzLnYxLlJlZ2lzdGVyVGVzdHNSZXNwb25zZRJ6ChdBY2tUZXN0RXhlY3V0aW9uU3RhcnRlZBIuLmFubmV4LnRlc3RzLnYxLkFja1Rlc3RFeGVjdXRpb25TdGFydGVkUmVxdWVzdBovLmFubmV4LnRlc3RzLnYxLkFja1Rlc3RFeGVjdXRpb25TdGFydGVkUmVzcG9uc2USfQoYQWNrVGVzdEV4ZWN1dGlvbkZpbmlzaGVkEi8uYW5uZXgudGVzdHMudjEuQWNrVGVzdEV4ZWN1dGlvbkZpbmlzaGVkUmVxdWVzdBowLmFubmV4LnRlc3RzLnYxLkFja1Rlc3RFeGVjdXRpb25GaW5pc2hlZFJlc3BvbnNlEoABChlBY2tDYXNlRXhlY3V0aW9uU2NoZWR1bGVkEjAuYW5uZXgudGVzdHMudjEuQWNrQ2FzZUV4ZWN1dGlvblNjaGVkdWxlZFJlcXVlc3QaMS5hbm5leC50ZXN0cy52MS5BY2tDYXNlRXhlY3V0aW9uU2NoZWR1bGVkUmVzcG9uc2USegoXQWNrQ2FzZUV4ZWN1dGlvblN0YXJ0ZWQSLi5hbm5leC50ZXN0cy52MS5BY2tDYXNlRXhlY3V0aW9uU3RhcnRlZFJlcXVlc3QaLy5hbm5leC50ZXN0cy52MS5BY2tDYXNlRXhlY3V0aW9uU3RhcnRlZFJlc3BvbnNlEn0KGEFja0Nhc2VFeGVjdXRpb25GaW5pc2hlZBIvLmFubmV4LnRlc3RzLnYxLkFja0Nhc2VFeGVjdXRpb25GaW5pc2hlZFJlcXVlc3QaMC5hbm5leC50ZXN0cy52MS5BY2tDYXNlRXhlY3V0aW9uRmluaXNoZWRSZXNwb25zZRJTCgpQdWJsaXNoTG9nEiEuYW5uZXgudGVzdHMudjEuUHVibGlzaExvZ1JlcXVlc3QaIi5hbm5leC50ZXN0cy52MS5QdWJsaXNoTG9nUmVzcG9uc2VCvgEKEmNvbS5hbm5leC50ZXN0cy52MUIQVGVzdFNlcnZpY2VQcm90b1ABWjxnaXRodWIuY29tL2FubmV4c2gvYW5uZXgtcHJvdG8vZ2VuL2dvL2FubmV4L3Rlc3RzL3YxO3Rlc3RzdjGiAgNBVFiqAg5Bbm5leC5UZXN0cy5WMcoCDkFubmV4XFRlc3RzXFYx4gIaQW5uZXhcVGVzdHNcVjFcR1BCTWV0YWRhdGHqAhBBbm5leDo6VGVzdHM6OlYxYgZwcm90bzM", [file_annex_tests_v1_test, file_google_api_annotations, file_google_protobuf_timestamp]);
+  fileDesc("CiFhbm5leC90ZXN0cy92MS90ZXN0X3NlcnZpY2UucHJvdG8SDmFubmV4LnRlc3RzLnYxIikKFlJlZ2lzdGVyQ29udGV4dFJlcXVlc3QSDwoHY29udGV4dBgBIAEoCSIZChdSZWdpc3RlckNvbnRleHRSZXNwb25zZSIVChNMaXN0Q29udGV4dHNSZXF1ZXN0IigKFExpc3RDb250ZXh0c1Jlc3BvbnNlEhAKCGNvbnRleHRzGAEgAygJIjUKFFJlZ2lzdGVyR3JvdXBSZXF1ZXN0Eg8KB2NvbnRleHQYASABKAkSDAoEbmFtZRgCIAEoCSIXChVSZWdpc3Rlckdyb3VwUmVzcG9uc2UiJAoRTGlzdEdyb3Vwc1JlcXVlc3QSDwoHY29udGV4dBgBIAEoCSI7ChJMaXN0R3JvdXBzUmVzcG9uc2USJQoGZ3JvdXBzGAEgAygLMhUuYW5uZXgudGVzdHMudjEuR3JvdXAiawoUUmVnaXN0ZXJUZXN0c1JlcXVlc3QSDwoHY29udGV4dBgBIAEoCRINCgVncm91cBgCIAEoCRIzCgtkZWZpbml0aW9ucxgEIAMoCzIeLmFubmV4LnRlc3RzLnYxLlRlc3REZWZpbml0aW9uIjwKFVJlZ2lzdGVyVGVzdHNSZXNwb25zZRIjCgV0ZXN0cxgBIAMoCzIULmFubmV4LnRlc3RzLnYxLlRlc3QiXgoQTGlzdFRlc3RzUmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEg0KBWdyb3VwGAIgASgJEhEKCXBhZ2Vfc2l6ZRgDIAEoBRIXCg9uZXh0X3BhZ2VfdG9rZW4YBCABKAkiUQoRTGlzdFRlc3RzUmVzcG9uc2USIwoFdGVzdHMYASADKAsyFC5hbm5leC50ZXN0cy52MS5UZXN0EhcKD25leHRfcGFnZV90b2tlbhgCIAEoCSIyCg5HZXRUZXN0UmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEg8KB3Rlc3RfaWQYAiABKAkiNQoPR2V0VGVzdFJlc3BvbnNlEiIKBHRlc3QYASABKAsyFC5hbm5leC50ZXN0cy52MS5UZXN0Ij4KGkdldFRlc3REZWZhdWx0SW5wdXRSZXF1ZXN0Eg8KB2NvbnRleHQYASABKAkSDwoHdGVzdF9pZBgCIAEoCSI0ChtHZXRUZXN0RGVmYXVsdElucHV0UmVzcG9uc2USFQoNZGVmYXVsdF9pbnB1dBgBIAEoCSJtChJFeGVjdXRlVGVzdFJlcXVlc3QSDwoHY29udGV4dBgBIAEoCRIPCgd0ZXN0X2lkGAIgASgJEisKBWlucHV0GAMgASgLMhcuYW5uZXgudGVzdHMudjEuUGF5bG9hZEgAiAEBQggKBl9pbnB1dCJMChNFeGVjdXRlVGVzdFJlc3BvbnNlEjUKDnRlc3RfZXhlY3V0aW9uGAEgASgLMh0uYW5uZXgudGVzdHMudjEuVGVzdEV4ZWN1dGlvbiJHChlSZXRyeVRlc3RFeGVjdXRpb25SZXF1ZXN0Eg8KB2NvbnRleHQYASABKAkSGQoRdGVzdF9leGVjdXRpb25faWQYAiABKAkiUwoaUmV0cnlUZXN0RXhlY3V0aW9uUmVzcG9uc2USNQoOdGVzdF9leGVjdXRpb24YASABKAsyHS5hbm5leC50ZXN0cy52MS5UZXN0RXhlY3V0aW9uIkUKF0dldFRlc3RFeGVjdXRpb25SZXF1ZXN0Eg8KB2NvbnRleHQYASABKAkSGQoRdGVzdF9leGVjdXRpb25faWQYAiABKAkiiAEKGEdldFRlc3RFeGVjdXRpb25SZXNwb25zZRI1Cg50ZXN0X2V4ZWN1dGlvbhgBIAEoCzIdLmFubmV4LnRlc3RzLnYxLlRlc3RFeGVjdXRpb24SKwoFaW5wdXQYAiABKAsyFy5hbm5leC50ZXN0cy52MS5QYXlsb2FkSACIAQFCCAoGX2lucHV0ImkKGUxpc3RUZXN0RXhlY3V0aW9uc1JlcXVlc3QSDwoHY29udGV4dBgBIAEoCRIPCgd0ZXN0X2lkGAIgASgJEhEKCXBhZ2Vfc2l6ZRgDIAEoBRIXCg9uZXh0X3BhZ2VfdG9rZW4YBCABKAkibQoaTGlzdFRlc3RFeGVjdXRpb25zUmVzcG9uc2USNgoPdGVzdF9leGVjdXRpb25zGAEgAygLMh0uYW5uZXgudGVzdHMudjEuVGVzdEV4ZWN1dGlvbhIXCg9uZXh0X3BhZ2VfdG9rZW4YAiABKAkiRwoZTGlzdENhc2VFeGVjdXRpb25zUmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEhkKEXRlc3RfZXhlY3V0aW9uX2lkGAIgASgJIlQKGkxpc3RDYXNlRXhlY3V0aW9uc1Jlc3BvbnNlEjYKD2Nhc2VfZXhlY3V0aW9ucxgBIAMoCzIdLmFubmV4LnRlc3RzLnYxLkNhc2VFeGVjdXRpb24ifAoeQWNrVGVzdEV4ZWN1dGlvblN0YXJ0ZWRSZXF1ZXN0Eg8KB2NvbnRleHQYASABKAkSGQoRdGVzdF9leGVjdXRpb25faWQYAiABKAkSLgoKc3RhcnRfdGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiIQofQWNrVGVzdEV4ZWN1dGlvblN0YXJ0ZWRSZXNwb25zZSKcAQofQWNrVGVzdEV4ZWN1dGlvbkZpbmlzaGVkUmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEhkKEXRlc3RfZXhlY3V0aW9uX2lkGAIgASgJEi8KC2ZpbmlzaF90aW1lGAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcBISCgVlcnJvchgEIAEoCUgAiAEBQggKBl9lcnJvciIiCiBBY2tUZXN0RXhlY3V0aW9uRmluaXNoZWRSZXNwb25zZSKvAQogQWNrQ2FzZUV4ZWN1dGlvblNjaGVkdWxlZFJlcXVlc3QSDwoHY29udGV4dBgBIAEoCRIZChF0ZXN0X2V4ZWN1dGlvbl9pZBgCIAEoCRIZChFjYXNlX2V4ZWN1dGlvbl9pZBgDIAEoBRIRCgljYXNlX25hbWUYBCABKAkSMQoNc2NoZWR1bGVfdGltZRgFIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXAiIwohQWNrQ2FzZUV4ZWN1dGlvblNjaGVkdWxlZFJlc3BvbnNlIpcBCh5BY2tDYXNlRXhlY3V0aW9uU3RhcnRlZFJlcXVlc3QSDwoHY29udGV4dBgBIAEoCRIZChF0ZXN0X2V4ZWN1dGlvbl9pZBgCIAEoCRIZChFjYXNlX2V4ZWN1dGlvbl9pZBgDIAEoBRIuCgpzdGFydF90aW1lGAQgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcCIhCh9BY2tDYXNlRXhlY3V0aW9uU3RhcnRlZFJlc3BvbnNlIrcBCh9BY2tDYXNlRXhlY3V0aW9uRmluaXNoZWRSZXF1ZXN0Eg8KB2NvbnRleHQYASABKAkSGQoRdGVzdF9leGVjdXRpb25faWQYAiABKAkSGQoRY2FzZV9leGVjdXRpb25faWQYAyABKAUSLwoLZmluaXNoX3RpbWUYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wEhIKBWVycm9yGAUgASgJSACIAQFCCAoGX2Vycm9yIiIKIEFja0Nhc2VFeGVjdXRpb25GaW5pc2hlZFJlc3BvbnNlIsYBChFQdWJsaXNoTG9nUmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEhkKEXRlc3RfZXhlY3V0aW9uX2lkGAIgASgJEh4KEWNhc2VfZXhlY3V0aW9uX2lkGAMgASgFSACIAQESDQoFbGV2ZWwYBCABKAkSDwoHbWVzc2FnZRgFIAEoCRIvCgtjcmVhdGVfdGltZRgGIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCFAoSX2Nhc2VfZXhlY3V0aW9uX2lkIiQKElB1Ymxpc2hMb2dSZXNwb25zZRIOCgZsb2dfaWQYASABKAkiSgocTGlzdFRlc3RFeGVjdXRpb25Mb2dzUmVxdWVzdBIPCgdjb250ZXh0GAEgASgJEhkKEXRlc3RfZXhlY3V0aW9uX2lkGAIgASgJIkIKHUxpc3RUZXN0RXhlY3V0aW9uTG9nc1Jlc3BvbnNlEiEKBGxvZ3MYASADKAsyEy5hbm5leC50ZXN0cy52MS5Mb2cyohUKC1Rlc3RTZXJ2aWNlEnMKDExpc3RDb250ZXh0cxIjLmFubmV4LnRlc3RzLnYxLkxpc3RDb250ZXh0c1JlcXVlc3QaJC5hbm5leC50ZXN0cy52MS5MaXN0Q29udGV4dHNSZXNwb25zZSIYgtPkkwISEhAvYXBpL3YxL2NvbnRleHRzEn4KCkxpc3RHcm91cHMSIS5hbm5leC50ZXN0cy52MS5MaXN0R3JvdXBzUmVxdWVzdBoiLmFubmV4LnRlc3RzLnYxLkxpc3RHcm91cHNSZXNwb25zZSIpgtPkkwIjEiEvYXBpL3YxL2NvbnRleHRzL3tjb250ZXh0fS9ncm91cHMSegoJTGlzdFRlc3RzEiAuYW5uZXgudGVzdHMudjEuTGlzdFRlc3RzUmVxdWVzdBohLmFubmV4LnRlc3RzLnYxLkxpc3RUZXN0c1Jlc3BvbnNlIiiC0+STAiISIC9hcGkvdjEvY29udGV4dHMve2NvbnRleHR9L3Rlc3RzEn4KB0dldFRlc3QSHi5hbm5leC50ZXN0cy52MS5HZXRUZXN0UmVxdWVzdBofLmFubmV4LnRlc3RzLnYxLkdldFRlc3RSZXNwb25zZSIygtPkkwIsEiovYXBpL3YxL2NvbnRleHRzL3tjb250ZXh0fS90ZXN0cy97dGVzdF9pZH0SsAEKE0dldFRlc3REZWZhdWx0SW5wdXQSKi5hbm5leC50ZXN0cy52MS5HZXRUZXN0RGVmYXVsdElucHV0UmVxdWVzdBorLmFubmV4LnRlc3RzLnYxLkdldFRlc3REZWZhdWx0SW5wdXRSZXNwb25zZSJAgtPkkwI6EjgvYXBpL3YxL2NvbnRleHRzL3tjb250ZXh0fS90ZXN0cy97dGVzdF9pZH0vZGVmYXVsdC1pbnB1dBKIAQoLRXhlY3V0ZVRlc3QSIi5hbm5leC50ZXN0cy52MS5FeGVjdXRlVGVzdFJlcXVlc3QaIy5hbm5leC50ZXN0cy52MS5FeGVjdXRlVGVzdFJlc3BvbnNlIjCC0+STAio6ASoiJS9hcGkvdjEvY29udGV4dHMve2NvbnRleHR9L2V4ZWN1dGlvbnMStwEKElJldHJ5VGVzdEV4ZWN1dGlvbhIpLmFubmV4LnRlc3RzLnYxLlJldHJ5VGVzdEV4ZWN1dGlvblJlcXVlc3QaKi5hbm5leC50ZXN0cy52MS5SZXRyeVRlc3RFeGVjdXRpb25SZXNwb25zZSJKgtPkkwJEOgEqIj8vYXBpL3YxL2NvbnRleHRzL3tjb250ZXh0fS9leGVjdXRpb25zL3t0ZXN0X2V4ZWN1dGlvbl9pZH0vcmV0cnkSqAEKEEdldFRlc3RFeGVjdXRpb24SJy5hbm5leC50ZXN0cy52MS5HZXRUZXN0RXhlY3V0aW9uUmVxdWVzdBooLmFubmV4LnRlc3RzLnYxLkdldFRlc3RFeGVjdXRpb25SZXNwb25zZSJBgtPkkwI7EjkvYXBpL3YxL2NvbnRleHRzL3tjb250ZXh0fS9leGVjdXRpb25zL3t0ZXN0X2V4ZWN1dGlvbl9pZH0SmgEKEkxpc3RUZXN0RXhlY3V0aW9ucxIpLmFubmV4LnRlc3RzLnYxLkxpc3RUZXN0RXhlY3V0aW9uc1JlcXVlc3QaKi5hbm5leC50ZXN0cy52MS5MaXN0VGVzdEV4ZWN1dGlvbnNSZXNwb25zZSItgtPkkwInEiUvYXBpL3YxL2NvbnRleHRzL3tjb250ZXh0fS9leGVjdXRpb25zErQBChJMaXN0Q2FzZUV4ZWN1dGlvbnMSKS5hbm5leC50ZXN0cy52MS5MaXN0Q2FzZUV4ZWN1dGlvbnNSZXF1ZXN0GiouYW5uZXgudGVzdHMudjEuTGlzdENhc2VFeGVjdXRpb25zUmVzcG9uc2UiR4LT5JMCQRI/L2FwaS92MS9jb250ZXh0cy97Y29udGV4dH0vZXhlY3V0aW9ucy97dGVzdF9leGVjdXRpb25faWR9L2Nhc2VzErwBChVMaXN0VGVzdEV4ZWN1dGlvbkxvZ3MSLC5hbm5leC50ZXN0cy52MS5MaXN0VGVzdEV4ZWN1dGlvbkxvZ3NSZXF1ZXN0Gi0uYW5uZXgudGVzdHMudjEuTGlzdFRlc3RFeGVjdXRpb25Mb2dzUmVzcG9uc2UiRoLT5JMCQBI+L2FwaS92MS9jb250ZXh0cy97Y29udGV4dH0vZXhlY3V0aW9ucy97dGVzdF9leGVjdXRpb25faWR9L2xvZ3MSYgoPUmVnaXN0ZXJDb250ZXh0EiYuYW5uZXgudGVzdHMudjEuUmVnaXN0ZXJDb250ZXh0UmVxdWVzdBonLmFubmV4LnRlc3RzLnYxLlJlZ2lzdGVyQ29udGV4dFJlc3BvbnNlElwKDVJlZ2lzdGVyR3JvdXASJC5hbm5leC50ZXN0cy52MS5SZWdpc3Rlckdyb3VwUmVxdWVzdBolLmFubmV4LnRlc3RzLnYxLlJlZ2lzdGVyR3JvdXBSZXNwb25zZRJcCg1SZWdpc3RlclRlc3RzEiQuYW5uZXgudGVzdHMudjEuUmVnaXN0ZXJUZXN0c1JlcXVlc3QaJS5hbm5leC50ZXN0cy52MS5SZWdpc3RlclRlc3RzUmVzcG9uc2USegoXQWNrVGVzdEV4ZWN1dGlvblN0YXJ0ZWQSLi5hbm5leC50ZXN0cy52MS5BY2tUZXN0RXhlY3V0aW9uU3RhcnRlZFJlcXVlc3QaLy5hbm5leC50ZXN0cy52MS5BY2tUZXN0RXhlY3V0aW9uU3RhcnRlZFJlc3BvbnNlEn0KGEFja1Rlc3RFeGVjdXRpb25GaW5pc2hlZBIvLmFubmV4LnRlc3RzLnYxLkFja1Rlc3RFeGVjdXRpb25GaW5pc2hlZFJlcXVlc3QaMC5hbm5leC50ZXN0cy52MS5BY2tUZXN0RXhlY3V0aW9uRmluaXNoZWRSZXNwb25zZRKAAQoZQWNrQ2FzZUV4ZWN1dGlvblNjaGVkdWxlZBIwLmFubmV4LnRlc3RzLnYxLkFja0Nhc2VFeGVjdXRpb25TY2hlZHVsZWRSZXF1ZXN0GjEuYW5uZXgudGVzdHMudjEuQWNrQ2FzZUV4ZWN1dGlvblNjaGVkdWxlZFJlc3BvbnNlEnoKF0Fja0Nhc2VFeGVjdXRpb25TdGFydGVkEi4uYW5uZXgudGVzdHMudjEuQWNrQ2FzZUV4ZWN1dGlvblN0YXJ0ZWRSZXF1ZXN0Gi8uYW5uZXgudGVzdHMudjEuQWNrQ2FzZUV4ZWN1dGlvblN0YXJ0ZWRSZXNwb25zZRJ9ChhBY2tDYXNlRXhlY3V0aW9uRmluaXNoZWQSLy5hbm5leC50ZXN0cy52MS5BY2tDYXNlRXhlY3V0aW9uRmluaXNoZWRSZXF1ZXN0GjAuYW5uZXgudGVzdHMudjEuQWNrQ2FzZUV4ZWN1dGlvbkZpbmlzaGVkUmVzcG9uc2USUwoKUHVibGlzaExvZxIhLmFubmV4LnRlc3RzLnYxLlB1Ymxpc2hMb2dSZXF1ZXN0GiIuYW5uZXgudGVzdHMudjEuUHVibGlzaExvZ1Jlc3BvbnNlQr4BChJjb20uYW5uZXgudGVzdHMudjFCEFRlc3RTZXJ2aWNlUHJvdG9QAVo8Z2l0aHViLmNvbS9hbm5leHNoL2FubmV4LXByb3RvL2dvL2dlbi9hbm5leC90ZXN0cy92MTt0ZXN0c3YxogIDQVRYqgIOQW5uZXguVGVzdHMuVjHKAg5Bbm5leFxUZXN0c1xWMeICGkFubmV4XFRlc3RzXFYxXEdQQk1ldGFkYXRh6gIQQW5uZXg6OlRlc3RzOjpWMWIGcHJvdG8z", [file_annex_tests_v1_test, file_google_api_annotations, file_google_protobuf_timestamp]);
 
 /**
  * @generated from message annex.tests.v1.RegisterContextRequest
@@ -245,6 +245,45 @@ export const ListTestsResponseSchema: GenMessage<ListTestsResponse> = /*@__PURE_
   messageDesc(file_annex_tests_v1_test_service, 11);
 
 /**
+ * @generated from message annex.tests.v1.GetTestRequest
+ */
+export type GetTestRequest = Message<"annex.tests.v1.GetTestRequest"> & {
+  /**
+   * @generated from field: string context = 1;
+   */
+  context: string;
+
+  /**
+   * @generated from field: string test_id = 2;
+   */
+  testId: string;
+};
+
+/**
+ * Describes the message annex.tests.v1.GetTestRequest.
+ * Use `create(GetTestRequestSchema)` to create a new message.
+ */
+export const GetTestRequestSchema: GenMessage<GetTestRequest> = /*@__PURE__*/
+  messageDesc(file_annex_tests_v1_test_service, 12);
+
+/**
+ * @generated from message annex.tests.v1.GetTestResponse
+ */
+export type GetTestResponse = Message<"annex.tests.v1.GetTestResponse"> & {
+  /**
+   * @generated from field: annex.tests.v1.Test test = 1;
+   */
+  test?: Test;
+};
+
+/**
+ * Describes the message annex.tests.v1.GetTestResponse.
+ * Use `create(GetTestResponseSchema)` to create a new message.
+ */
+export const GetTestResponseSchema: GenMessage<GetTestResponse> = /*@__PURE__*/
+  messageDesc(file_annex_tests_v1_test_service, 13);
+
+/**
  * @generated from message annex.tests.v1.GetTestDefaultInputRequest
  */
 export type GetTestDefaultInputRequest = Message<"annex.tests.v1.GetTestDefaultInputRequest"> & {
@@ -264,7 +303,7 @@ export type GetTestDefaultInputRequest = Message<"annex.tests.v1.GetTestDefaultI
  * Use `create(GetTestDefaultInputRequestSchema)` to create a new message.
  */
 export const GetTestDefaultInputRequestSchema: GenMessage<GetTestDefaultInputRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 12);
+  messageDesc(file_annex_tests_v1_test_service, 14);
 
 /**
  * @generated from message annex.tests.v1.GetTestDefaultInputResponse
@@ -281,7 +320,7 @@ export type GetTestDefaultInputResponse = Message<"annex.tests.v1.GetTestDefault
  * Use `create(GetTestDefaultInputResponseSchema)` to create a new message.
  */
 export const GetTestDefaultInputResponseSchema: GenMessage<GetTestDefaultInputResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 13);
+  messageDesc(file_annex_tests_v1_test_service, 15);
 
 /**
  * @generated from message annex.tests.v1.ExecuteTestRequest
@@ -308,7 +347,7 @@ export type ExecuteTestRequest = Message<"annex.tests.v1.ExecuteTestRequest"> & 
  * Use `create(ExecuteTestRequestSchema)` to create a new message.
  */
 export const ExecuteTestRequestSchema: GenMessage<ExecuteTestRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 14);
+  messageDesc(file_annex_tests_v1_test_service, 16);
 
 /**
  * @generated from message annex.tests.v1.ExecuteTestResponse
@@ -325,7 +364,7 @@ export type ExecuteTestResponse = Message<"annex.tests.v1.ExecuteTestResponse"> 
  * Use `create(ExecuteTestResponseSchema)` to create a new message.
  */
 export const ExecuteTestResponseSchema: GenMessage<ExecuteTestResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 15);
+  messageDesc(file_annex_tests_v1_test_service, 17);
 
 /**
  * @generated from message annex.tests.v1.RetryTestExecutionRequest
@@ -347,7 +386,7 @@ export type RetryTestExecutionRequest = Message<"annex.tests.v1.RetryTestExecuti
  * Use `create(RetryTestExecutionRequestSchema)` to create a new message.
  */
 export const RetryTestExecutionRequestSchema: GenMessage<RetryTestExecutionRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 16);
+  messageDesc(file_annex_tests_v1_test_service, 18);
 
 /**
  * @generated from message annex.tests.v1.RetryTestExecutionResponse
@@ -364,7 +403,7 @@ export type RetryTestExecutionResponse = Message<"annex.tests.v1.RetryTestExecut
  * Use `create(RetryTestExecutionResponseSchema)` to create a new message.
  */
 export const RetryTestExecutionResponseSchema: GenMessage<RetryTestExecutionResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 17);
+  messageDesc(file_annex_tests_v1_test_service, 19);
 
 /**
  * @generated from message annex.tests.v1.GetTestExecutionRequest
@@ -386,7 +425,7 @@ export type GetTestExecutionRequest = Message<"annex.tests.v1.GetTestExecutionRe
  * Use `create(GetTestExecutionRequestSchema)` to create a new message.
  */
 export const GetTestExecutionRequestSchema: GenMessage<GetTestExecutionRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 18);
+  messageDesc(file_annex_tests_v1_test_service, 20);
 
 /**
  * @generated from message annex.tests.v1.GetTestExecutionResponse
@@ -408,7 +447,7 @@ export type GetTestExecutionResponse = Message<"annex.tests.v1.GetTestExecutionR
  * Use `create(GetTestExecutionResponseSchema)` to create a new message.
  */
 export const GetTestExecutionResponseSchema: GenMessage<GetTestExecutionResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 19);
+  messageDesc(file_annex_tests_v1_test_service, 21);
 
 /**
  * @generated from message annex.tests.v1.ListTestExecutionsRequest
@@ -440,7 +479,7 @@ export type ListTestExecutionsRequest = Message<"annex.tests.v1.ListTestExecutio
  * Use `create(ListTestExecutionsRequestSchema)` to create a new message.
  */
 export const ListTestExecutionsRequestSchema: GenMessage<ListTestExecutionsRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 20);
+  messageDesc(file_annex_tests_v1_test_service, 22);
 
 /**
  * @generated from message annex.tests.v1.ListTestExecutionsResponse
@@ -462,7 +501,7 @@ export type ListTestExecutionsResponse = Message<"annex.tests.v1.ListTestExecuti
  * Use `create(ListTestExecutionsResponseSchema)` to create a new message.
  */
 export const ListTestExecutionsResponseSchema: GenMessage<ListTestExecutionsResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 21);
+  messageDesc(file_annex_tests_v1_test_service, 23);
 
 /**
  * @generated from message annex.tests.v1.ListCaseExecutionsRequest
@@ -484,7 +523,7 @@ export type ListCaseExecutionsRequest = Message<"annex.tests.v1.ListCaseExecutio
  * Use `create(ListCaseExecutionsRequestSchema)` to create a new message.
  */
 export const ListCaseExecutionsRequestSchema: GenMessage<ListCaseExecutionsRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 22);
+  messageDesc(file_annex_tests_v1_test_service, 24);
 
 /**
  * @generated from message annex.tests.v1.ListCaseExecutionsResponse
@@ -501,7 +540,7 @@ export type ListCaseExecutionsResponse = Message<"annex.tests.v1.ListCaseExecuti
  * Use `create(ListCaseExecutionsResponseSchema)` to create a new message.
  */
 export const ListCaseExecutionsResponseSchema: GenMessage<ListCaseExecutionsResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 23);
+  messageDesc(file_annex_tests_v1_test_service, 25);
 
 /**
  * @generated from message annex.tests.v1.AckTestExecutionStartedRequest
@@ -528,7 +567,7 @@ export type AckTestExecutionStartedRequest = Message<"annex.tests.v1.AckTestExec
  * Use `create(AckTestExecutionStartedRequestSchema)` to create a new message.
  */
 export const AckTestExecutionStartedRequestSchema: GenMessage<AckTestExecutionStartedRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 24);
+  messageDesc(file_annex_tests_v1_test_service, 26);
 
 /**
  * @generated from message annex.tests.v1.AckTestExecutionStartedResponse
@@ -541,7 +580,7 @@ export type AckTestExecutionStartedResponse = Message<"annex.tests.v1.AckTestExe
  * Use `create(AckTestExecutionStartedResponseSchema)` to create a new message.
  */
 export const AckTestExecutionStartedResponseSchema: GenMessage<AckTestExecutionStartedResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 25);
+  messageDesc(file_annex_tests_v1_test_service, 27);
 
 /**
  * @generated from message annex.tests.v1.AckTestExecutionFinishedRequest
@@ -573,7 +612,7 @@ export type AckTestExecutionFinishedRequest = Message<"annex.tests.v1.AckTestExe
  * Use `create(AckTestExecutionFinishedRequestSchema)` to create a new message.
  */
 export const AckTestExecutionFinishedRequestSchema: GenMessage<AckTestExecutionFinishedRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 26);
+  messageDesc(file_annex_tests_v1_test_service, 28);
 
 /**
  * @generated from message annex.tests.v1.AckTestExecutionFinishedResponse
@@ -586,7 +625,7 @@ export type AckTestExecutionFinishedResponse = Message<"annex.tests.v1.AckTestEx
  * Use `create(AckTestExecutionFinishedResponseSchema)` to create a new message.
  */
 export const AckTestExecutionFinishedResponseSchema: GenMessage<AckTestExecutionFinishedResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 27);
+  messageDesc(file_annex_tests_v1_test_service, 29);
 
 /**
  * @generated from message annex.tests.v1.AckCaseExecutionScheduledRequest
@@ -623,7 +662,7 @@ export type AckCaseExecutionScheduledRequest = Message<"annex.tests.v1.AckCaseEx
  * Use `create(AckCaseExecutionScheduledRequestSchema)` to create a new message.
  */
 export const AckCaseExecutionScheduledRequestSchema: GenMessage<AckCaseExecutionScheduledRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 28);
+  messageDesc(file_annex_tests_v1_test_service, 30);
 
 /**
  * @generated from message annex.tests.v1.AckCaseExecutionScheduledResponse
@@ -636,7 +675,7 @@ export type AckCaseExecutionScheduledResponse = Message<"annex.tests.v1.AckCaseE
  * Use `create(AckCaseExecutionScheduledResponseSchema)` to create a new message.
  */
 export const AckCaseExecutionScheduledResponseSchema: GenMessage<AckCaseExecutionScheduledResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 29);
+  messageDesc(file_annex_tests_v1_test_service, 31);
 
 /**
  * @generated from message annex.tests.v1.AckCaseExecutionStartedRequest
@@ -668,7 +707,7 @@ export type AckCaseExecutionStartedRequest = Message<"annex.tests.v1.AckCaseExec
  * Use `create(AckCaseExecutionStartedRequestSchema)` to create a new message.
  */
 export const AckCaseExecutionStartedRequestSchema: GenMessage<AckCaseExecutionStartedRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 30);
+  messageDesc(file_annex_tests_v1_test_service, 32);
 
 /**
  * @generated from message annex.tests.v1.AckCaseExecutionStartedResponse
@@ -681,7 +720,7 @@ export type AckCaseExecutionStartedResponse = Message<"annex.tests.v1.AckCaseExe
  * Use `create(AckCaseExecutionStartedResponseSchema)` to create a new message.
  */
 export const AckCaseExecutionStartedResponseSchema: GenMessage<AckCaseExecutionStartedResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 31);
+  messageDesc(file_annex_tests_v1_test_service, 33);
 
 /**
  * @generated from message annex.tests.v1.AckCaseExecutionFinishedRequest
@@ -718,7 +757,7 @@ export type AckCaseExecutionFinishedRequest = Message<"annex.tests.v1.AckCaseExe
  * Use `create(AckCaseExecutionFinishedRequestSchema)` to create a new message.
  */
 export const AckCaseExecutionFinishedRequestSchema: GenMessage<AckCaseExecutionFinishedRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 32);
+  messageDesc(file_annex_tests_v1_test_service, 34);
 
 /**
  * @generated from message annex.tests.v1.AckCaseExecutionFinishedResponse
@@ -731,7 +770,7 @@ export type AckCaseExecutionFinishedResponse = Message<"annex.tests.v1.AckCaseEx
  * Use `create(AckCaseExecutionFinishedResponseSchema)` to create a new message.
  */
 export const AckCaseExecutionFinishedResponseSchema: GenMessage<AckCaseExecutionFinishedResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 33);
+  messageDesc(file_annex_tests_v1_test_service, 35);
 
 /**
  * @generated from message annex.tests.v1.PublishLogRequest
@@ -773,7 +812,7 @@ export type PublishLogRequest = Message<"annex.tests.v1.PublishLogRequest"> & {
  * Use `create(PublishLogRequestSchema)` to create a new message.
  */
 export const PublishLogRequestSchema: GenMessage<PublishLogRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 34);
+  messageDesc(file_annex_tests_v1_test_service, 36);
 
 /**
  * @generated from message annex.tests.v1.PublishLogResponse
@@ -790,7 +829,7 @@ export type PublishLogResponse = Message<"annex.tests.v1.PublishLogResponse"> & 
  * Use `create(PublishLogResponseSchema)` to create a new message.
  */
 export const PublishLogResponseSchema: GenMessage<PublishLogResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 35);
+  messageDesc(file_annex_tests_v1_test_service, 37);
 
 /**
  * @generated from message annex.tests.v1.ListTestExecutionLogsRequest
@@ -812,7 +851,7 @@ export type ListTestExecutionLogsRequest = Message<"annex.tests.v1.ListTestExecu
  * Use `create(ListTestExecutionLogsRequestSchema)` to create a new message.
  */
 export const ListTestExecutionLogsRequestSchema: GenMessage<ListTestExecutionLogsRequest> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 36);
+  messageDesc(file_annex_tests_v1_test_service, 38);
 
 /**
  * @generated from message annex.tests.v1.ListTestExecutionLogsResponse
@@ -829,7 +868,7 @@ export type ListTestExecutionLogsResponse = Message<"annex.tests.v1.ListTestExec
  * Use `create(ListTestExecutionLogsResponseSchema)` to create a new message.
  */
 export const ListTestExecutionLogsResponseSchema: GenMessage<ListTestExecutionLogsResponse> = /*@__PURE__*/
-  messageDesc(file_annex_tests_v1_test_service, 37);
+  messageDesc(file_annex_tests_v1_test_service, 39);
 
 /**
  * @generated from service annex.tests.v1.TestService
@@ -858,6 +897,14 @@ export const TestService: GenService<{
     methodKind: "unary";
     input: typeof ListTestsRequestSchema;
     output: typeof ListTestsResponseSchema;
+  },
+  /**
+   * @generated from rpc annex.tests.v1.TestService.GetTest
+   */
+  getTest: {
+    methodKind: "unary";
+    input: typeof GetTestRequestSchema;
+    output: typeof GetTestResponseSchema;
   },
   /**
    * @generated from rpc annex.tests.v1.TestService.GetTestDefaultInput

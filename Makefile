@@ -2,7 +2,7 @@ PROTO_FILES := $(wildcard proto/*)
 BUF_VERSION := 1.33.0
 
 .PHONY: gen
-gen: buf-format buf-lint proto-gen
+gen: buf-format buf-lint gen-proto
 
 .PHONY: buf-format
 buf-format: $(PROTO_FILES)
@@ -12,7 +12,11 @@ buf-format: $(PROTO_FILES)
 buf-lint: $(PROTO_FILES)
 	docker run -v $$(pwd):/srv -w /srv bufbuild/buf:$(BUF_VERSION) lint
 
-.PHONY: proto-gen
-proto-gen: $(PROTO_FILES)
+.PHONY: gen-proto
+gen-proto: $(PROTO_FILES)
 	rm -rf **/gen/
 	docker run -v $$(pwd):/srv -w /srv bufbuild/buf:$(BUF_VERSION) generate
+
+.PHONY: publish-ts
+publish-ts:
+	cd ts; pnpm publish
