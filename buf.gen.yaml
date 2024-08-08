@@ -8,17 +8,17 @@ managed:
 
 plugins:
   # Go
-  - plugin: buf.build/protocolbuffers/go
+  - plugin: buf.build/protocolbuffers/go:v1.34.2
     out: go/gen
     opt:
       - paths=source_relative
-  - plugin: buf.build/connectrpc/go
+  - plugin: buf.build/connectrpc/go:v1.16.2
     out: go/gen
     opt: paths=source_relative
   # TypeScript
-  - plugin: buf.build/connectrpc/es
+  - plugin: buf.build/connectrpc/es:v1.4.0
     out: ts/gen
     opt: target=ts
-  - plugin: buf.build/bufbuild/es
+  - plugin: buf.build/bufbuild/es:v1.10.0
     out: ts/gen
     opt: target=ts
