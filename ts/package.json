@@ -1,6 +1,6 @@
 {
   "name": "@annexsh/annex-proto",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Annex Protocol Buffers",
   "main": "index.js",
   "types": "index.d.ts",
