@@ -16,6 +16,7 @@ buf-lint: $(PROTO_FILES)
 gen-proto: $(PROTO_FILES)
 	rm -rf **/gen/
 	docker run -v $$(pwd):/srv -w /srv bufbuild/buf:$(BUF_VERSION) generate
+	cd ts; pnpm build
 
 .PHONY: publish-ts
 publish-ts:
