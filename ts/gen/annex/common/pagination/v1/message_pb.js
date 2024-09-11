@@ -13,9 +13,9 @@ class PaginationToken extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * @generated from field: string last_id = 2;
+         * @generated from field: string offset_id = 1;
          */
-        this.lastId = "";
+        this.offsetId = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -35,6 +35,5 @@ exports.PaginationToken = PaginationToken;
 PaginationToken.runtime = protobuf_1.proto3;
 PaginationToken.typeName = "annex.common.pagination.v1.PaginationToken";
 PaginationToken.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "last_timestamp", kind: "message", T: protobuf_1.Timestamp },
-    { no: 2, name: "last_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "offset_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);

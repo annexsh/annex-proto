@@ -35,6 +35,14 @@ export declare class RegisterContextResponse extends Message<RegisterContextResp
  * @generated from message annex.tests.v1.ListContextsRequest
  */
 export declare class ListContextsRequest extends Message<ListContextsRequest> {
+    /**
+     * @generated from field: int32 page_size = 1;
+     */
+    pageSize: number;
+    /**
+     * @generated from field: string next_page_token = 2;
+     */
+    nextPageToken: string;
     constructor(data?: PartialMessage<ListContextsRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "annex.tests.v1.ListContextsRequest";
@@ -52,6 +60,10 @@ export declare class ListContextsResponse extends Message<ListContextsResponse> 
      * @generated from field: repeated string contexts = 1;
      */
     contexts: string[];
+    /**
+     * @generated from field: string next_page_token = 2;
+     */
+    nextPageToken: string;
     constructor(data?: PartialMessage<ListContextsResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "annex.tests.v1.ListContextsResponse";
@@ -103,6 +115,14 @@ export declare class ListGroupsRequest extends Message<ListGroupsRequest> {
      * @generated from field: string context = 1;
      */
     context: string;
+    /**
+     * @generated from field: int32 page_size = 2;
+     */
+    pageSize: number;
+    /**
+     * @generated from field: string next_page_token = 3;
+     */
+    nextPageToken: string;
     constructor(data?: PartialMessage<ListGroupsRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "annex.tests.v1.ListGroupsRequest";
@@ -120,6 +140,10 @@ export declare class ListGroupsResponse extends Message<ListGroupsResponse> {
      * @generated from field: repeated annex.tests.v1.Group groups = 1;
      */
     groups: Group[];
+    /**
+     * @generated from field: string next_page_token = 2;
+     */
+    nextPageToken: string;
     constructor(data?: PartialMessage<ListGroupsResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "annex.tests.v1.ListGroupsResponse";
@@ -481,6 +505,14 @@ export declare class ListCaseExecutionsRequest extends Message<ListCaseExecution
      * @generated from field: string test_execution_id = 2;
      */
     testExecutionId: string;
+    /**
+     * @generated from field: int32 page_size = 3;
+     */
+    pageSize: number;
+    /**
+     * @generated from field: string next_page_token = 4;
+     */
+    nextPageToken: string;
     constructor(data?: PartialMessage<ListCaseExecutionsRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "annex.tests.v1.ListCaseExecutionsRequest";
@@ -498,6 +530,10 @@ export declare class ListCaseExecutionsResponse extends Message<ListCaseExecutio
      * @generated from field: repeated annex.tests.v1.CaseExecution case_executions = 1;
      */
     caseExecutions: CaseExecution[];
+    /**
+     * @generated from field: string next_page_token = 2;
+     */
+    nextPageToken: string;
     constructor(data?: PartialMessage<ListCaseExecutionsResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "annex.tests.v1.ListCaseExecutionsResponse";
@@ -787,6 +823,14 @@ export declare class ListTestExecutionLogsRequest extends Message<ListTestExecut
      * @generated from field: string test_execution_id = 2;
      */
     testExecutionId: string;
+    /**
+     * @generated from field: int32 page_size = 3;
+     */
+    pageSize: number;
+    /**
+     * @generated from field: string next_page_token = 4;
+     */
+    nextPageToken: string;
     constructor(data?: PartialMessage<ListTestExecutionLogsRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "annex.tests.v1.ListTestExecutionLogsRequest";
@@ -804,6 +848,10 @@ export declare class ListTestExecutionLogsResponse extends Message<ListTestExecu
      * @generated from field: repeated annex.tests.v1.Log logs = 1;
      */
     logs: Log[];
+    /**
+     * @generated from field: string next_page_token = 2;
+     */
+    nextPageToken: string;
     constructor(data?: PartialMessage<ListTestExecutionLogsResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "annex.tests.v1.ListTestExecutionLogsResponse";

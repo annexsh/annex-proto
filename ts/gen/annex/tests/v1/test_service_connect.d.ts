@@ -1,5 +1,4 @@
 import { AckCaseExecutionFinishedRequest, AckCaseExecutionFinishedResponse, AckCaseExecutionScheduledRequest, AckCaseExecutionScheduledResponse, AckCaseExecutionStartedRequest, AckCaseExecutionStartedResponse, AckTestExecutionFinishedRequest, AckTestExecutionFinishedResponse, AckTestExecutionStartedRequest, AckTestExecutionStartedResponse, ExecuteTestRequest, ExecuteTestResponse, GetTestDefaultInputRequest, GetTestDefaultInputResponse, GetTestExecutionRequest, GetTestExecutionResponse, GetTestRequest, GetTestResponse, ListCaseExecutionsRequest, ListCaseExecutionsResponse, ListContextsRequest, ListContextsResponse, ListGroupsRequest, ListGroupsResponse, ListTestExecutionLogsRequest, ListTestExecutionLogsResponse, ListTestExecutionsRequest, ListTestExecutionsResponse, ListTestsRequest, ListTestsResponse, PublishLogRequest, PublishLogResponse, RegisterContextRequest, RegisterContextResponse, RegisterGroupRequest, RegisterGroupResponse, RegisterTestsRequest, RegisterTestsResponse, RetryTestExecutionRequest, RetryTestExecutionResponse } from "./test_service_pb.js";
-import { MethodKind } from "@bufbuild/protobuf";
 /**
  * @generated from service annex.tests.v1.TestService
  */
@@ -13,7 +12,7 @@ export declare const TestService: {
             readonly name: "ListContexts";
             readonly I: typeof ListContextsRequest;
             readonly O: typeof ListContextsResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.ListGroups
@@ -22,7 +21,7 @@ export declare const TestService: {
             readonly name: "ListGroups";
             readonly I: typeof ListGroupsRequest;
             readonly O: typeof ListGroupsResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.ListTests
@@ -31,7 +30,7 @@ export declare const TestService: {
             readonly name: "ListTests";
             readonly I: typeof ListTestsRequest;
             readonly O: typeof ListTestsResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.GetTest
@@ -40,7 +39,7 @@ export declare const TestService: {
             readonly name: "GetTest";
             readonly I: typeof GetTestRequest;
             readonly O: typeof GetTestResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.GetTestDefaultInput
@@ -49,7 +48,7 @@ export declare const TestService: {
             readonly name: "GetTestDefaultInput";
             readonly I: typeof GetTestDefaultInputRequest;
             readonly O: typeof GetTestDefaultInputResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.ExecuteTest
@@ -58,7 +57,7 @@ export declare const TestService: {
             readonly name: "ExecuteTest";
             readonly I: typeof ExecuteTestRequest;
             readonly O: typeof ExecuteTestResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.RetryTestExecution
@@ -67,7 +66,7 @@ export declare const TestService: {
             readonly name: "RetryTestExecution";
             readonly I: typeof RetryTestExecutionRequest;
             readonly O: typeof RetryTestExecutionResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.GetTestExecution
@@ -76,7 +75,7 @@ export declare const TestService: {
             readonly name: "GetTestExecution";
             readonly I: typeof GetTestExecutionRequest;
             readonly O: typeof GetTestExecutionResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.ListTestExecutions
@@ -85,7 +84,7 @@ export declare const TestService: {
             readonly name: "ListTestExecutions";
             readonly I: typeof ListTestExecutionsRequest;
             readonly O: typeof ListTestExecutionsResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.ListCaseExecutions
@@ -94,7 +93,7 @@ export declare const TestService: {
             readonly name: "ListCaseExecutions";
             readonly I: typeof ListCaseExecutionsRequest;
             readonly O: typeof ListCaseExecutionsResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.ListTestExecutionLogs
@@ -103,7 +102,7 @@ export declare const TestService: {
             readonly name: "ListTestExecutionLogs";
             readonly I: typeof ListTestExecutionLogsRequest;
             readonly O: typeof ListTestExecutionLogsResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.RegisterContext
@@ -112,7 +111,7 @@ export declare const TestService: {
             readonly name: "RegisterContext";
             readonly I: typeof RegisterContextRequest;
             readonly O: typeof RegisterContextResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.RegisterGroup
@@ -121,7 +120,7 @@ export declare const TestService: {
             readonly name: "RegisterGroup";
             readonly I: typeof RegisterGroupRequest;
             readonly O: typeof RegisterGroupResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.RegisterTests
@@ -130,7 +129,7 @@ export declare const TestService: {
             readonly name: "RegisterTests";
             readonly I: typeof RegisterTestsRequest;
             readonly O: typeof RegisterTestsResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.AckTestExecutionStarted
@@ -139,7 +138,7 @@ export declare const TestService: {
             readonly name: "AckTestExecutionStarted";
             readonly I: typeof AckTestExecutionStartedRequest;
             readonly O: typeof AckTestExecutionStartedResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.AckTestExecutionFinished
@@ -148,7 +147,7 @@ export declare const TestService: {
             readonly name: "AckTestExecutionFinished";
             readonly I: typeof AckTestExecutionFinishedRequest;
             readonly O: typeof AckTestExecutionFinishedResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.AckCaseExecutionScheduled
@@ -157,7 +156,7 @@ export declare const TestService: {
             readonly name: "AckCaseExecutionScheduled";
             readonly I: typeof AckCaseExecutionScheduledRequest;
             readonly O: typeof AckCaseExecutionScheduledResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.AckCaseExecutionStarted
@@ -166,7 +165,7 @@ export declare const TestService: {
             readonly name: "AckCaseExecutionStarted";
             readonly I: typeof AckCaseExecutionStartedRequest;
             readonly O: typeof AckCaseExecutionStartedResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.AckCaseExecutionFinished
@@ -175,7 +174,7 @@ export declare const TestService: {
             readonly name: "AckCaseExecutionFinished";
             readonly I: typeof AckCaseExecutionFinishedRequest;
             readonly O: typeof AckCaseExecutionFinishedResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
         /**
          * @generated from rpc annex.tests.v1.TestService.PublishLog
@@ -184,7 +183,7 @@ export declare const TestService: {
             readonly name: "PublishLog";
             readonly I: typeof PublishLogRequest;
             readonly O: typeof PublishLogResponse;
-            readonly kind: MethodKind.Unary;
+            readonly kind: any;
         };
     };
 };

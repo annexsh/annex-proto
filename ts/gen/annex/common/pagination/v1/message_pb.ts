@@ -4,21 +4,16 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { Message, proto3 } from "@bufbuild/protobuf";
 
 /**
  * @generated from message annex.common.pagination.v1.PaginationToken
  */
 export class PaginationToken extends Message<PaginationToken> {
   /**
-   * @generated from field: google.protobuf.Timestamp last_timestamp = 1;
+   * @generated from field: string offset_id = 1;
    */
-  lastTimestamp?: Timestamp;
-
-  /**
-   * @generated from field: string last_id = 2;
-   */
-  lastId = "";
+  offsetId = "";
 
   constructor(data?: PartialMessage<PaginationToken>) {
     super();
@@ -28,8 +23,7 @@ export class PaginationToken extends Message<PaginationToken> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "annex.common.pagination.v1.PaginationToken";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "last_timestamp", kind: "message", T: Timestamp },
-    { no: 2, name: "last_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "offset_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): PaginationToken {

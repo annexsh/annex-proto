@@ -12,10 +12,14 @@ message RegisterContextRequest {
 
 message RegisterContextResponse {}
 
-message ListContextsRequest {}
+message ListContextsRequest {
+  int32 page_size = 1;
+  string next_page_token = 2;
+}
 
 message ListContextsResponse {
   repeated string contexts = 1;
+  string next_page_token = 2;
 }
 
 message RegisterGroupRequest {
@@ -27,10 +31,13 @@ message RegisterGroupResponse {}
 
 message ListGroupsRequest {
   string context = 1;
+  int32 page_size = 2;
+  string next_page_token = 3;
 }
 
 message ListGroupsResponse {
   repeated Group groups = 1;
+  string next_page_token = 2;
 }
 
 message RegisterTestsRequest {
@@ -117,10 +124,13 @@ message ListTestExecutionsResponse {
 message ListCaseExecutionsRequest {
   string context = 1;
   string test_execution_id = 2;
+  int32 page_size = 3;
+  string next_page_token = 4;
 }
 
 message ListCaseExecutionsResponse {
   repeated CaseExecution case_executions = 1;
+  string next_page_token = 2;
 }
 
 message AckTestExecutionStartedRequest {
@@ -185,10 +195,13 @@ message PublishLogResponse {
 message ListTestExecutionLogsRequest {
   string context = 1;
   string test_execution_id = 2;
+  int32 page_size = 3;
+  string next_page_token = 4;
 }
 
 message ListTestExecutionLogsResponse {
   repeated Log logs = 1;
+  string next_page_token = 2;
 }
 
 service TestService {
