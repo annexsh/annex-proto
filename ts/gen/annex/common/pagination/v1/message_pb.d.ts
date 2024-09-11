@@ -1,17 +1,13 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { Message, proto3 } from "@bufbuild/protobuf";
 /**
  * @generated from message annex.common.pagination.v1.PaginationToken
  */
 export declare class PaginationToken extends Message<PaginationToken> {
     /**
-     * @generated from field: google.protobuf.Timestamp last_timestamp = 1;
+     * @generated from field: string offset_id = 1;
      */
-    lastTimestamp?: Timestamp;
-    /**
-     * @generated from field: string last_id = 2;
-     */
-    lastId: string;
+    offsetId: string;
     constructor(data?: PartialMessage<PaginationToken>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "annex.common.pagination.v1.PaginationToken";

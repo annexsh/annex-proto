@@ -69,6 +69,14 @@ RegisterContextResponse.fields = protobuf_1.proto3.util.newFieldList(() => []);
 class ListContextsRequest extends protobuf_1.Message {
     constructor(data) {
         super();
+        /**
+         * @generated from field: int32 page_size = 1;
+         */
+        this.pageSize = 0;
+        /**
+         * @generated from field: string next_page_token = 2;
+         */
+        this.nextPageToken = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -87,7 +95,10 @@ class ListContextsRequest extends protobuf_1.Message {
 exports.ListContextsRequest = ListContextsRequest;
 ListContextsRequest.runtime = protobuf_1.proto3;
 ListContextsRequest.typeName = "annex.tests.v1.ListContextsRequest";
-ListContextsRequest.fields = protobuf_1.proto3.util.newFieldList(() => []);
+ListContextsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
 /**
  * @generated from message annex.tests.v1.ListContextsResponse
  */
@@ -98,6 +109,10 @@ class ListContextsResponse extends protobuf_1.Message {
          * @generated from field: repeated string contexts = 1;
          */
         this.contexts = [];
+        /**
+         * @generated from field: string next_page_token = 2;
+         */
+        this.nextPageToken = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -118,6 +133,7 @@ ListContextsResponse.runtime = protobuf_1.proto3;
 ListContextsResponse.typeName = "annex.tests.v1.ListContextsResponse";
 ListContextsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "contexts", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message annex.tests.v1.RegisterGroupRequest
@@ -190,6 +206,14 @@ class ListGroupsRequest extends protobuf_1.Message {
          * @generated from field: string context = 1;
          */
         this.context = "";
+        /**
+         * @generated from field: int32 page_size = 2;
+         */
+        this.pageSize = 0;
+        /**
+         * @generated from field: string next_page_token = 3;
+         */
+        this.nextPageToken = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -210,6 +234,8 @@ ListGroupsRequest.runtime = protobuf_1.proto3;
 ListGroupsRequest.typeName = "annex.tests.v1.ListGroupsRequest";
 ListGroupsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 3, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message annex.tests.v1.ListGroupsResponse
@@ -221,6 +247,10 @@ class ListGroupsResponse extends protobuf_1.Message {
          * @generated from field: repeated annex.tests.v1.Group groups = 1;
          */
         this.groups = [];
+        /**
+         * @generated from field: string next_page_token = 2;
+         */
+        this.nextPageToken = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -241,6 +271,7 @@ ListGroupsResponse.runtime = protobuf_1.proto3;
 ListGroupsResponse.typeName = "annex.tests.v1.ListGroupsResponse";
 ListGroupsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "groups", kind: "message", T: test_pb_js_1.Group, repeated: true },
+    { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message annex.tests.v1.RegisterTestsRequest
@@ -813,6 +844,14 @@ class ListCaseExecutionsRequest extends protobuf_1.Message {
          * @generated from field: string test_execution_id = 2;
          */
         this.testExecutionId = "";
+        /**
+         * @generated from field: int32 page_size = 3;
+         */
+        this.pageSize = 0;
+        /**
+         * @generated from field: string next_page_token = 4;
+         */
+        this.nextPageToken = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -834,6 +873,8 @@ ListCaseExecutionsRequest.typeName = "annex.tests.v1.ListCaseExecutionsRequest";
 ListCaseExecutionsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "test_execution_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 4, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message annex.tests.v1.ListCaseExecutionsResponse
@@ -845,6 +886,10 @@ class ListCaseExecutionsResponse extends protobuf_1.Message {
          * @generated from field: repeated annex.tests.v1.CaseExecution case_executions = 1;
          */
         this.caseExecutions = [];
+        /**
+         * @generated from field: string next_page_token = 2;
+         */
+        this.nextPageToken = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -865,6 +910,7 @@ ListCaseExecutionsResponse.runtime = protobuf_1.proto3;
 ListCaseExecutionsResponse.typeName = "annex.tests.v1.ListCaseExecutionsResponse";
 ListCaseExecutionsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "case_executions", kind: "message", T: test_pb_js_1.CaseExecution, repeated: true },
+    { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message annex.tests.v1.AckTestExecutionStartedRequest
@@ -1291,6 +1337,14 @@ class ListTestExecutionLogsRequest extends protobuf_1.Message {
          * @generated from field: string test_execution_id = 2;
          */
         this.testExecutionId = "";
+        /**
+         * @generated from field: int32 page_size = 3;
+         */
+        this.pageSize = 0;
+        /**
+         * @generated from field: string next_page_token = 4;
+         */
+        this.nextPageToken = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -1312,6 +1366,8 @@ ListTestExecutionLogsRequest.typeName = "annex.tests.v1.ListTestExecutionLogsReq
 ListTestExecutionLogsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "test_execution_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 4, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message annex.tests.v1.ListTestExecutionLogsResponse
@@ -1323,6 +1379,10 @@ class ListTestExecutionLogsResponse extends protobuf_1.Message {
          * @generated from field: repeated annex.tests.v1.Log logs = 1;
          */
         this.logs = [];
+        /**
+         * @generated from field: string next_page_token = 2;
+         */
+        this.nextPageToken = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -1343,4 +1403,5 @@ ListTestExecutionLogsResponse.runtime = protobuf_1.proto3;
 ListTestExecutionLogsResponse.typeName = "annex.tests.v1.ListTestExecutionLogsResponse";
 ListTestExecutionLogsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "logs", kind: "message", T: test_pb_js_1.Log, repeated: true },
+    { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);

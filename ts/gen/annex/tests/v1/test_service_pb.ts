@@ -79,6 +79,16 @@ export class RegisterContextResponse extends Message<RegisterContextResponse> {
  * @generated from message annex.tests.v1.ListContextsRequest
  */
 export class ListContextsRequest extends Message<ListContextsRequest> {
+  /**
+   * @generated from field: int32 page_size = 1;
+   */
+  pageSize = 0;
+
+  /**
+   * @generated from field: string next_page_token = 2;
+   */
+  nextPageToken = "";
+
   constructor(data?: PartialMessage<ListContextsRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -87,6 +97,8 @@ export class ListContextsRequest extends Message<ListContextsRequest> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "annex.tests.v1.ListContextsRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListContextsRequest {
@@ -115,6 +127,11 @@ export class ListContextsResponse extends Message<ListContextsResponse> {
    */
   contexts: string[] = [];
 
+  /**
+   * @generated from field: string next_page_token = 2;
+   */
+  nextPageToken = "";
+
   constructor(data?: PartialMessage<ListContextsResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -124,6 +141,7 @@ export class ListContextsResponse extends Message<ListContextsResponse> {
   static readonly typeName = "annex.tests.v1.ListContextsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "contexts", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListContextsResponse {
@@ -226,6 +244,16 @@ export class ListGroupsRequest extends Message<ListGroupsRequest> {
    */
   context = "";
 
+  /**
+   * @generated from field: int32 page_size = 2;
+   */
+  pageSize = 0;
+
+  /**
+   * @generated from field: string next_page_token = 3;
+   */
+  nextPageToken = "";
+
   constructor(data?: PartialMessage<ListGroupsRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -235,6 +263,8 @@ export class ListGroupsRequest extends Message<ListGroupsRequest> {
   static readonly typeName = "annex.tests.v1.ListGroupsRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 3, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListGroupsRequest {
@@ -263,6 +293,11 @@ export class ListGroupsResponse extends Message<ListGroupsResponse> {
    */
   groups: Group[] = [];
 
+  /**
+   * @generated from field: string next_page_token = 2;
+   */
+  nextPageToken = "";
+
   constructor(data?: PartialMessage<ListGroupsResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -272,6 +307,7 @@ export class ListGroupsResponse extends Message<ListGroupsResponse> {
   static readonly typeName = "annex.tests.v1.ListGroupsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "groups", kind: "message", T: Group, repeated: true },
+    { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListGroupsResponse {
@@ -999,6 +1035,16 @@ export class ListCaseExecutionsRequest extends Message<ListCaseExecutionsRequest
    */
   testExecutionId = "";
 
+  /**
+   * @generated from field: int32 page_size = 3;
+   */
+  pageSize = 0;
+
+  /**
+   * @generated from field: string next_page_token = 4;
+   */
+  nextPageToken = "";
+
   constructor(data?: PartialMessage<ListCaseExecutionsRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1009,6 +1055,8 @@ export class ListCaseExecutionsRequest extends Message<ListCaseExecutionsRequest
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "test_execution_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 4, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListCaseExecutionsRequest {
@@ -1037,6 +1085,11 @@ export class ListCaseExecutionsResponse extends Message<ListCaseExecutionsRespon
    */
   caseExecutions: CaseExecution[] = [];
 
+  /**
+   * @generated from field: string next_page_token = 2;
+   */
+  nextPageToken = "";
+
   constructor(data?: PartialMessage<ListCaseExecutionsResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1046,6 +1099,7 @@ export class ListCaseExecutionsResponse extends Message<ListCaseExecutionsRespon
   static readonly typeName = "annex.tests.v1.ListCaseExecutionsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "case_executions", kind: "message", T: CaseExecution, repeated: true },
+    { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListCaseExecutionsResponse {
@@ -1619,6 +1673,16 @@ export class ListTestExecutionLogsRequest extends Message<ListTestExecutionLogsR
    */
   testExecutionId = "";
 
+  /**
+   * @generated from field: int32 page_size = 3;
+   */
+  pageSize = 0;
+
+  /**
+   * @generated from field: string next_page_token = 4;
+   */
+  nextPageToken = "";
+
   constructor(data?: PartialMessage<ListTestExecutionLogsRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1629,6 +1693,8 @@ export class ListTestExecutionLogsRequest extends Message<ListTestExecutionLogsR
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "test_execution_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 4, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListTestExecutionLogsRequest {
@@ -1657,6 +1723,11 @@ export class ListTestExecutionLogsResponse extends Message<ListTestExecutionLogs
    */
   logs: Log[] = [];
 
+  /**
+   * @generated from field: string next_page_token = 2;
+   */
+  nextPageToken = "";
+
   constructor(data?: PartialMessage<ListTestExecutionLogsResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -1666,6 +1737,7 @@ export class ListTestExecutionLogsResponse extends Message<ListTestExecutionLogs
   static readonly typeName = "annex.tests.v1.ListTestExecutionLogsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "logs", kind: "message", T: Log, repeated: true },
+    { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListTestExecutionLogsResponse {
