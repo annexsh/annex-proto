@@ -4,11 +4,13 @@ package annex.tests.v1;
 
 import "google/protobuf/timestamp.proto";
 
-message Group {
+message TestSuite {
   string context = 1;
-  string name = 2;
-  repeated Runner runners = 3;
-  bool available = 4;
+  string id = 2;
+  string name = 3;
+  optional string description = 4;
+  repeated Runner runners = 5;
+  bool available = 6;
 
   message Runner {
     string id = 1;
@@ -18,16 +20,18 @@ message Group {
 
 message TestDefinition {
   string name = 1;
-  optional Payload default_input = 2;
+  optional string description = 2;
+  optional Payload default_input = 3;
 }
 
 message Test {
   string context = 1;
-  string group = 2;
+  string test_suite_id = 2;
   string id = 3;
   string name = 4;
-  bool has_input = 5;
-  google.protobuf.Timestamp create_time = 6;
+  optional string description = 5;
+  bool has_input = 6;
+  google.protobuf.Timestamp create_time = 7;
 }
 
 message TestExecution {

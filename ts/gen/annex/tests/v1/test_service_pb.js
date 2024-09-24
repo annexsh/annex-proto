@@ -4,7 +4,7 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ListTestExecutionLogsResponse = exports.ListTestExecutionLogsRequest = exports.PublishLogResponse = exports.PublishLogRequest = exports.AckCaseExecutionFinishedResponse = exports.AckCaseExecutionFinishedRequest = exports.AckCaseExecutionStartedResponse = exports.AckCaseExecutionStartedRequest = exports.AckCaseExecutionScheduledResponse = exports.AckCaseExecutionScheduledRequest = exports.AckTestExecutionFinishedResponse = exports.AckTestExecutionFinishedRequest = exports.AckTestExecutionStartedResponse = exports.AckTestExecutionStartedRequest = exports.ListCaseExecutionsResponse = exports.ListCaseExecutionsRequest = exports.ListTestExecutionsResponse = exports.ListTestExecutionsRequest = exports.GetTestExecutionResponse = exports.GetTestExecutionRequest = exports.RetryTestExecutionResponse = exports.RetryTestExecutionRequest = exports.ExecuteTestResponse = exports.ExecuteTestRequest = exports.GetTestDefaultInputResponse = exports.GetTestDefaultInputRequest = exports.GetTestResponse = exports.GetTestRequest = exports.ListTestsResponse = exports.ListTestsRequest = exports.RegisterTestsResponse = exports.RegisterTestsRequest = exports.ListGroupsResponse = exports.ListGroupsRequest = exports.RegisterGroupResponse = exports.RegisterGroupRequest = exports.ListContextsResponse = exports.ListContextsRequest = exports.RegisterContextResponse = exports.RegisterContextRequest = void 0;
+exports.ListTestExecutionLogsResponse = exports.ListTestExecutionLogsRequest = exports.PublishLogResponse = exports.PublishLogRequest = exports.AckCaseExecutionFinishedResponse = exports.AckCaseExecutionFinishedRequest = exports.AckCaseExecutionStartedResponse = exports.AckCaseExecutionStartedRequest = exports.AckCaseExecutionScheduledResponse = exports.AckCaseExecutionScheduledRequest = exports.AckTestExecutionFinishedResponse = exports.AckTestExecutionFinishedRequest = exports.AckTestExecutionStartedResponse = exports.AckTestExecutionStartedRequest = exports.ListCaseExecutionsResponse = exports.ListCaseExecutionsRequest = exports.ListTestExecutionsResponse = exports.ListTestExecutionsRequest = exports.GetTestExecutionResponse = exports.GetTestExecutionRequest = exports.RetryTestExecutionResponse = exports.RetryTestExecutionRequest = exports.ExecuteTestResponse = exports.ExecuteTestRequest = exports.GetTestDefaultInputResponse = exports.GetTestDefaultInputRequest = exports.GetTestResponse = exports.GetTestRequest = exports.ListTestsResponse = exports.ListTestsRequest = exports.RegisterTestsResponse = exports.RegisterTestsRequest = exports.ListTestSuitesResponse = exports.ListTestSuitesRequest = exports.GetTestSuiteResponse = exports.GetTestSuiteRequest = exports.RegisterTestSuiteResponse = exports.RegisterTestSuiteRequest = exports.ListContextsResponse = exports.ListContextsRequest = exports.RegisterContextResponse = exports.RegisterContextRequest = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 const test_pb_js_1 = require("./test_pb.js");
 /**
@@ -136,9 +136,9 @@ ListContextsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
- * @generated from message annex.tests.v1.RegisterGroupRequest
+ * @generated from message annex.tests.v1.RegisterTestSuiteRequest
  */
-class RegisterGroupRequest extends protobuf_1.Message {
+class RegisterTestSuiteRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
@@ -152,54 +152,124 @@ class RegisterGroupRequest extends protobuf_1.Message {
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new RegisterGroupRequest().fromBinary(bytes, options);
+        return new RegisterTestSuiteRequest().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new RegisterGroupRequest().fromJson(jsonValue, options);
+        return new RegisterTestSuiteRequest().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new RegisterGroupRequest().fromJsonString(jsonString, options);
+        return new RegisterTestSuiteRequest().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(RegisterGroupRequest, a, b);
+        return protobuf_1.proto3.util.equals(RegisterTestSuiteRequest, a, b);
     }
 }
-exports.RegisterGroupRequest = RegisterGroupRequest;
-RegisterGroupRequest.runtime = protobuf_1.proto3;
-RegisterGroupRequest.typeName = "annex.tests.v1.RegisterGroupRequest";
-RegisterGroupRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+exports.RegisterTestSuiteRequest = RegisterTestSuiteRequest;
+RegisterTestSuiteRequest.runtime = protobuf_1.proto3;
+RegisterTestSuiteRequest.typeName = "annex.tests.v1.RegisterTestSuiteRequest";
+RegisterTestSuiteRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
 ]);
 /**
- * @generated from message annex.tests.v1.RegisterGroupResponse
+ * @generated from message annex.tests.v1.RegisterTestSuiteResponse
  */
-class RegisterGroupResponse extends protobuf_1.Message {
+class RegisterTestSuiteResponse extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: string id = 1;
+         */
+        this.id = "";
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new RegisterTestSuiteResponse().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new RegisterTestSuiteResponse().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new RegisterTestSuiteResponse().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(RegisterTestSuiteResponse, a, b);
+    }
+}
+exports.RegisterTestSuiteResponse = RegisterTestSuiteResponse;
+RegisterTestSuiteResponse.runtime = protobuf_1.proto3;
+RegisterTestSuiteResponse.typeName = "annex.tests.v1.RegisterTestSuiteResponse";
+RegisterTestSuiteResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * @generated from message annex.tests.v1.GetTestSuiteRequest
+ */
+class GetTestSuiteRequest extends protobuf_1.Message {
+    constructor(data) {
+        super();
+        /**
+         * @generated from field: string context = 1;
+         */
+        this.context = "";
+        /**
+         * @generated from field: string id = 2;
+         */
+        this.id = "";
+        protobuf_1.proto3.util.initPartial(data, this);
+    }
+    static fromBinary(bytes, options) {
+        return new GetTestSuiteRequest().fromBinary(bytes, options);
+    }
+    static fromJson(jsonValue, options) {
+        return new GetTestSuiteRequest().fromJson(jsonValue, options);
+    }
+    static fromJsonString(jsonString, options) {
+        return new GetTestSuiteRequest().fromJsonString(jsonString, options);
+    }
+    static equals(a, b) {
+        return protobuf_1.proto3.util.equals(GetTestSuiteRequest, a, b);
+    }
+}
+exports.GetTestSuiteRequest = GetTestSuiteRequest;
+GetTestSuiteRequest.runtime = protobuf_1.proto3;
+GetTestSuiteRequest.typeName = "annex.tests.v1.GetTestSuiteRequest";
+GetTestSuiteRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+]);
+/**
+ * @generated from message annex.tests.v1.GetTestSuiteResponse
+ */
+class GetTestSuiteResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new RegisterGroupResponse().fromBinary(bytes, options);
+        return new GetTestSuiteResponse().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new RegisterGroupResponse().fromJson(jsonValue, options);
+        return new GetTestSuiteResponse().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new RegisterGroupResponse().fromJsonString(jsonString, options);
+        return new GetTestSuiteResponse().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(RegisterGroupResponse, a, b);
+        return protobuf_1.proto3.util.equals(GetTestSuiteResponse, a, b);
     }
 }
-exports.RegisterGroupResponse = RegisterGroupResponse;
-RegisterGroupResponse.runtime = protobuf_1.proto3;
-RegisterGroupResponse.typeName = "annex.tests.v1.RegisterGroupResponse";
-RegisterGroupResponse.fields = protobuf_1.proto3.util.newFieldList(() => []);
+exports.GetTestSuiteResponse = GetTestSuiteResponse;
+GetTestSuiteResponse.runtime = protobuf_1.proto3;
+GetTestSuiteResponse.typeName = "annex.tests.v1.GetTestSuiteResponse";
+GetTestSuiteResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "test_suite", kind: "message", T: test_pb_js_1.TestSuite },
+]);
 /**
- * @generated from message annex.tests.v1.ListGroupsRequest
+ * @generated from message annex.tests.v1.ListTestSuitesRequest
  */
-class ListGroupsRequest extends protobuf_1.Message {
+class ListTestSuitesRequest extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
@@ -217,36 +287,36 @@ class ListGroupsRequest extends protobuf_1.Message {
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new ListGroupsRequest().fromBinary(bytes, options);
+        return new ListTestSuitesRequest().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new ListGroupsRequest().fromJson(jsonValue, options);
+        return new ListTestSuitesRequest().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new ListGroupsRequest().fromJsonString(jsonString, options);
+        return new ListTestSuitesRequest().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(ListGroupsRequest, a, b);
+        return protobuf_1.proto3.util.equals(ListTestSuitesRequest, a, b);
     }
 }
-exports.ListGroupsRequest = ListGroupsRequest;
-ListGroupsRequest.runtime = protobuf_1.proto3;
-ListGroupsRequest.typeName = "annex.tests.v1.ListGroupsRequest";
-ListGroupsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
+exports.ListTestSuitesRequest = ListTestSuitesRequest;
+ListTestSuitesRequest.runtime = protobuf_1.proto3;
+ListTestSuitesRequest.typeName = "annex.tests.v1.ListTestSuitesRequest";
+ListTestSuitesRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 3, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
- * @generated from message annex.tests.v1.ListGroupsResponse
+ * @generated from message annex.tests.v1.ListTestSuitesResponse
  */
-class ListGroupsResponse extends protobuf_1.Message {
+class ListTestSuitesResponse extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
-         * @generated from field: repeated annex.tests.v1.Group groups = 1;
+         * @generated from field: repeated annex.tests.v1.TestSuite test_suites = 1;
          */
-        this.groups = [];
+        this.testSuites = [];
         /**
          * @generated from field: string next_page_token = 2;
          */
@@ -254,23 +324,23 @@ class ListGroupsResponse extends protobuf_1.Message {
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new ListGroupsResponse().fromBinary(bytes, options);
+        return new ListTestSuitesResponse().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new ListGroupsResponse().fromJson(jsonValue, options);
+        return new ListTestSuitesResponse().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new ListGroupsResponse().fromJsonString(jsonString, options);
+        return new ListTestSuitesResponse().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(ListGroupsResponse, a, b);
+        return protobuf_1.proto3.util.equals(ListTestSuitesResponse, a, b);
     }
 }
-exports.ListGroupsResponse = ListGroupsResponse;
-ListGroupsResponse.runtime = protobuf_1.proto3;
-ListGroupsResponse.typeName = "annex.tests.v1.ListGroupsResponse";
-ListGroupsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "groups", kind: "message", T: test_pb_js_1.Group, repeated: true },
+exports.ListTestSuitesResponse = ListTestSuitesResponse;
+ListTestSuitesResponse.runtime = protobuf_1.proto3;
+ListTestSuitesResponse.typeName = "annex.tests.v1.ListTestSuitesResponse";
+ListTestSuitesResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
+    { no: 1, name: "test_suites", kind: "message", T: test_pb_js_1.TestSuite, repeated: true },
     { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
@@ -284,13 +354,17 @@ class RegisterTestsRequest extends protobuf_1.Message {
          */
         this.context = "";
         /**
-         * @generated from field: string group = 2;
+         * @generated from field: string test_suite_id = 2;
          */
-        this.group = "";
+        this.testSuiteId = "";
         /**
-         * @generated from field: repeated annex.tests.v1.TestDefinition definitions = 4;
+         * @generated from field: string version = 4;
          */
-        this.definitions = [];
+        this.version = "";
+        /**
+         * @generated from field: string runner_id = 5;
+         */
+        this.runnerId = "";
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -311,8 +385,10 @@ RegisterTestsRequest.runtime = protobuf_1.proto3;
 RegisterTestsRequest.typeName = "annex.tests.v1.RegisterTestsRequest";
 RegisterTestsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "group", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "definitions", kind: "message", T: test_pb_js_1.TestDefinition, repeated: true },
+    { no: 2, name: "test_suite_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "definition", kind: "message", T: test_pb_js_1.TestDefinition },
+    { no: 4, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "runner_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);
 /**
  * @generated from message annex.tests.v1.RegisterTestsResponse
@@ -320,10 +396,6 @@ RegisterTestsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
 class RegisterTestsResponse extends protobuf_1.Message {
     constructor(data) {
         super();
-        /**
-         * @generated from field: repeated annex.tests.v1.Test tests = 1;
-         */
-        this.tests = [];
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
@@ -342,9 +414,7 @@ class RegisterTestsResponse extends protobuf_1.Message {
 exports.RegisterTestsResponse = RegisterTestsResponse;
 RegisterTestsResponse.runtime = protobuf_1.proto3;
 RegisterTestsResponse.typeName = "annex.tests.v1.RegisterTestsResponse";
-RegisterTestsResponse.fields = protobuf_1.proto3.util.newFieldList(() => [
-    { no: 1, name: "tests", kind: "message", T: test_pb_js_1.Test, repeated: true },
-]);
+RegisterTestsResponse.fields = protobuf_1.proto3.util.newFieldList(() => []);
 /**
  * @generated from message annex.tests.v1.ListTestsRequest
  */
@@ -356,9 +426,9 @@ class ListTestsRequest extends protobuf_1.Message {
          */
         this.context = "";
         /**
-         * @generated from field: string group = 2;
+         * @generated from field: string test_suite_id = 2;
          */
-        this.group = "";
+        this.testSuiteId = "";
         /**
          * @generated from field: int32 page_size = 3;
          */
@@ -387,7 +457,7 @@ ListTestsRequest.runtime = protobuf_1.proto3;
 ListTestsRequest.typeName = "annex.tests.v1.ListTestsRequest";
 ListTestsRequest.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "group", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "test_suite_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
 ]);

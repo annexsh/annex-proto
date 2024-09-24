@@ -1,38 +1,46 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 /**
- * @generated from message annex.tests.v1.Group
+ * @generated from message annex.tests.v1.TestSuite
  */
-export declare class Group extends Message<Group> {
+export declare class TestSuite extends Message<TestSuite> {
     /**
      * @generated from field: string context = 1;
      */
     context: string;
     /**
-     * @generated from field: string name = 2;
+     * @generated from field: string id = 2;
+     */
+    id: string;
+    /**
+     * @generated from field: string name = 3;
      */
     name: string;
     /**
-     * @generated from field: repeated annex.tests.v1.Group.Runner runners = 3;
+     * @generated from field: optional string description = 4;
      */
-    runners: Group_Runner[];
+    description?: string;
     /**
-     * @generated from field: bool available = 4;
+     * @generated from field: repeated annex.tests.v1.TestSuite.Runner runners = 5;
+     */
+    runners: TestSuite_Runner[];
+    /**
+     * @generated from field: bool available = 6;
      */
     available: boolean;
-    constructor(data?: PartialMessage<Group>);
+    constructor(data?: PartialMessage<TestSuite>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "annex.tests.v1.Group";
+    static readonly typeName = "annex.tests.v1.TestSuite";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Group;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Group;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Group;
-    static equals(a: Group | PlainMessage<Group> | undefined, b: Group | PlainMessage<Group> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TestSuite;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TestSuite;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TestSuite;
+    static equals(a: TestSuite | PlainMessage<TestSuite> | undefined, b: TestSuite | PlainMessage<TestSuite> | undefined): boolean;
 }
 /**
- * @generated from message annex.tests.v1.Group.Runner
+ * @generated from message annex.tests.v1.TestSuite.Runner
  */
-export declare class Group_Runner extends Message<Group_Runner> {
+export declare class TestSuite_Runner extends Message<TestSuite_Runner> {
     /**
      * @generated from field: string id = 1;
      */
@@ -41,14 +49,14 @@ export declare class Group_Runner extends Message<Group_Runner> {
      * @generated from field: google.protobuf.Timestamp last_access_time = 2;
      */
     lastAccessTime?: Timestamp;
-    constructor(data?: PartialMessage<Group_Runner>);
+    constructor(data?: PartialMessage<TestSuite_Runner>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "annex.tests.v1.Group.Runner";
+    static readonly typeName = "annex.tests.v1.TestSuite.Runner";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Group_Runner;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Group_Runner;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Group_Runner;
-    static equals(a: Group_Runner | PlainMessage<Group_Runner> | undefined, b: Group_Runner | PlainMessage<Group_Runner> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TestSuite_Runner;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TestSuite_Runner;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TestSuite_Runner;
+    static equals(a: TestSuite_Runner | PlainMessage<TestSuite_Runner> | undefined, b: TestSuite_Runner | PlainMessage<TestSuite_Runner> | undefined): boolean;
 }
 /**
  * @generated from message annex.tests.v1.TestDefinition
@@ -59,7 +67,11 @@ export declare class TestDefinition extends Message<TestDefinition> {
      */
     name: string;
     /**
-     * @generated from field: optional annex.tests.v1.Payload default_input = 2;
+     * @generated from field: optional string description = 2;
+     */
+    description?: string;
+    /**
+     * @generated from field: optional annex.tests.v1.Payload default_input = 3;
      */
     defaultInput?: Payload;
     constructor(data?: PartialMessage<TestDefinition>);
@@ -80,9 +92,9 @@ export declare class Test extends Message<Test> {
      */
     context: string;
     /**
-     * @generated from field: string group = 2;
+     * @generated from field: string test_suite_id = 2;
      */
-    group: string;
+    testSuiteId: string;
     /**
      * @generated from field: string id = 3;
      */
@@ -92,11 +104,15 @@ export declare class Test extends Message<Test> {
      */
     name: string;
     /**
-     * @generated from field: bool has_input = 5;
+     * @generated from field: optional string description = 5;
+     */
+    description?: string;
+    /**
+     * @generated from field: bool has_input = 6;
      */
     hasInput: boolean;
     /**
-     * @generated from field: google.protobuf.Timestamp create_time = 6;
+     * @generated from field: google.protobuf.Timestamp create_time = 7;
      */
     createTime?: Timestamp;
     constructor(data?: PartialMessage<Test>);

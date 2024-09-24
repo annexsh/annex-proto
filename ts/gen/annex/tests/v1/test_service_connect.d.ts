@@ -1,4 +1,4 @@
-import { AckCaseExecutionFinishedRequest, AckCaseExecutionFinishedResponse, AckCaseExecutionScheduledRequest, AckCaseExecutionScheduledResponse, AckCaseExecutionStartedRequest, AckCaseExecutionStartedResponse, AckTestExecutionFinishedRequest, AckTestExecutionFinishedResponse, AckTestExecutionStartedRequest, AckTestExecutionStartedResponse, ExecuteTestRequest, ExecuteTestResponse, GetTestDefaultInputRequest, GetTestDefaultInputResponse, GetTestExecutionRequest, GetTestExecutionResponse, GetTestRequest, GetTestResponse, ListCaseExecutionsRequest, ListCaseExecutionsResponse, ListContextsRequest, ListContextsResponse, ListGroupsRequest, ListGroupsResponse, ListTestExecutionLogsRequest, ListTestExecutionLogsResponse, ListTestExecutionsRequest, ListTestExecutionsResponse, ListTestsRequest, ListTestsResponse, PublishLogRequest, PublishLogResponse, RegisterContextRequest, RegisterContextResponse, RegisterGroupRequest, RegisterGroupResponse, RegisterTestsRequest, RegisterTestsResponse, RetryTestExecutionRequest, RetryTestExecutionResponse } from "./test_service_pb.js";
+import { AckCaseExecutionFinishedRequest, AckCaseExecutionFinishedResponse, AckCaseExecutionScheduledRequest, AckCaseExecutionScheduledResponse, AckCaseExecutionStartedRequest, AckCaseExecutionStartedResponse, AckTestExecutionFinishedRequest, AckTestExecutionFinishedResponse, AckTestExecutionStartedRequest, AckTestExecutionStartedResponse, ExecuteTestRequest, ExecuteTestResponse, GetTestDefaultInputRequest, GetTestDefaultInputResponse, GetTestExecutionRequest, GetTestExecutionResponse, GetTestRequest, GetTestResponse, ListCaseExecutionsRequest, ListCaseExecutionsResponse, ListContextsRequest, ListContextsResponse, ListTestExecutionLogsRequest, ListTestExecutionLogsResponse, ListTestExecutionsRequest, ListTestExecutionsResponse, ListTestsRequest, ListTestsResponse, ListTestSuitesRequest, ListTestSuitesResponse, PublishLogRequest, PublishLogResponse, RegisterContextRequest, RegisterContextResponse, RegisterTestsRequest, RegisterTestsResponse, RegisterTestSuiteRequest, RegisterTestSuiteResponse, RetryTestExecutionRequest, RetryTestExecutionResponse } from "./test_service_pb.js";
 /**
  * @generated from service annex.tests.v1.TestService
  */
@@ -15,12 +15,12 @@ export declare const TestService: {
             readonly kind: any;
         };
         /**
-         * @generated from rpc annex.tests.v1.TestService.ListGroups
+         * @generated from rpc annex.tests.v1.TestService.ListTestSuites
          */
-        readonly listGroups: {
-            readonly name: "ListGroups";
-            readonly I: typeof ListGroupsRequest;
-            readonly O: typeof ListGroupsResponse;
+        readonly listTestSuites: {
+            readonly name: "ListTestSuites";
+            readonly I: typeof ListTestSuitesRequest;
+            readonly O: typeof ListTestSuitesResponse;
             readonly kind: any;
         };
         /**
@@ -114,12 +114,12 @@ export declare const TestService: {
             readonly kind: any;
         };
         /**
-         * @generated from rpc annex.tests.v1.TestService.RegisterGroup
+         * @generated from rpc annex.tests.v1.TestService.RegisterTestSuite
          */
-        readonly registerGroup: {
-            readonly name: "RegisterGroup";
-            readonly I: typeof RegisterGroupRequest;
-            readonly O: typeof RegisterGroupResponse;
+        readonly registerTestSuite: {
+            readonly name: "RegisterTestSuite";
+            readonly I: typeof RegisterTestSuiteRequest;
+            readonly O: typeof RegisterTestSuiteResponse;
             readonly kind: any;
         };
         /**

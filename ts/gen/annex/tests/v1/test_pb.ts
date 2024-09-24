@@ -7,64 +7,76 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
 
 /**
- * @generated from message annex.tests.v1.Group
+ * @generated from message annex.tests.v1.TestSuite
  */
-export class Group extends Message<Group> {
+export class TestSuite extends Message<TestSuite> {
   /**
    * @generated from field: string context = 1;
    */
   context = "";
 
   /**
-   * @generated from field: string name = 2;
+   * @generated from field: string id = 2;
+   */
+  id = "";
+
+  /**
+   * @generated from field: string name = 3;
    */
   name = "";
 
   /**
-   * @generated from field: repeated annex.tests.v1.Group.Runner runners = 3;
+   * @generated from field: optional string description = 4;
    */
-  runners: Group_Runner[] = [];
+  description?: string;
 
   /**
-   * @generated from field: bool available = 4;
+   * @generated from field: repeated annex.tests.v1.TestSuite.Runner runners = 5;
+   */
+  runners: TestSuite_Runner[] = [];
+
+  /**
+   * @generated from field: bool available = 6;
    */
   available = false;
 
-  constructor(data?: PartialMessage<Group>) {
+  constructor(data?: PartialMessage<TestSuite>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "annex.tests.v1.Group";
+  static readonly typeName = "annex.tests.v1.TestSuite";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "runners", kind: "message", T: Group_Runner, repeated: true },
-    { no: 4, name: "available", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "runners", kind: "message", T: TestSuite_Runner, repeated: true },
+    { no: 6, name: "available", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Group {
-    return new Group().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TestSuite {
+    return new TestSuite().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Group {
-    return new Group().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TestSuite {
+    return new TestSuite().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Group {
-    return new Group().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TestSuite {
+    return new TestSuite().fromJsonString(jsonString, options);
   }
 
-  static equals(a: Group | PlainMessage<Group> | undefined, b: Group | PlainMessage<Group> | undefined): boolean {
-    return proto3.util.equals(Group, a, b);
+  static equals(a: TestSuite | PlainMessage<TestSuite> | undefined, b: TestSuite | PlainMessage<TestSuite> | undefined): boolean {
+    return proto3.util.equals(TestSuite, a, b);
   }
 }
 
 /**
- * @generated from message annex.tests.v1.Group.Runner
+ * @generated from message annex.tests.v1.TestSuite.Runner
  */
-export class Group_Runner extends Message<Group_Runner> {
+export class TestSuite_Runner extends Message<TestSuite_Runner> {
   /**
    * @generated from field: string id = 1;
    */
@@ -75,32 +87,32 @@ export class Group_Runner extends Message<Group_Runner> {
    */
   lastAccessTime?: Timestamp;
 
-  constructor(data?: PartialMessage<Group_Runner>) {
+  constructor(data?: PartialMessage<TestSuite_Runner>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "annex.tests.v1.Group.Runner";
+  static readonly typeName = "annex.tests.v1.TestSuite.Runner";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "last_access_time", kind: "message", T: Timestamp },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Group_Runner {
-    return new Group_Runner().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TestSuite_Runner {
+    return new TestSuite_Runner().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): Group_Runner {
-    return new Group_Runner().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): TestSuite_Runner {
+    return new TestSuite_Runner().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): Group_Runner {
-    return new Group_Runner().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): TestSuite_Runner {
+    return new TestSuite_Runner().fromJsonString(jsonString, options);
   }
 
-  static equals(a: Group_Runner | PlainMessage<Group_Runner> | undefined, b: Group_Runner | PlainMessage<Group_Runner> | undefined): boolean {
-    return proto3.util.equals(Group_Runner, a, b);
+  static equals(a: TestSuite_Runner | PlainMessage<TestSuite_Runner> | undefined, b: TestSuite_Runner | PlainMessage<TestSuite_Runner> | undefined): boolean {
+    return proto3.util.equals(TestSuite_Runner, a, b);
   }
 }
 
@@ -114,7 +126,12 @@ export class TestDefinition extends Message<TestDefinition> {
   name = "";
 
   /**
-   * @generated from field: optional annex.tests.v1.Payload default_input = 2;
+   * @generated from field: optional string description = 2;
+   */
+  description?: string;
+
+  /**
+   * @generated from field: optional annex.tests.v1.Payload default_input = 3;
    */
   defaultInput?: Payload;
 
@@ -127,7 +144,8 @@ export class TestDefinition extends Message<TestDefinition> {
   static readonly typeName = "annex.tests.v1.TestDefinition";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "default_input", kind: "message", T: Payload, opt: true },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "default_input", kind: "message", T: Payload, opt: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): TestDefinition {
@@ -157,9 +175,9 @@ export class Test extends Message<Test> {
   context = "";
 
   /**
-   * @generated from field: string group = 2;
+   * @generated from field: string test_suite_id = 2;
    */
-  group = "";
+  testSuiteId = "";
 
   /**
    * @generated from field: string id = 3;
@@ -172,12 +190,17 @@ export class Test extends Message<Test> {
   name = "";
 
   /**
-   * @generated from field: bool has_input = 5;
+   * @generated from field: optional string description = 5;
+   */
+  description?: string;
+
+  /**
+   * @generated from field: bool has_input = 6;
    */
   hasInput = false;
 
   /**
-   * @generated from field: google.protobuf.Timestamp create_time = 6;
+   * @generated from field: google.protobuf.Timestamp create_time = 7;
    */
   createTime?: Timestamp;
 
@@ -190,11 +213,12 @@ export class Test extends Message<Test> {
   static readonly typeName = "annex.tests.v1.Test";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "group", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "test_suite_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "has_input", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 6, name: "create_time", kind: "message", T: Timestamp },
+    { no: 5, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 6, name: "has_input", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 7, name: "create_time", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Test {
