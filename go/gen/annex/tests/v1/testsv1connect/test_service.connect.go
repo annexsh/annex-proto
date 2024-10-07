@@ -36,8 +36,9 @@ const (
 	// TestServiceListContextsProcedure is the fully-qualified name of the TestService's ListContexts
 	// RPC.
 	TestServiceListContextsProcedure = "/annex.tests.v1.TestService/ListContexts"
-	// TestServiceListGroupsProcedure is the fully-qualified name of the TestService's ListGroups RPC.
-	TestServiceListGroupsProcedure = "/annex.tests.v1.TestService/ListGroups"
+	// TestServiceListTestSuitesProcedure is the fully-qualified name of the TestService's
+	// ListTestSuites RPC.
+	TestServiceListTestSuitesProcedure = "/annex.tests.v1.TestService/ListTestSuites"
 	// TestServiceListTestsProcedure is the fully-qualified name of the TestService's ListTests RPC.
 	TestServiceListTestsProcedure = "/annex.tests.v1.TestService/ListTests"
 	// TestServiceGetTestProcedure is the fully-qualified name of the TestService's GetTest RPC.
@@ -65,9 +66,9 @@ const (
 	// TestServiceRegisterContextProcedure is the fully-qualified name of the TestService's
 	// RegisterContext RPC.
 	TestServiceRegisterContextProcedure = "/annex.tests.v1.TestService/RegisterContext"
-	// TestServiceRegisterGroupProcedure is the fully-qualified name of the TestService's RegisterGroup
-	// RPC.
-	TestServiceRegisterGroupProcedure = "/annex.tests.v1.TestService/RegisterGroup"
+	// TestServiceRegisterTestSuiteProcedure is the fully-qualified name of the TestService's
+	// RegisterTestSuite RPC.
+	TestServiceRegisterTestSuiteProcedure = "/annex.tests.v1.TestService/RegisterTestSuite"
 	// TestServiceRegisterTestsProcedure is the fully-qualified name of the TestService's RegisterTests
 	// RPC.
 	TestServiceRegisterTestsProcedure = "/annex.tests.v1.TestService/RegisterTests"
@@ -94,7 +95,7 @@ const (
 var (
 	testServiceServiceDescriptor                         = v1.File_annex_tests_v1_test_service_proto.Services().ByName("TestService")
 	testServiceListContextsMethodDescriptor              = testServiceServiceDescriptor.Methods().ByName("ListContexts")
-	testServiceListGroupsMethodDescriptor                = testServiceServiceDescriptor.Methods().ByName("ListGroups")
+	testServiceListTestSuitesMethodDescriptor            = testServiceServiceDescriptor.Methods().ByName("ListTestSuites")
 	testServiceListTestsMethodDescriptor                 = testServiceServiceDescriptor.Methods().ByName("ListTests")
 	testServiceGetTestMethodDescriptor                   = testServiceServiceDescriptor.Methods().ByName("GetTest")
 	testServiceGetTestDefaultInputMethodDescriptor       = testServiceServiceDescriptor.Methods().ByName("GetTestDefaultInput")
@@ -105,7 +106,7 @@ var (
 	testServiceListCaseExecutionsMethodDescriptor        = testServiceServiceDescriptor.Methods().ByName("ListCaseExecutions")
 	testServiceListTestExecutionLogsMethodDescriptor     = testServiceServiceDescriptor.Methods().ByName("ListTestExecutionLogs")
 	testServiceRegisterContextMethodDescriptor           = testServiceServiceDescriptor.Methods().ByName("RegisterContext")
-	testServiceRegisterGroupMethodDescriptor             = testServiceServiceDescriptor.Methods().ByName("RegisterGroup")
+	testServiceRegisterTestSuiteMethodDescriptor         = testServiceServiceDescriptor.Methods().ByName("RegisterTestSuite")
 	testServiceRegisterTestsMethodDescriptor             = testServiceServiceDescriptor.Methods().ByName("RegisterTests")
 	testServiceAckTestExecutionStartedMethodDescriptor   = testServiceServiceDescriptor.Methods().ByName("AckTestExecutionStarted")
 	testServiceAckTestExecutionFinishedMethodDescriptor  = testServiceServiceDescriptor.Methods().ByName("AckTestExecutionFinished")
@@ -118,7 +119,7 @@ var (
 // TestServiceClient is a client for the annex.tests.v1.TestService service.
 type TestServiceClient interface {
 	ListContexts(context.Context, *connect.Request[v1.ListContextsRequest]) (*connect.Response[v1.ListContextsResponse], error)
-	ListGroups(context.Context, *connect.Request[v1.ListGroupsRequest]) (*connect.Response[v1.ListGroupsResponse], error)
+	ListTestSuites(context.Context, *connect.Request[v1.ListTestSuitesRequest]) (*connect.Response[v1.ListTestSuitesResponse], error)
 	ListTests(context.Context, *connect.Request[v1.ListTestsRequest]) (*connect.Response[v1.ListTestsResponse], error)
 	GetTest(context.Context, *connect.Request[v1.GetTestRequest]) (*connect.Response[v1.GetTestResponse], error)
 	GetTestDefaultInput(context.Context, *connect.Request[v1.GetTestDefaultInputRequest]) (*connect.Response[v1.GetTestDefaultInputResponse], error)
@@ -129,8 +130,8 @@ type TestServiceClient interface {
 	ListCaseExecutions(context.Context, *connect.Request[v1.ListCaseExecutionsRequest]) (*connect.Response[v1.ListCaseExecutionsResponse], error)
 	ListTestExecutionLogs(context.Context, *connect.Request[v1.ListTestExecutionLogsRequest]) (*connect.Response[v1.ListTestExecutionLogsResponse], error)
 	RegisterContext(context.Context, *connect.Request[v1.RegisterContextRequest]) (*connect.Response[v1.RegisterContextResponse], error)
-	RegisterGroup(context.Context, *connect.Request[v1.RegisterGroupRequest]) (*connect.Response[v1.RegisterGroupResponse], error)
-	RegisterTests(context.Context, *connect.Request[v1.RegisterTestsRequest]) (*connect.Response[v1.RegisterTestsResponse], error)
+	RegisterTestSuite(context.Context, *connect.Request[v1.RegisterTestSuiteRequest]) (*connect.Response[v1.RegisterTestSuiteResponse], error)
+	RegisterTests(context.Context) *connect.ClientStreamForClient[v1.RegisterTestsRequest, v1.RegisterTestsResponse]
 	AckTestExecutionStarted(context.Context, *connect.Request[v1.AckTestExecutionStartedRequest]) (*connect.Response[v1.AckTestExecutionStartedResponse], error)
 	AckTestExecutionFinished(context.Context, *connect.Request[v1.AckTestExecutionFinishedRequest]) (*connect.Response[v1.AckTestExecutionFinishedResponse], error)
 	AckCaseExecutionScheduled(context.Context, *connect.Request[v1.AckCaseExecutionScheduledRequest]) (*connect.Response[v1.AckCaseExecutionScheduledResponse], error)
@@ -155,10 +156,10 @@ func NewTestServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(testServiceListContextsMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		listGroups: connect.NewClient[v1.ListGroupsRequest, v1.ListGroupsResponse](
+		listTestSuites: connect.NewClient[v1.ListTestSuitesRequest, v1.ListTestSuitesResponse](
 			httpClient,
-			baseURL+TestServiceListGroupsProcedure,
-			connect.WithSchema(testServiceListGroupsMethodDescriptor),
+			baseURL+TestServiceListTestSuitesProcedure,
+			connect.WithSchema(testServiceListTestSuitesMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		listTests: connect.NewClient[v1.ListTestsRequest, v1.ListTestsResponse](
@@ -221,10 +222,10 @@ func NewTestServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 			connect.WithSchema(testServiceRegisterContextMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
-		registerGroup: connect.NewClient[v1.RegisterGroupRequest, v1.RegisterGroupResponse](
+		registerTestSuite: connect.NewClient[v1.RegisterTestSuiteRequest, v1.RegisterTestSuiteResponse](
 			httpClient,
-			baseURL+TestServiceRegisterGroupProcedure,
-			connect.WithSchema(testServiceRegisterGroupMethodDescriptor),
+			baseURL+TestServiceRegisterTestSuiteProcedure,
+			connect.WithSchema(testServiceRegisterTestSuiteMethodDescriptor),
 			connect.WithClientOptions(opts...),
 		),
 		registerTests: connect.NewClient[v1.RegisterTestsRequest, v1.RegisterTestsResponse](
@@ -275,7 +276,7 @@ func NewTestServiceClient(httpClient connect.HTTPClient, baseURL string, opts ..
 // testServiceClient implements TestServiceClient.
 type testServiceClient struct {
 	listContexts              *connect.Client[v1.ListContextsRequest, v1.ListContextsResponse]
-	listGroups                *connect.Client[v1.ListGroupsRequest, v1.ListGroupsResponse]
+	listTestSuites            *connect.Client[v1.ListTestSuitesRequest, v1.ListTestSuitesResponse]
 	listTests                 *connect.Client[v1.ListTestsRequest, v1.ListTestsResponse]
 	getTest                   *connect.Client[v1.GetTestRequest, v1.GetTestResponse]
 	getTestDefaultInput       *connect.Client[v1.GetTestDefaultInputRequest, v1.GetTestDefaultInputResponse]
@@ -286,7 +287,7 @@ type testServiceClient struct {
 	listCaseExecutions        *connect.Client[v1.ListCaseExecutionsRequest, v1.ListCaseExecutionsResponse]
 	listTestExecutionLogs     *connect.Client[v1.ListTestExecutionLogsRequest, v1.ListTestExecutionLogsResponse]
 	registerContext           *connect.Client[v1.RegisterContextRequest, v1.RegisterContextResponse]
-	registerGroup             *connect.Client[v1.RegisterGroupRequest, v1.RegisterGroupResponse]
+	registerTestSuite         *connect.Client[v1.RegisterTestSuiteRequest, v1.RegisterTestSuiteResponse]
 	registerTests             *connect.Client[v1.RegisterTestsRequest, v1.RegisterTestsResponse]
 	ackTestExecutionStarted   *connect.Client[v1.AckTestExecutionStartedRequest, v1.AckTestExecutionStartedResponse]
 	ackTestExecutionFinished  *connect.Client[v1.AckTestExecutionFinishedRequest, v1.AckTestExecutionFinishedResponse]
@@ -301,9 +302,9 @@ func (c *testServiceClient) ListContexts(ctx context.Context, req *connect.Reque
 	return c.listContexts.CallUnary(ctx, req)
 }
 
-// ListGroups calls annex.tests.v1.TestService.ListGroups.
-func (c *testServiceClient) ListGroups(ctx context.Context, req *connect.Request[v1.ListGroupsRequest]) (*connect.Response[v1.ListGroupsResponse], error) {
-	return c.listGroups.CallUnary(ctx, req)
+// ListTestSuites calls annex.tests.v1.TestService.ListTestSuites.
+func (c *testServiceClient) ListTestSuites(ctx context.Context, req *connect.Request[v1.ListTestSuitesRequest]) (*connect.Response[v1.ListTestSuitesResponse], error) {
+	return c.listTestSuites.CallUnary(ctx, req)
 }
 
 // ListTests calls annex.tests.v1.TestService.ListTests.
@@ -356,14 +357,14 @@ func (c *testServiceClient) RegisterContext(ctx context.Context, req *connect.Re
 	return c.registerContext.CallUnary(ctx, req)
 }
 
-// RegisterGroup calls annex.tests.v1.TestService.RegisterGroup.
-func (c *testServiceClient) RegisterGroup(ctx context.Context, req *connect.Request[v1.RegisterGroupRequest]) (*connect.Response[v1.RegisterGroupResponse], error) {
-	return c.registerGroup.CallUnary(ctx, req)
+// RegisterTestSuite calls annex.tests.v1.TestService.RegisterTestSuite.
+func (c *testServiceClient) RegisterTestSuite(ctx context.Context, req *connect.Request[v1.RegisterTestSuiteRequest]) (*connect.Response[v1.RegisterTestSuiteResponse], error) {
+	return c.registerTestSuite.CallUnary(ctx, req)
 }
 
 // RegisterTests calls annex.tests.v1.TestService.RegisterTests.
-func (c *testServiceClient) RegisterTests(ctx context.Context, req *connect.Request[v1.RegisterTestsRequest]) (*connect.Response[v1.RegisterTestsResponse], error) {
-	return c.registerTests.CallUnary(ctx, req)
+func (c *testServiceClient) RegisterTests(ctx context.Context) *connect.ClientStreamForClient[v1.RegisterTestsRequest, v1.RegisterTestsResponse] {
+	return c.registerTests.CallClientStream(ctx)
 }
 
 // AckTestExecutionStarted calls annex.tests.v1.TestService.AckTestExecutionStarted.
@@ -399,7 +400,7 @@ func (c *testServiceClient) PublishLog(ctx context.Context, req *connect.Request
 // TestServiceHandler is an implementation of the annex.tests.v1.TestService service.
 type TestServiceHandler interface {
 	ListContexts(context.Context, *connect.Request[v1.ListContextsRequest]) (*connect.Response[v1.ListContextsResponse], error)
-	ListGroups(context.Context, *connect.Request[v1.ListGroupsRequest]) (*connect.Response[v1.ListGroupsResponse], error)
+	ListTestSuites(context.Context, *connect.Request[v1.ListTestSuitesRequest]) (*connect.Response[v1.ListTestSuitesResponse], error)
 	ListTests(context.Context, *connect.Request[v1.ListTestsRequest]) (*connect.Response[v1.ListTestsResponse], error)
 	GetTest(context.Context, *connect.Request[v1.GetTestRequest]) (*connect.Response[v1.GetTestResponse], error)
 	GetTestDefaultInput(context.Context, *connect.Request[v1.GetTestDefaultInputRequest]) (*connect.Response[v1.GetTestDefaultInputResponse], error)
@@ -410,8 +411,8 @@ type TestServiceHandler interface {
 	ListCaseExecutions(context.Context, *connect.Request[v1.ListCaseExecutionsRequest]) (*connect.Response[v1.ListCaseExecutionsResponse], error)
 	ListTestExecutionLogs(context.Context, *connect.Request[v1.ListTestExecutionLogsRequest]) (*connect.Response[v1.ListTestExecutionLogsResponse], error)
 	RegisterContext(context.Context, *connect.Request[v1.RegisterContextRequest]) (*connect.Response[v1.RegisterContextResponse], error)
-	RegisterGroup(context.Context, *connect.Request[v1.RegisterGroupRequest]) (*connect.Response[v1.RegisterGroupResponse], error)
-	RegisterTests(context.Context, *connect.Request[v1.RegisterTestsRequest]) (*connect.Response[v1.RegisterTestsResponse], error)
+	RegisterTestSuite(context.Context, *connect.Request[v1.RegisterTestSuiteRequest]) (*connect.Response[v1.RegisterTestSuiteResponse], error)
+	RegisterTests(context.Context, *connect.ClientStream[v1.RegisterTestsRequest]) (*connect.Response[v1.RegisterTestsResponse], error)
 	AckTestExecutionStarted(context.Context, *connect.Request[v1.AckTestExecutionStartedRequest]) (*connect.Response[v1.AckTestExecutionStartedResponse], error)
 	AckTestExecutionFinished(context.Context, *connect.Request[v1.AckTestExecutionFinishedRequest]) (*connect.Response[v1.AckTestExecutionFinishedResponse], error)
 	AckCaseExecutionScheduled(context.Context, *connect.Request[v1.AckCaseExecutionScheduledRequest]) (*connect.Response[v1.AckCaseExecutionScheduledResponse], error)
@@ -432,10 +433,10 @@ func NewTestServiceHandler(svc TestServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(testServiceListContextsMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	testServiceListGroupsHandler := connect.NewUnaryHandler(
-		TestServiceListGroupsProcedure,
-		svc.ListGroups,
-		connect.WithSchema(testServiceListGroupsMethodDescriptor),
+	testServiceListTestSuitesHandler := connect.NewUnaryHandler(
+		TestServiceListTestSuitesProcedure,
+		svc.ListTestSuites,
+		connect.WithSchema(testServiceListTestSuitesMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
 	testServiceListTestsHandler := connect.NewUnaryHandler(
@@ -498,13 +499,13 @@ func NewTestServiceHandler(svc TestServiceHandler, opts ...connect.HandlerOption
 		connect.WithSchema(testServiceRegisterContextMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	testServiceRegisterGroupHandler := connect.NewUnaryHandler(
-		TestServiceRegisterGroupProcedure,
-		svc.RegisterGroup,
-		connect.WithSchema(testServiceRegisterGroupMethodDescriptor),
+	testServiceRegisterTestSuiteHandler := connect.NewUnaryHandler(
+		TestServiceRegisterTestSuiteProcedure,
+		svc.RegisterTestSuite,
+		connect.WithSchema(testServiceRegisterTestSuiteMethodDescriptor),
 		connect.WithHandlerOptions(opts...),
 	)
-	testServiceRegisterTestsHandler := connect.NewUnaryHandler(
+	testServiceRegisterTestsHandler := connect.NewClientStreamHandler(
 		TestServiceRegisterTestsProcedure,
 		svc.RegisterTests,
 		connect.WithSchema(testServiceRegisterTestsMethodDescriptor),
@@ -550,8 +551,8 @@ func NewTestServiceHandler(svc TestServiceHandler, opts ...connect.HandlerOption
 		switch r.URL.Path {
 		case TestServiceListContextsProcedure:
 			testServiceListContextsHandler.ServeHTTP(w, r)
-		case TestServiceListGroupsProcedure:
-			testServiceListGroupsHandler.ServeHTTP(w, r)
+		case TestServiceListTestSuitesProcedure:
+			testServiceListTestSuitesHandler.ServeHTTP(w, r)
 		case TestServiceListTestsProcedure:
 			testServiceListTestsHandler.ServeHTTP(w, r)
 		case TestServiceGetTestProcedure:
@@ -572,8 +573,8 @@ func NewTestServiceHandler(svc TestServiceHandler, opts ...connect.HandlerOption
 			testServiceListTestExecutionLogsHandler.ServeHTTP(w, r)
 		case TestServiceRegisterContextProcedure:
 			testServiceRegisterContextHandler.ServeHTTP(w, r)
-		case TestServiceRegisterGroupProcedure:
-			testServiceRegisterGroupHandler.ServeHTTP(w, r)
+		case TestServiceRegisterTestSuiteProcedure:
+			testServiceRegisterTestSuiteHandler.ServeHTTP(w, r)
 		case TestServiceRegisterTestsProcedure:
 			testServiceRegisterTestsHandler.ServeHTTP(w, r)
 		case TestServiceAckTestExecutionStartedProcedure:
@@ -601,8 +602,8 @@ func (UnimplementedTestServiceHandler) ListContexts(context.Context, *connect.Re
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.ListContexts is not implemented"))
 }
 
-func (UnimplementedTestServiceHandler) ListGroups(context.Context, *connect.Request[v1.ListGroupsRequest]) (*connect.Response[v1.ListGroupsResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.ListGroups is not implemented"))
+func (UnimplementedTestServiceHandler) ListTestSuites(context.Context, *connect.Request[v1.ListTestSuitesRequest]) (*connect.Response[v1.ListTestSuitesResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.ListTestSuites is not implemented"))
 }
 
 func (UnimplementedTestServiceHandler) ListTests(context.Context, *connect.Request[v1.ListTestsRequest]) (*connect.Response[v1.ListTestsResponse], error) {
@@ -645,11 +646,11 @@ func (UnimplementedTestServiceHandler) RegisterContext(context.Context, *connect
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.RegisterContext is not implemented"))
 }
 
-func (UnimplementedTestServiceHandler) RegisterGroup(context.Context, *connect.Request[v1.RegisterGroupRequest]) (*connect.Response[v1.RegisterGroupResponse], error) {
-	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.RegisterGroup is not implemented"))
+func (UnimplementedTestServiceHandler) RegisterTestSuite(context.Context, *connect.Request[v1.RegisterTestSuiteRequest]) (*connect.Response[v1.RegisterTestSuiteResponse], error) {
+	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.RegisterTestSuite is not implemented"))
 }
 
-func (UnimplementedTestServiceHandler) RegisterTests(context.Context, *connect.Request[v1.RegisterTestsRequest]) (*connect.Response[v1.RegisterTestsResponse], error) {
+func (UnimplementedTestServiceHandler) RegisterTests(context.Context, *connect.ClientStream[v1.RegisterTestsRequest]) (*connect.Response[v1.RegisterTestsResponse], error) {
 	return nil, connect.NewError(connect.CodeUnimplemented, errors.New("annex.tests.v1.TestService.RegisterTests is not implemented"))
 }
 

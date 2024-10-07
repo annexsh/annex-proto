@@ -23,12 +23,12 @@ exports.TestService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
-         * @generated from rpc annex.tests.v1.TestService.ListGroups
+         * @generated from rpc annex.tests.v1.TestService.ListTestSuites
          */
-        listGroups: {
-            name: "ListGroups",
-            I: test_service_pb_js_1.ListGroupsRequest,
-            O: test_service_pb_js_1.ListGroupsResponse,
+        listTestSuites: {
+            name: "ListTestSuites",
+            I: test_service_pb_js_1.ListTestSuitesRequest,
+            O: test_service_pb_js_1.ListTestSuitesResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
@@ -122,12 +122,12 @@ exports.TestService = {
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
-         * @generated from rpc annex.tests.v1.TestService.RegisterGroup
+         * @generated from rpc annex.tests.v1.TestService.RegisterTestSuite
          */
-        registerGroup: {
-            name: "RegisterGroup",
-            I: test_service_pb_js_1.RegisterGroupRequest,
-            O: test_service_pb_js_1.RegisterGroupResponse,
+        registerTestSuite: {
+            name: "RegisterTestSuite",
+            I: test_service_pb_js_1.RegisterTestSuiteRequest,
+            O: test_service_pb_js_1.RegisterTestSuiteResponse,
             kind: protobuf_1.MethodKind.Unary,
         },
         /**
@@ -137,7 +137,7 @@ exports.TestService = {
             name: "RegisterTests",
             I: test_service_pb_js_1.RegisterTestsRequest,
             O: test_service_pb_js_1.RegisterTestsResponse,
-            kind: protobuf_1.MethodKind.Unary,
+            kind: protobuf_1.MethodKind.ClientStreaming,
         },
         /**
          * @generated from rpc annex.tests.v1.TestService.AckTestExecutionStarted

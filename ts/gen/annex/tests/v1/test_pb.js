@@ -4,12 +4,12 @@
 /* eslint-disable */
 // @ts-nocheck
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Payload = exports.Log = exports.CaseExecution = exports.TestExecution = exports.Test = exports.TestDefinition = exports.Group_Runner = exports.Group = void 0;
+exports.Payload = exports.Log = exports.CaseExecution = exports.TestExecution = exports.Test = exports.TestDefinition = exports.TestSuite_Runner = exports.TestSuite = void 0;
 const protobuf_1 = require("@bufbuild/protobuf");
 /**
- * @generated from message annex.tests.v1.Group
+ * @generated from message annex.tests.v1.TestSuite
  */
-class Group extends protobuf_1.Message {
+class TestSuite extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
@@ -17,45 +17,51 @@ class Group extends protobuf_1.Message {
          */
         this.context = "";
         /**
-         * @generated from field: string name = 2;
+         * @generated from field: string id = 2;
+         */
+        this.id = "";
+        /**
+         * @generated from field: string name = 3;
          */
         this.name = "";
         /**
-         * @generated from field: repeated annex.tests.v1.Group.Runner runners = 3;
+         * @generated from field: repeated annex.tests.v1.TestSuite.Runner runners = 5;
          */
         this.runners = [];
         /**
-         * @generated from field: bool available = 4;
+         * @generated from field: bool available = 6;
          */
         this.available = false;
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new Group().fromBinary(bytes, options);
+        return new TestSuite().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new Group().fromJson(jsonValue, options);
+        return new TestSuite().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new Group().fromJsonString(jsonString, options);
+        return new TestSuite().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(Group, a, b);
+        return protobuf_1.proto3.util.equals(TestSuite, a, b);
     }
 }
-exports.Group = Group;
-Group.runtime = protobuf_1.proto3;
-Group.typeName = "annex.tests.v1.Group";
-Group.fields = protobuf_1.proto3.util.newFieldList(() => [
+exports.TestSuite = TestSuite;
+TestSuite.runtime = protobuf_1.proto3;
+TestSuite.typeName = "annex.tests.v1.TestSuite";
+TestSuite.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 3, name: "runners", kind: "message", T: Group_Runner, repeated: true },
-    { no: 4, name: "available", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 5, name: "runners", kind: "message", T: TestSuite_Runner, repeated: true },
+    { no: 6, name: "available", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
 ]);
 /**
- * @generated from message annex.tests.v1.Group.Runner
+ * @generated from message annex.tests.v1.TestSuite.Runner
  */
-class Group_Runner extends protobuf_1.Message {
+class TestSuite_Runner extends protobuf_1.Message {
     constructor(data) {
         super();
         /**
@@ -65,22 +71,22 @@ class Group_Runner extends protobuf_1.Message {
         protobuf_1.proto3.util.initPartial(data, this);
     }
     static fromBinary(bytes, options) {
-        return new Group_Runner().fromBinary(bytes, options);
+        return new TestSuite_Runner().fromBinary(bytes, options);
     }
     static fromJson(jsonValue, options) {
-        return new Group_Runner().fromJson(jsonValue, options);
+        return new TestSuite_Runner().fromJson(jsonValue, options);
     }
     static fromJsonString(jsonString, options) {
-        return new Group_Runner().fromJsonString(jsonString, options);
+        return new TestSuite_Runner().fromJsonString(jsonString, options);
     }
     static equals(a, b) {
-        return protobuf_1.proto3.util.equals(Group_Runner, a, b);
+        return protobuf_1.proto3.util.equals(TestSuite_Runner, a, b);
     }
 }
-exports.Group_Runner = Group_Runner;
-Group_Runner.runtime = protobuf_1.proto3;
-Group_Runner.typeName = "annex.tests.v1.Group.Runner";
-Group_Runner.fields = protobuf_1.proto3.util.newFieldList(() => [
+exports.TestSuite_Runner = TestSuite_Runner;
+TestSuite_Runner.runtime = protobuf_1.proto3;
+TestSuite_Runner.typeName = "annex.tests.v1.TestSuite.Runner";
+TestSuite_Runner.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "last_access_time", kind: "message", T: protobuf_1.Timestamp },
 ]);
@@ -114,7 +120,8 @@ TestDefinition.runtime = protobuf_1.proto3;
 TestDefinition.typeName = "annex.tests.v1.TestDefinition";
 TestDefinition.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "default_input", kind: "message", T: Payload, opt: true },
+    { no: 2, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 3, name: "default_input", kind: "message", T: Payload, opt: true },
 ]);
 /**
  * @generated from message annex.tests.v1.Test
@@ -127,9 +134,9 @@ class Test extends protobuf_1.Message {
          */
         this.context = "";
         /**
-         * @generated from field: string group = 2;
+         * @generated from field: string test_suite_id = 2;
          */
-        this.group = "";
+        this.testSuiteId = "";
         /**
          * @generated from field: string id = 3;
          */
@@ -139,7 +146,7 @@ class Test extends protobuf_1.Message {
          */
         this.name = "";
         /**
-         * @generated from field: bool has_input = 5;
+         * @generated from field: bool has_input = 6;
          */
         this.hasInput = false;
         protobuf_1.proto3.util.initPartial(data, this);
@@ -162,11 +169,12 @@ Test.runtime = protobuf_1.proto3;
 Test.typeName = "annex.tests.v1.Test";
 Test.fields = protobuf_1.proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "group", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "test_suite_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "has_input", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 6, name: "create_time", kind: "message", T: protobuf_1.Timestamp },
+    { no: 5, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
+    { no: 6, name: "has_input", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 7, name: "create_time", kind: "message", T: protobuf_1.Timestamp },
 ]);
 /**
  * @generated from message annex.tests.v1.TestExecution

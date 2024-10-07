@@ -5,7 +5,7 @@
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
-import { CaseExecution, Group, Log, Payload, Test, TestDefinition, TestExecution } from "./test_pb.js";
+import { CaseExecution, Log, Payload, Test, TestDefinition, TestExecution, TestSuite } from "./test_pb.js";
 
 /**
  * @generated from message annex.tests.v1.RegisterContextRequest
@@ -162,9 +162,9 @@ export class ListContextsResponse extends Message<ListContextsResponse> {
 }
 
 /**
- * @generated from message annex.tests.v1.RegisterGroupRequest
+ * @generated from message annex.tests.v1.RegisterTestSuiteRequest
  */
-export class RegisterGroupRequest extends Message<RegisterGroupRequest> {
+export class RegisterTestSuiteRequest extends Message<RegisterTestSuiteRequest> {
   /**
    * @generated from field: string context = 1;
    */
@@ -175,70 +175,162 @@ export class RegisterGroupRequest extends Message<RegisterGroupRequest> {
    */
   name = "";
 
-  constructor(data?: PartialMessage<RegisterGroupRequest>) {
+  /**
+   * @generated from field: optional string description = 3;
+   */
+  description?: string;
+
+  constructor(data?: PartialMessage<RegisterTestSuiteRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "annex.tests.v1.RegisterGroupRequest";
+  static readonly typeName = "annex.tests.v1.RegisterTestSuiteRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */, opt: true },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RegisterGroupRequest {
-    return new RegisterGroupRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RegisterTestSuiteRequest {
+    return new RegisterTestSuiteRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RegisterGroupRequest {
-    return new RegisterGroupRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RegisterTestSuiteRequest {
+    return new RegisterTestSuiteRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RegisterGroupRequest {
-    return new RegisterGroupRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RegisterTestSuiteRequest {
+    return new RegisterTestSuiteRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: RegisterGroupRequest | PlainMessage<RegisterGroupRequest> | undefined, b: RegisterGroupRequest | PlainMessage<RegisterGroupRequest> | undefined): boolean {
-    return proto3.util.equals(RegisterGroupRequest, a, b);
+  static equals(a: RegisterTestSuiteRequest | PlainMessage<RegisterTestSuiteRequest> | undefined, b: RegisterTestSuiteRequest | PlainMessage<RegisterTestSuiteRequest> | undefined): boolean {
+    return proto3.util.equals(RegisterTestSuiteRequest, a, b);
   }
 }
 
 /**
- * @generated from message annex.tests.v1.RegisterGroupResponse
+ * @generated from message annex.tests.v1.RegisterTestSuiteResponse
  */
-export class RegisterGroupResponse extends Message<RegisterGroupResponse> {
-  constructor(data?: PartialMessage<RegisterGroupResponse>) {
+export class RegisterTestSuiteResponse extends Message<RegisterTestSuiteResponse> {
+  /**
+   * @generated from field: string id = 1;
+   */
+  id = "";
+
+  constructor(data?: PartialMessage<RegisterTestSuiteResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "annex.tests.v1.RegisterGroupResponse";
+  static readonly typeName = "annex.tests.v1.RegisterTestSuiteResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RegisterGroupResponse {
-    return new RegisterGroupResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RegisterTestSuiteResponse {
+    return new RegisterTestSuiteResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RegisterGroupResponse {
-    return new RegisterGroupResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RegisterTestSuiteResponse {
+    return new RegisterTestSuiteResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RegisterGroupResponse {
-    return new RegisterGroupResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RegisterTestSuiteResponse {
+    return new RegisterTestSuiteResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: RegisterGroupResponse | PlainMessage<RegisterGroupResponse> | undefined, b: RegisterGroupResponse | PlainMessage<RegisterGroupResponse> | undefined): boolean {
-    return proto3.util.equals(RegisterGroupResponse, a, b);
+  static equals(a: RegisterTestSuiteResponse | PlainMessage<RegisterTestSuiteResponse> | undefined, b: RegisterTestSuiteResponse | PlainMessage<RegisterTestSuiteResponse> | undefined): boolean {
+    return proto3.util.equals(RegisterTestSuiteResponse, a, b);
   }
 }
 
 /**
- * @generated from message annex.tests.v1.ListGroupsRequest
+ * @generated from message annex.tests.v1.GetTestSuiteRequest
  */
-export class ListGroupsRequest extends Message<ListGroupsRequest> {
+export class GetTestSuiteRequest extends Message<GetTestSuiteRequest> {
+  /**
+   * @generated from field: string context = 1;
+   */
+  context = "";
+
+  /**
+   * @generated from field: string id = 2;
+   */
+  id = "";
+
+  constructor(data?: PartialMessage<GetTestSuiteRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "annex.tests.v1.GetTestSuiteRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetTestSuiteRequest {
+    return new GetTestSuiteRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetTestSuiteRequest {
+    return new GetTestSuiteRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetTestSuiteRequest {
+    return new GetTestSuiteRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetTestSuiteRequest | PlainMessage<GetTestSuiteRequest> | undefined, b: GetTestSuiteRequest | PlainMessage<GetTestSuiteRequest> | undefined): boolean {
+    return proto3.util.equals(GetTestSuiteRequest, a, b);
+  }
+}
+
+/**
+ * @generated from message annex.tests.v1.GetTestSuiteResponse
+ */
+export class GetTestSuiteResponse extends Message<GetTestSuiteResponse> {
+  /**
+   * @generated from field: annex.tests.v1.TestSuite test_suite = 1;
+   */
+  testSuite?: TestSuite;
+
+  constructor(data?: PartialMessage<GetTestSuiteResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "annex.tests.v1.GetTestSuiteResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "test_suite", kind: "message", T: TestSuite },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetTestSuiteResponse {
+    return new GetTestSuiteResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetTestSuiteResponse {
+    return new GetTestSuiteResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetTestSuiteResponse {
+    return new GetTestSuiteResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetTestSuiteResponse | PlainMessage<GetTestSuiteResponse> | undefined, b: GetTestSuiteResponse | PlainMessage<GetTestSuiteResponse> | undefined): boolean {
+    return proto3.util.equals(GetTestSuiteResponse, a, b);
+  }
+}
+
+/**
+ * @generated from message annex.tests.v1.ListTestSuitesRequest
+ */
+export class ListTestSuitesRequest extends Message<ListTestSuitesRequest> {
   /**
    * @generated from field: string context = 1;
    */
@@ -254,76 +346,76 @@ export class ListGroupsRequest extends Message<ListGroupsRequest> {
    */
   nextPageToken = "";
 
-  constructor(data?: PartialMessage<ListGroupsRequest>) {
+  constructor(data?: PartialMessage<ListTestSuitesRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "annex.tests.v1.ListGroupsRequest";
+  static readonly typeName = "annex.tests.v1.ListTestSuitesRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 3, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListGroupsRequest {
-    return new ListGroupsRequest().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListTestSuitesRequest {
+    return new ListTestSuitesRequest().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListGroupsRequest {
-    return new ListGroupsRequest().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListTestSuitesRequest {
+    return new ListTestSuitesRequest().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListGroupsRequest {
-    return new ListGroupsRequest().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListTestSuitesRequest {
+    return new ListTestSuitesRequest().fromJsonString(jsonString, options);
   }
 
-  static equals(a: ListGroupsRequest | PlainMessage<ListGroupsRequest> | undefined, b: ListGroupsRequest | PlainMessage<ListGroupsRequest> | undefined): boolean {
-    return proto3.util.equals(ListGroupsRequest, a, b);
+  static equals(a: ListTestSuitesRequest | PlainMessage<ListTestSuitesRequest> | undefined, b: ListTestSuitesRequest | PlainMessage<ListTestSuitesRequest> | undefined): boolean {
+    return proto3.util.equals(ListTestSuitesRequest, a, b);
   }
 }
 
 /**
- * @generated from message annex.tests.v1.ListGroupsResponse
+ * @generated from message annex.tests.v1.ListTestSuitesResponse
  */
-export class ListGroupsResponse extends Message<ListGroupsResponse> {
+export class ListTestSuitesResponse extends Message<ListTestSuitesResponse> {
   /**
-   * @generated from field: repeated annex.tests.v1.Group groups = 1;
+   * @generated from field: repeated annex.tests.v1.TestSuite test_suites = 1;
    */
-  groups: Group[] = [];
+  testSuites: TestSuite[] = [];
 
   /**
    * @generated from field: string next_page_token = 2;
    */
   nextPageToken = "";
 
-  constructor(data?: PartialMessage<ListGroupsResponse>) {
+  constructor(data?: PartialMessage<ListTestSuitesResponse>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "annex.tests.v1.ListGroupsResponse";
+  static readonly typeName = "annex.tests.v1.ListTestSuitesResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "groups", kind: "message", T: Group, repeated: true },
+    { no: 1, name: "test_suites", kind: "message", T: TestSuite, repeated: true },
     { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListGroupsResponse {
-    return new ListGroupsResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListTestSuitesResponse {
+    return new ListTestSuitesResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListGroupsResponse {
-    return new ListGroupsResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListTestSuitesResponse {
+    return new ListTestSuitesResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListGroupsResponse {
-    return new ListGroupsResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListTestSuitesResponse {
+    return new ListTestSuitesResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: ListGroupsResponse | PlainMessage<ListGroupsResponse> | undefined, b: ListGroupsResponse | PlainMessage<ListGroupsResponse> | undefined): boolean {
-    return proto3.util.equals(ListGroupsResponse, a, b);
+  static equals(a: ListTestSuitesResponse | PlainMessage<ListTestSuitesResponse> | undefined, b: ListTestSuitesResponse | PlainMessage<ListTestSuitesResponse> | undefined): boolean {
+    return proto3.util.equals(ListTestSuitesResponse, a, b);
   }
 }
 
@@ -337,14 +429,24 @@ export class RegisterTestsRequest extends Message<RegisterTestsRequest> {
   context = "";
 
   /**
-   * @generated from field: string group = 2;
+   * @generated from field: string test_suite_id = 2;
    */
-  group = "";
+  testSuiteId = "";
 
   /**
-   * @generated from field: repeated annex.tests.v1.TestDefinition definitions = 4;
+   * @generated from field: annex.tests.v1.TestDefinition definition = 3;
    */
-  definitions: TestDefinition[] = [];
+  definition?: TestDefinition;
+
+  /**
+   * @generated from field: string version = 4;
+   */
+  version = "";
+
+  /**
+   * @generated from field: string runner_id = 5;
+   */
+  runnerId = "";
 
   constructor(data?: PartialMessage<RegisterTestsRequest>) {
     super();
@@ -355,8 +457,10 @@ export class RegisterTestsRequest extends Message<RegisterTestsRequest> {
   static readonly typeName = "annex.tests.v1.RegisterTestsRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "group", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 4, name: "definitions", kind: "message", T: TestDefinition, repeated: true },
+    { no: 2, name: "test_suite_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "definition", kind: "message", T: TestDefinition },
+    { no: 4, name: "version", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 5, name: "runner_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RegisterTestsRequest {
@@ -380,11 +484,6 @@ export class RegisterTestsRequest extends Message<RegisterTestsRequest> {
  * @generated from message annex.tests.v1.RegisterTestsResponse
  */
 export class RegisterTestsResponse extends Message<RegisterTestsResponse> {
-  /**
-   * @generated from field: repeated annex.tests.v1.Test tests = 1;
-   */
-  tests: Test[] = [];
-
   constructor(data?: PartialMessage<RegisterTestsResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -393,7 +492,6 @@ export class RegisterTestsResponse extends Message<RegisterTestsResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "annex.tests.v1.RegisterTestsResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "tests", kind: "message", T: Test, repeated: true },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RegisterTestsResponse {
@@ -423,9 +521,9 @@ export class ListTestsRequest extends Message<ListTestsRequest> {
   context = "";
 
   /**
-   * @generated from field: string group = 2;
+   * @generated from field: string test_suite_id = 2;
    */
-  group = "";
+  testSuiteId = "";
 
   /**
    * @generated from field: int32 page_size = 3;
@@ -446,7 +544,7 @@ export class ListTestsRequest extends Message<ListTestsRequest> {
   static readonly typeName = "annex.tests.v1.ListTestsRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "context", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "group", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "test_suite_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);

@@ -1,6 +1,6 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
-import { CaseExecution, Group, Log, Payload, Test, TestDefinition, TestExecution } from "./test_pb.js";
+import { CaseExecution, Log, Payload, Test, TestDefinition, TestExecution, TestSuite } from "./test_pb.js";
 /**
  * @generated from message annex.tests.v1.RegisterContextRequest
  */
@@ -74,9 +74,9 @@ export declare class ListContextsResponse extends Message<ListContextsResponse> 
     static equals(a: ListContextsResponse | PlainMessage<ListContextsResponse> | undefined, b: ListContextsResponse | PlainMessage<ListContextsResponse> | undefined): boolean;
 }
 /**
- * @generated from message annex.tests.v1.RegisterGroupRequest
+ * @generated from message annex.tests.v1.RegisterTestSuiteRequest
  */
-export declare class RegisterGroupRequest extends Message<RegisterGroupRequest> {
+export declare class RegisterTestSuiteRequest extends Message<RegisterTestSuiteRequest> {
     /**
      * @generated from field: string context = 1;
      */
@@ -85,32 +85,78 @@ export declare class RegisterGroupRequest extends Message<RegisterGroupRequest> 
      * @generated from field: string name = 2;
      */
     name: string;
-    constructor(data?: PartialMessage<RegisterGroupRequest>);
+    /**
+     * @generated from field: optional string description = 3;
+     */
+    description?: string;
+    constructor(data?: PartialMessage<RegisterTestSuiteRequest>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "annex.tests.v1.RegisterGroupRequest";
+    static readonly typeName = "annex.tests.v1.RegisterTestSuiteRequest";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RegisterGroupRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RegisterGroupRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RegisterGroupRequest;
-    static equals(a: RegisterGroupRequest | PlainMessage<RegisterGroupRequest> | undefined, b: RegisterGroupRequest | PlainMessage<RegisterGroupRequest> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RegisterTestSuiteRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RegisterTestSuiteRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RegisterTestSuiteRequest;
+    static equals(a: RegisterTestSuiteRequest | PlainMessage<RegisterTestSuiteRequest> | undefined, b: RegisterTestSuiteRequest | PlainMessage<RegisterTestSuiteRequest> | undefined): boolean;
 }
 /**
- * @generated from message annex.tests.v1.RegisterGroupResponse
+ * @generated from message annex.tests.v1.RegisterTestSuiteResponse
  */
-export declare class RegisterGroupResponse extends Message<RegisterGroupResponse> {
-    constructor(data?: PartialMessage<RegisterGroupResponse>);
+export declare class RegisterTestSuiteResponse extends Message<RegisterTestSuiteResponse> {
+    /**
+     * @generated from field: string id = 1;
+     */
+    id: string;
+    constructor(data?: PartialMessage<RegisterTestSuiteResponse>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "annex.tests.v1.RegisterGroupResponse";
+    static readonly typeName = "annex.tests.v1.RegisterTestSuiteResponse";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RegisterGroupResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RegisterGroupResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RegisterGroupResponse;
-    static equals(a: RegisterGroupResponse | PlainMessage<RegisterGroupResponse> | undefined, b: RegisterGroupResponse | PlainMessage<RegisterGroupResponse> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RegisterTestSuiteResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RegisterTestSuiteResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RegisterTestSuiteResponse;
+    static equals(a: RegisterTestSuiteResponse | PlainMessage<RegisterTestSuiteResponse> | undefined, b: RegisterTestSuiteResponse | PlainMessage<RegisterTestSuiteResponse> | undefined): boolean;
 }
 /**
- * @generated from message annex.tests.v1.ListGroupsRequest
+ * @generated from message annex.tests.v1.GetTestSuiteRequest
  */
-export declare class ListGroupsRequest extends Message<ListGroupsRequest> {
+export declare class GetTestSuiteRequest extends Message<GetTestSuiteRequest> {
+    /**
+     * @generated from field: string context = 1;
+     */
+    context: string;
+    /**
+     * @generated from field: string id = 2;
+     */
+    id: string;
+    constructor(data?: PartialMessage<GetTestSuiteRequest>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "annex.tests.v1.GetTestSuiteRequest";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetTestSuiteRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetTestSuiteRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetTestSuiteRequest;
+    static equals(a: GetTestSuiteRequest | PlainMessage<GetTestSuiteRequest> | undefined, b: GetTestSuiteRequest | PlainMessage<GetTestSuiteRequest> | undefined): boolean;
+}
+/**
+ * @generated from message annex.tests.v1.GetTestSuiteResponse
+ */
+export declare class GetTestSuiteResponse extends Message<GetTestSuiteResponse> {
+    /**
+     * @generated from field: annex.tests.v1.TestSuite test_suite = 1;
+     */
+    testSuite?: TestSuite;
+    constructor(data?: PartialMessage<GetTestSuiteResponse>);
+    static readonly runtime: typeof proto3;
+    static readonly typeName = "annex.tests.v1.GetTestSuiteResponse";
+    static readonly fields: FieldList;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetTestSuiteResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetTestSuiteResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetTestSuiteResponse;
+    static equals(a: GetTestSuiteResponse | PlainMessage<GetTestSuiteResponse> | undefined, b: GetTestSuiteResponse | PlainMessage<GetTestSuiteResponse> | undefined): boolean;
+}
+/**
+ * @generated from message annex.tests.v1.ListTestSuitesRequest
+ */
+export declare class ListTestSuitesRequest extends Message<ListTestSuitesRequest> {
     /**
      * @generated from field: string context = 1;
      */
@@ -123,35 +169,35 @@ export declare class ListGroupsRequest extends Message<ListGroupsRequest> {
      * @generated from field: string next_page_token = 3;
      */
     nextPageToken: string;
-    constructor(data?: PartialMessage<ListGroupsRequest>);
+    constructor(data?: PartialMessage<ListTestSuitesRequest>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "annex.tests.v1.ListGroupsRequest";
+    static readonly typeName = "annex.tests.v1.ListTestSuitesRequest";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListGroupsRequest;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListGroupsRequest;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListGroupsRequest;
-    static equals(a: ListGroupsRequest | PlainMessage<ListGroupsRequest> | undefined, b: ListGroupsRequest | PlainMessage<ListGroupsRequest> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListTestSuitesRequest;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListTestSuitesRequest;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListTestSuitesRequest;
+    static equals(a: ListTestSuitesRequest | PlainMessage<ListTestSuitesRequest> | undefined, b: ListTestSuitesRequest | PlainMessage<ListTestSuitesRequest> | undefined): boolean;
 }
 /**
- * @generated from message annex.tests.v1.ListGroupsResponse
+ * @generated from message annex.tests.v1.ListTestSuitesResponse
  */
-export declare class ListGroupsResponse extends Message<ListGroupsResponse> {
+export declare class ListTestSuitesResponse extends Message<ListTestSuitesResponse> {
     /**
-     * @generated from field: repeated annex.tests.v1.Group groups = 1;
+     * @generated from field: repeated annex.tests.v1.TestSuite test_suites = 1;
      */
-    groups: Group[];
+    testSuites: TestSuite[];
     /**
      * @generated from field: string next_page_token = 2;
      */
     nextPageToken: string;
-    constructor(data?: PartialMessage<ListGroupsResponse>);
+    constructor(data?: PartialMessage<ListTestSuitesResponse>);
     static readonly runtime: typeof proto3;
-    static readonly typeName = "annex.tests.v1.ListGroupsResponse";
+    static readonly typeName = "annex.tests.v1.ListTestSuitesResponse";
     static readonly fields: FieldList;
-    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListGroupsResponse;
-    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListGroupsResponse;
-    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListGroupsResponse;
-    static equals(a: ListGroupsResponse | PlainMessage<ListGroupsResponse> | undefined, b: ListGroupsResponse | PlainMessage<ListGroupsResponse> | undefined): boolean;
+    static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListTestSuitesResponse;
+    static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListTestSuitesResponse;
+    static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListTestSuitesResponse;
+    static equals(a: ListTestSuitesResponse | PlainMessage<ListTestSuitesResponse> | undefined, b: ListTestSuitesResponse | PlainMessage<ListTestSuitesResponse> | undefined): boolean;
 }
 /**
  * @generated from message annex.tests.v1.RegisterTestsRequest
@@ -162,13 +208,21 @@ export declare class RegisterTestsRequest extends Message<RegisterTestsRequest> 
      */
     context: string;
     /**
-     * @generated from field: string group = 2;
+     * @generated from field: string test_suite_id = 2;
      */
-    group: string;
+    testSuiteId: string;
     /**
-     * @generated from field: repeated annex.tests.v1.TestDefinition definitions = 4;
+     * @generated from field: annex.tests.v1.TestDefinition definition = 3;
      */
-    definitions: TestDefinition[];
+    definition?: TestDefinition;
+    /**
+     * @generated from field: string version = 4;
+     */
+    version: string;
+    /**
+     * @generated from field: string runner_id = 5;
+     */
+    runnerId: string;
     constructor(data?: PartialMessage<RegisterTestsRequest>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "annex.tests.v1.RegisterTestsRequest";
@@ -182,10 +236,6 @@ export declare class RegisterTestsRequest extends Message<RegisterTestsRequest> 
  * @generated from message annex.tests.v1.RegisterTestsResponse
  */
 export declare class RegisterTestsResponse extends Message<RegisterTestsResponse> {
-    /**
-     * @generated from field: repeated annex.tests.v1.Test tests = 1;
-     */
-    tests: Test[];
     constructor(data?: PartialMessage<RegisterTestsResponse>);
     static readonly runtime: typeof proto3;
     static readonly typeName = "annex.tests.v1.RegisterTestsResponse";
@@ -204,9 +254,9 @@ export declare class ListTestsRequest extends Message<ListTestsRequest> {
      */
     context: string;
     /**
-     * @generated from field: string group = 2;
+     * @generated from field: string test_suite_id = 2;
      */
-    group: string;
+    testSuiteId: string;
     /**
      * @generated from field: int32 page_size = 3;
      */
